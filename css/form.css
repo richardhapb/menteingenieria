@@ -37,6 +37,10 @@
     appearance: textfield;
 }
 
+.form-contacto__razon {
+    resize: vertical;
+}
+
 .form-contacto__select {
     color: var(--auxiliar-alpha)
 }
