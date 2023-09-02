@@ -1,8 +1,8 @@
 "use strict";
 
-const claseFormulario = "form-contacto";
-const claseObligatorio = "obligatorio";
-const claseSelect = "form-contacto__select";
+const claseFormulario = "form";
+const claseObligatorio = "required";
+const claseSelect = "form__select";
 
 const formulario = document.querySelector(`.${claseFormulario}`);
 const select = formulario.querySelector(`.${claseSelect}`);
@@ -28,5 +28,5 @@ formulario.addEventListener("submit", function(e){
 });
 
 // Cambia la clase una vez se selecciona un valor para cambiar el color del texto
-select.addEventListener("change", () => select.classList.add(`${claseSelect}--seleccionado`))
+select.addEventListener("change", () => select.classList.add(`${claseSelect}--selected`))
 

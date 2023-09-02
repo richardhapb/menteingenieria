@@ -1,0 +1,35 @@
+@use "base/variables" as v;
+
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: v.$main-font;
+    font-size: 1.6rem;
+    background-color: v.$primary;
+    color: v.$aux;
+}
+
+h1 {
+    color: v.$aux;
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Utilities */
+
+.shadow {
+    box-shadow: 7px 0px 42px 2px v.$box;
+}

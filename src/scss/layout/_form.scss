@@ -1,0 +1,87 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+
+.form {
+    background-color: v.$secondary-alpha;
+    width: 95%;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+    border-radius: 3rem;
+
+    @include m.tablet {
+        width: 80%;
+        max-width: 50%;
+    }
+    
+    h1, p {
+        text-align: center;
+    }
+
+    label {
+        font-family: v.$main-font;
+        margin: 3rem 0 1rem 0;
+        font-weight: 600;
+    }
+    
+    input, select, .form__razon {
+        background-color: transparent;
+        border: 1rem solid v.$secondary-alpha;
+        color: v.$aux;
+        font-family: v.$main-font;
+        appearance: none;
+    }
+
+    .form__razon {
+        resize: vertical;
+    }
+
+    select {
+        color: v.$aux-alpha;
+    }
+
+    .form__select--selected {
+        color: v.$aux;
+    }
+
+    input, .form__razon{
+        &::placeholder {
+            color: v.$aux-alpha;
+        }
+    }
+
+    .form__submit {
+        margin: 2rem 0;
+        background-color: v.$secondary-alpha;
+        border: 0.5rem solid v.$secondary;
+        color: v.$aux;
+        transition: 1s background-color ease, 1s color ease;
+        cursor: pointer;
+        font-family: v.$main-font;
+
+        &:hover {
+            background-color: v.$quaternary;
+            color: v.$primary;
+        }
+    }
+
+    .errorForm {
+        background-color: #B009;
+        font-family: v.$primary;
+        color: #FFF;
+        margin: 3rem auto;
+        padding: 2rem;
+        font-size: 2rem;
+    }
+
+    .errorCampo {
+        background-color: #B004;
+        color: #FFF;
+        padding: 1rem;
+    }
+}
+
+
+
