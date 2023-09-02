@@ -34,7 +34,7 @@
     border: 1rem solid var(--secundario-alpha);
     color: var(--auxiliar);
     font-family: var(--fuente-principal);
-    appearance: textfield;
+    appearance: none;
 }
 
 .form-contacto__razon {
@@ -51,7 +51,7 @@
 
 .form-contacto__input::placeholder,
 .form-contacto__razon::placeholder {
-    color: var(--auxiliar);
+    color: var(--auxiliar-alpha);
 }
 
 .form-contacto__submit {

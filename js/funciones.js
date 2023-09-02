@@ -130,7 +130,6 @@ function validarFormularioVacio(formulario, claseObligatorio) {
 
     // Revisa que los elementos tengan algún valor
     for (let i = 0; i < elementos.length; i++) {
-        console.log(elementos[i].nodeName);
         if (elementos[i].value === "" && elementos[i].nodeName !== "SELECT") {
             elementos[i].parentElement.insertBefore(error, elementos[i])
             elementos[i].focus();
@@ -172,4 +171,23 @@ function mostrarErrorFormulario(formulario, mensaje, abajo = true) {
     return error;
 }
 
+/**
+ * 
+ * @param {HTMLFormElement} formulario Formulario que se enviará
+ * @param {String} phpUrl URL del archivo PHP a utilizar
+ */
+
+function enviarFormulario(formulario, phpUrl){
+
+    // Crear un objeto FormData para enviar los datos del formulario
+    const formData = new FormData(formulario);
+    fetch(phpUrl, {
+        method: "POST",
+        body: formData
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+}
 

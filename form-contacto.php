@@ -21,7 +21,7 @@
             <label class="form-contacto__label">Ingrese correo electrónico</label>
             <input class="form-contacto__input obligatorio" type="text" name="email" placeholder="Email">
             <label class="form-contacto__label">Ingrese número de teléfono</label>
-            <input class="form-contacto__input obligatorio" type="number" name="telefono" placeholder="+569...">
+            <input class="form-contacto__input obligatorio" type="text" name="telefono" placeholder="+569...">
             <label class="form-contacto__label">Indique su empresa</label>
             <input class="form-contacto__input obligatorio" type="text" name="empresa" placeholder="Empresa">
             <label class="form-contacto__label">¿A través de que medio nos ubicó?</label>
@@ -39,6 +39,6 @@
         </form>
     </main>
     <script src="js/funciones.js"></script>
-    <script src="js/formulario-contacto.js"></script>
+    <script src="js/form-contacto.js"></script>
 </body>
 </html>
