@@ -27,7 +27,7 @@
                 </div>
                 <div class="description">
                     <h2>Laura Guerrero</h2>
-                    <h3>Ingeniera Civil Indsutrial</h3>
+                    <h3>Ingeniera Civil Industrial</h3>
                     <p>
 
                     Soy una ingeniera con un enfoque apasionado en la optimización energética y la sostenibilidad, y me enorgullece destacar mi amplia experiencia en proyectos que impactan positivamente en diversas áreas industriales, incluyendo minería, energía, combustibles y servicios.

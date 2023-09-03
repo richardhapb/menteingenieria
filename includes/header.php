@@ -1,12 +1,14 @@
 <header class="header">
         <div class="container">
-            <a href="index.php">
-                <picture class="logo">
-                    <source srcset="build/img/logo-primario.avif" type="image/avif">
-                    <source srcset="build/img/logo-primario.webp" type="image/webp">
-                    <img loading="lazy" width=300 height=200 src="build/img/logo-primario.jpg" alt="Logo">
-                </picture>
-            </a>
+            <div  class="logo">
+                <a href="index.php">
+                    <picture>
+                        <source srcset="build/img/logo-primario.avif" type="image/avif">
+                        <source srcset="build/img/logo-primario.webp" type="image/webp">
+                        <img loading="lazy" width=300 height=200 src="build/img/logo-primario.jpg" alt="Logo">
+                    </picture>
+                </a>
+            </div>
             <div class="main-nav">
                 <ul>
                     <li><a href="index.php">Home</a></li>
