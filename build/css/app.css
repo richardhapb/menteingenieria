@@ -349,12 +349,45 @@ a {
 
 /* Header */
 .header {
-  text-align: left;
+  text-align: center;
   background-color: #252B48;
+  color: #F0F0F0;
+  padding: 1rem;
+}
+.header a {
+  color: #F0F0F0;
+}
+.header a:hover {
+  color: rgba(240, 240, 240, 0.5843137255);
+}
+@media (min-width: 768px) {
+  .header {
+    text-align: left;
+  }
+}
+@media (min-width: 768px) {
+  .header .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem;
+    place-items: center;
+  }
+}
+.header ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+  margin: 1rem;
+}
+.header li {
+  padding: 1rem;
+  font-size: 2rem;
 }
 
-.logo {
-  width: 30rem;
+.logo img {
+  width: 100%;
+  max-width: 30rem;
 }
 
 .form {
@@ -370,7 +403,7 @@ a {
 @media (min-width: 768px) {
   .form {
     width: 80%;
-    max-width: 50%;
+    max-width: 100rem;
   }
 }
 .form h1, .form p {

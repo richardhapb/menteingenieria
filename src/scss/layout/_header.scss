@@ -1,12 +1,53 @@
 @use "base/variables" as v;
+@use "base/mixins" as m;
+
 
 
 /* Header */
 
 .header {
-    text-align: left;
+    text-align: center;
     background-color: v.$primary;
+    color: v.$aux;
+    padding: 1rem;
+
+    a {
+        color: v.$aux;
+
+        &:hover {
+            color: v.$aux-alpha;
+        }
+    }
+
+    @include m.tablet {
+        text-align: left;
+    }
+    
+    .container {
+        @include m.tablet {
+            @include m.grid(2, 5rem);
+            place-items: center;
+        }
+        
+        
+    }
+    
+
+    ul {
+        @include m.reset-list;
+        text-align: center;
+        margin: 1rem;
+    }
+    li {
+        padding: 1rem;
+        font-size: 2rem;
+    }
 }
 .logo {
-    width: 30rem;
+    
+    img {
+        width: 100%;
+        max-width: 30rem;
+    }
+
 }
