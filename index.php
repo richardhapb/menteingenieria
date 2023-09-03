@@ -13,6 +13,7 @@
         <picture class="logo">
             <source srcset="build/img/logo-primario.avif" type="image/avif">
             <source srcset="build/img/logo-primario.webp" type="image/webp">
+            <link rel="icon" href="favicon.ico" type="image/x-icon">
             <img loading="lazy" width=300 height=200 src="build/img/logo-primario.jpg" alt="Logo">
         </picture>
     </header>
