@@ -101,12 +101,11 @@ $img-height: 21.34rem;
     }
 
     h3 {
-        font-size: 2rem;
+        font-size: calc(v.$font-size + 0.2rem);
     }
 
     p {
         color: v.$aux;
-        font-size: 2rem;
         text-align: justify;
     }
 }

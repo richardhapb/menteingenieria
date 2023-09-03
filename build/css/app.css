@@ -420,7 +420,6 @@ p {
   display: flex;
   flex-direction: column;
   padding: 4rem;
-  font-size: 1.8rem;
 }
 @media (min-width: 768px) {
   .form {
@@ -564,11 +563,10 @@ p {
   font-family: Michroma, Manrope, sans-serif;
 }
 .description h3 {
-  font-size: 2rem;
+  font-size: 2.2rem;
 }
 .description p {
   color: #F0F0F0;
-  font-size: 2rem;
   text-align: justify;
 }
 
@@ -577,7 +575,6 @@ p {
   margin-top: 5rem;
   background-color: #252B48;
   color: #F0F0F0;
-  font-size: 2rem;
 }
 .footer a {
   color: #F0F0F0;
@@ -596,23 +593,84 @@ p {
 .footer li span {
   font-weight: 700;
 }
+.footer .title {
+  margin-bottom: 5rem;
+}
+.footer .title span {
+  text-decoration: underline;
+  text-decoration-color: #F7E987;
+  text-decoration-line: 1rem;
+  text-underline-offset: 2rem;
+  text-decoration-thickness: 0.3rem;
+}
+@media (min-width: 768px) {
+  .footer .container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+  }
+}
+@media (min-width: 992px) {
+  .footer .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
 .footer .contact {
   margin: 0 auto;
+  width: 100%;
 }
 @media (min-width: 768px) {
   .footer .contact {
     place-items: center;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
+  .footer .contact .title {
+    margin: 0 auto 0 0;
+    grid-column: 1/4;
+  }
 }
-.footer .person, .footer .icons {
+.footer .person {
   display: table;
-  margin: 3rem auto;
+  margin: 0 auto;
+  margin-bottom: 3rem;
 }
-.footer .icons {
-  text-align: center;
+@media (min-width: 768px) {
+  .footer .person {
+    align-self: self-start;
+    margin: 3rem auto 0 auto;
+  }
+}
+@media (min-width: 768px) {
+  .footer .icons {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+  }
+  .footer .icons h2 {
+    margin: 0 auto 0 0;
+  }
+}
+@media (min-width: 992px) {
+  .footer .icons {
+    width: 50%;
+    margin-left: auto;
+  }
+}
+.footer .icons .network {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  gap: 1rem;
+  max-width: 20rem;
+  margin: 0 auto;
+}
+@media (min-width: 992px) {
+  .footer .icons .network {
+    margin-left: 0;
+  }
 }
 .footer .icons svg {
   width: 6rem;

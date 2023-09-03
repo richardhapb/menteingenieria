@@ -14,7 +14,7 @@ html {
 
 body {
     font-family: v.$main-font;
-    font-size: 2rem;
+    font-size: v.$font-size;
     background-color: v.$aux;
     color: v.$letter;
 }
