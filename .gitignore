@@ -1,3 +1,7 @@
 node_modules
 **/.DS_Store
 **/.vscode
+src
+_index.html
+gulpfile.js
+package-lock.json
