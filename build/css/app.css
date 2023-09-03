@@ -592,6 +592,9 @@ p {
   display: table;
   margin: 3rem auto;
 }
+.footer .icons {
+  text-align: center;
+}
 .footer .icons svg {
   width: 6rem;
   height: 6rem;

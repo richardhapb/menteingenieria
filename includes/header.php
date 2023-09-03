@@ -9,9 +9,9 @@
             </a>
             <div class="main-nav">
                 <ul>
-                    <a href="index.php"><li>Home</li></a>
-                    <a href="https://view.genial.ly/64e93a21e74949001987f632"><li>Servicios</li></a>
-                    <a href="contact.php"><li>Contacto</li></a>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="https://view.genial.ly/64e93a21e74949001987f632">Servicios</a></li>
+                    <li><a href="contact.php">Contacto</a></li>
                 </ul>
             </div>
         </div>
