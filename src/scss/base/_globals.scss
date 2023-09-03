@@ -16,11 +16,11 @@ body {
     font-family: v.$main-font;
     font-size: 1.6rem;
     background-color: v.$aux;
-    color: v.$aux;
+    color: v.$letter;
 }
 
 h1 {
-    color: v.$aux;
+    color: v.$letter;
     font-weight: 700;
 }
 
@@ -31,7 +31,7 @@ a {
 /* Utilities */
 
 .shadow {
-    box-shadow: 7px 0px 42px 2px v.$box;
+    box-shadow: 6px 8px 10px 0px v.$box;
 }
 
 // Window

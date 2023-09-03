@@ -5,12 +5,15 @@
 
 
 // Colors
+$letter: #000;
+$letter-alpha: #0009;
 $primary: #252B48;
 $primary-alpha: #252B4899;
 $secondary: #445069;
 $secondary-alpha: #44506999;
 $tertiary: #5B9A8B;
 $quaternary: #F7E987;
+$quaternary-darken: darken($color: $quaternary, $amount: 20%);
 $aux: #F0F0F0;
 $aux-alpha: #F0F0F095;
 $box: #0006;

@@ -325,11 +325,11 @@ body {
   font-family: "News Cycle, Michroma, Manrope, sans-serif";
   font-size: 1.6rem;
   background-color: #F0F0F0;
-  color: #F0F0F0;
+  color: #000;
 }
 
 h1 {
-  color: #F0F0F0;
+  color: #000;
   font-weight: 700;
 }
 
@@ -339,7 +339,7 @@ a {
 
 /* Utilities */
 .shadow {
-  box-shadow: 7px 0px 42px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 6px 8px 10px 0px rgba(0, 0, 0, 0.4);
 }
 
 .container {
@@ -358,13 +358,14 @@ a {
 }
 
 .form {
-  background-color: rgba(68, 80, 105, 0.6);
+  background-color: #F7E987;
   width: 95%;
   margin: 2rem auto;
   display: flex;
   flex-direction: column;
   padding: 4rem;
   border-radius: 3rem;
+  font-size: 1.8rem;
 }
 @media (min-width: 768px) {
   .form {
@@ -382,8 +383,8 @@ a {
 }
 .form input, .form select, .form .form__razon {
   background-color: transparent;
-  border: 1rem solid rgba(68, 80, 105, 0.6);
-  color: #F0F0F0;
+  border: 1rem solid #f1d727;
+  color: #252B48;
   font-family: "News Cycle, Michroma, Manrope, sans-serif";
   appearance: none;
 }
@@ -391,26 +392,27 @@ a {
   resize: vertical;
 }
 .form select {
-  color: rgba(240, 240, 240, 0.5843137255);
+  color: rgba(37, 43, 72, 0.6);
 }
 .form .form__select--selected {
-  color: #F0F0F0;
+  color: #252B48;
 }
 .form input::placeholder, .form .form__razon::placeholder {
-  color: rgba(240, 240, 240, 0.5843137255);
+  color: rgba(37, 43, 72, 0.6);
 }
 .form .form__submit {
   margin: 2rem 0;
-  background-color: rgba(68, 80, 105, 0.6);
-  border: 0.5rem solid #445069;
+  padding: 1rem;
+  background-color: #252B48;
+  border: 0;
   color: #F0F0F0;
-  transition: 1s background-color ease, 1s color ease;
+  transition: 1s background-color ease;
   cursor: pointer;
   font-family: "News Cycle, Michroma, Manrope, sans-serif";
 }
 .form .form__submit:hover {
-  background-color: #F7E987;
-  color: #252B48;
+  background-color: rgba(37, 43, 72, 0.6);
+  color: #F0F0F0;
 }
 .form .errorForm {
   background-color: rgba(187, 0, 0, 0.6);

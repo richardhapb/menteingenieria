@@ -3,13 +3,14 @@
 
 
 .form {
-    background-color: v.$secondary-alpha;
+    background-color: v.$quaternary;
     width: 95%;
     margin: 2rem auto;
     display: flex;
     flex-direction: column;
     padding: 4rem;
     border-radius: 3rem;
+    font-size: 1.8rem;
 
     @include m.tablet {
         width: 80%;
@@ -28,8 +29,8 @@
     
     input, select, .form__razon {
         background-color: transparent;
-        border: 1rem solid v.$secondary-alpha;
-        color: v.$aux;
+        border: 1rem solid v.$quaternary-darken;
+        color: v.$primary;
         font-family: v.$main-font;
         appearance: none;
     }
@@ -39,31 +40,32 @@
     }
 
     select {
-        color: v.$aux-alpha;
+        color: v.$primary-alpha;
     }
 
     .form__select--selected {
-        color: v.$aux;
+        color: v.$primary;
     }
 
     input, .form__razon{
         &::placeholder {
-            color: v.$aux-alpha;
+            color: v.$primary-alpha;
         }
     }
 
     .form__submit {
         margin: 2rem 0;
-        background-color: v.$secondary-alpha;
-        border: 0.5rem solid v.$secondary;
+        padding: 1rem;
+        background-color: v.$primary;
+        border: 0;
         color: v.$aux;
-        transition: 1s background-color ease, 1s color ease;
+        transition: 1s background-color ease;
         cursor: pointer;
         font-family: v.$main-font;
 
         &:hover {
-            background-color: v.$quaternary;
-            color: v.$primary;
+            background-color: v.$primary-alpha;
+            color: v.$aux;
         }
     }
 
