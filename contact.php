@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <title>Formulario de contacto - Mente Ingeniería</title>
     <?php include("includes/head.php"); ?>
 </head>
 <body>
