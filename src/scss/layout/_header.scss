@@ -35,7 +35,7 @@
 
     ul {
         @include m.reset-list;
-        text-align: center;
+        text-align: left;
         margin: 1rem;
     }
     li {
