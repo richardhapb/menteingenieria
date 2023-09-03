@@ -10,9 +10,9 @@
         <section class="mente-p container">
             <h1>Mente Ingeniería</h1>
             <p>
-                En Mente Ingeniería nos caracterizamos por mantener sólidos valores en toda actividad que realizamos, como lo son la honestidad, la tolerancia, la ética profesional y el respeto hacia la diversidad de opiones y creencias. Esto nos permite obtener resultados ganar-ganar con las diferentes personas y organizaciones.
+                En Mente Ingeniería nos caracterizamos por mantener sólidos valores en toda actividad que realizamos, como lo son la honestidad, la tolerancia, la ética profesional y el respeto hacia la diversidad de opiniones y creencias. Esto nos permite obtener resultados ganar-ganar con las diferentes personas y organizaciones.
                 
-                Nuestro enfoque está en entregar soluciones creativas en diversos proyectos. Las diferentes habilidades que como equipo nos enriquece, junto con el trabajo conjunto con las personas en cada organización, generan un ambiente constructivo y colaborativo para conseguir los objetivos que se planteen.
+                Nuestro enfoque está en entregar soluciones creativas en diversos proyectos. Las diferentes habilidades que como equipo nos enriquece, junto con el trabajo conjunto con las personas en cada organización, generan un ambiente constructivo y colaborativo para conseguir los objetivos que se plantean.
 
             </p>
         </section>
@@ -77,7 +77,7 @@
         <section class="mente-p container">
             <p>
 
-                Nos encantaría poder aportar al éxito de tus proyectos y a que juntos podamos alcanzar los objetivos que se requieren. Nos comprometemos a entregar el máximo de nuestro esfuerzo para que la experiencia de trabajar en conjunto sea lo más satisfactoria posible, enfoncándonos en el profesionalismo y la adaptación a las diferntes problematicas que se presenten.
+                Nos encantaría poder aportar al éxito de tus proyectos y a que juntos podamos alcanzar los objetivos que se requieren. Nos comprometemos a entregar el máximo de nuestro esfuerzo para que la experiencia de trabajar en conjunto sea lo más satisfactoria posible, enfoncándonos en el profesionalismo y la adaptación a las diferntes problemáticas que se presenten.
 
             </p>
         </section>
