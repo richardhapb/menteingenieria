@@ -419,7 +419,6 @@ p {
   display: flex;
   flex-direction: column;
   padding: 4rem;
-  border-radius: 3rem;
   font-size: 1.8rem;
 }
 @media (min-width: 768px) {
@@ -500,7 +499,6 @@ p {
   grid-auto-flow: column;
   padding: 5rem;
   background-color: #445069;
-  border-radius: 4rem;
   margin: 10rem auto 0 auto;
 }
 @media (min-width: 480px) {

@@ -7,7 +7,7 @@
 <body>
     <?php  include("includes/header.php");  ?>
     <main>
-        <form class="form shadow">
+        <form class="form">
             <h1>Ingrese sus datos y solicitud</h1>
             <label>Ingrese nombre</label>
             <input class="required" autocomplete="off" type="text" name="nombre" placeholder="Nombre">

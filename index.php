@@ -17,7 +17,7 @@
             </p>
         </section>
         <section class="presentation">
-            <div class="left container shadow">
+            <div class="left container">
                 <div class="presentation-img">
                     <picture>
                         <source srcset="build/img/lg.avif" type="image/avif">
@@ -45,7 +45,7 @@
                     </p>
                 </div>
             </div>
-            <div class="right container shadow">
+            <div class="right container">
                 <div class="presentation-img">
                     <picture>
                         <source srcset="build/img/rp.avif" type="image/avif">
