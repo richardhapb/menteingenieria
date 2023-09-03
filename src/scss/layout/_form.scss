@@ -28,11 +28,12 @@
     }
     
     input, select, .form__razon {
-        background-color: transparent;
-        border: 1rem solid v.$quaternary-darken;
+        background-color: v.$aux;
+        border: 0.2rem solid v.$quaternary-darken;
         color: v.$primary;
         font-family: v.$main-font;
         appearance: none;
+        padding: 0.5rem;
     }
 
     .form__razon {
@@ -70,7 +71,7 @@
     }
 
     .errorForm {
-        background-color: #B009;
+        background-color: #B00B;
         font-family: v.$primary;
         color: #FFF;
         margin: 3rem auto;
@@ -79,7 +80,7 @@
     }
 
     .errorCampo {
-        background-color: #B004;
+        background-color: #B009;
         color: #FFF;
         padding: 1rem;
     }

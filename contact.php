@@ -1,36 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de contacto - Mente Ingeniería</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="build/css/app.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <?php include("includes/head.php"); ?>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <a href="index.html">
-                <picture class="logo">
-                    <source srcset="build/img/logo-primario.avif" type="image/avif">
-                    <source srcset="build/img/logo-primario.webp" type="image/webp">
-                    <img loading="lazy" src="build/img/logo-primario.jpg" alt="Logo">
-                </picture>
-            </a>
-            <div class="main-nav">
-                <ul>
-                    <a href="https://view.genial.ly/64e93a21e74949001987f632"><li>Servicios</li></a>
-                    <a href="#"><li>Contacto</li></a>
-                </ul>
-            </div>
-        </div>
-    </header>
+    <?php  include("includes/header.php");  ?>
     <main>
         <form class="form shadow">
             <h1>Ingrese sus datos y solicitud</h1>
-            <p>Todos los campos son obligatorios</p>
             <label>Ingrese nombre</label>
             <input class="required" autocomplete="off" type="text" name="nombre" placeholder="Nombre">
             <label>Ingrese correo electrónico</label>
