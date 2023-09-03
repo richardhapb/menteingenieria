@@ -1,0 +1,95 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+
+
+$img-width: 14.57rem;
+$img-height: 21.34rem;
+
+.mente-p {
+    p {
+        margin: 0;
+        text-align: justify;
+    }
+}
+
+.presentation {
+    padding: 5rem 0;
+}
+
+
+.left, .right {
+
+    grid-auto-flow: column;
+    padding: 5rem;
+    background-color: v.$secondary;
+    border-radius: 4rem;
+    margin: 10rem auto 0 auto;
+
+    img {
+        
+        @include m.phone {
+            width: calc($img-width * 2);
+            height: calc($img-height * 2);
+        }
+        
+    }
+
+    .presentation-img {
+        text-align: center;
+        margin: 0 2rem;
+    }
+}
+
+.left {
+    margin-top: 2rem;
+    .presentation-img {
+        @include m.tablet {
+            text-align: right;   
+            float: left; 
+        }
+    }
+}
+
+
+.right {
+
+    .presentation-img {
+        @include m.tablet {
+            text-align: left;
+            float:right;    
+        }
+    }
+
+
+}
+
+.description {
+
+    h2, h3 {
+        text-align: center;
+        color: v.$aux-alpha;
+        margin-bottom: 3rem;
+
+        @include m.tablet {
+            margin-top: 0;
+        }
+        
+    }
+
+    h2 {
+        font-size: 3.6rem;
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    p {
+        color: v.$aux;
+        font-size: 2rem;
+        line-height: 1.6;
+        text-align: justify;
+    }
+}
+

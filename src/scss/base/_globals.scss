@@ -14,7 +14,7 @@ html {
 
 body {
     font-family: v.$main-font;
-    font-size: 1.6rem;
+    font-size: 2rem;
     background-color: v.$aux;
     color: v.$letter;
 }
@@ -22,10 +22,21 @@ body {
 h1 {
     color: v.$letter;
     font-weight: 700;
+    margin: 5rem 0;
 }
 
 a {
     text-decoration: none;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+
+p, h1, h2, h3 {
+    font-family: v.$main-font;
 }
 
 /* Utilities */

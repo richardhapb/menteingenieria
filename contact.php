@@ -30,6 +30,7 @@
             <input class="form__submit" type="submit" value="Enviar">
         </form>
     </main>
+    <?php include("includes/footer.php"); ?>
     <script src="build/js/functions.js"></script>
     <script src="build/js/form-contact.js"></script>
 </body>

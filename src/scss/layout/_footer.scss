@@ -1,0 +1,51 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.footer {
+    padding: 2rem;
+    margin-top: 5rem;
+    background-color: v.$primary;
+    color: v.$aux;
+    font-size: 2rem;
+
+    a {
+        color: v.$aux;
+    }
+
+    h1 {
+        color: v.$aux;
+    }
+
+    ul {
+        @include m.reset-list;
+    }
+    li {
+        padding: 1rem 0;
+        span {
+            font-weight: 700;
+        }
+    }
+
+
+    .contact {
+        margin: 0 auto;
+
+
+        @include m.tablet {
+            place-items: center;
+            @include m.grid(3, 2rem)
+        }
+    }
+
+    .person, .icons {
+        display: table;
+        margin: 3rem auto;
+    }
+
+    .icons {
+        svg {
+            width: 6rem;
+            height: 6rem;
+        }
+    }
+}
