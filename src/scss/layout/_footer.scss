@@ -93,12 +93,14 @@
             @include m.desktop {
                 margin-left: 0;
             }
-            
+            .icon, svg {
+                margin: auto 0;
+            }
+            svg {
+                width: 6rem;
+                height: 6rem;
+            }
         }
 
-        svg {
-            width: 6rem;
-            height: 6rem;
-        }
     }
 }
