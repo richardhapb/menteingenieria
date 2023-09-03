@@ -39,6 +39,10 @@ p, h1, h2, h3 {
     font-family: v.$main-font;
 }
 
+p {
+    line-height: 1.6;
+}
+
 /* Utilities */
 
 .shadow {

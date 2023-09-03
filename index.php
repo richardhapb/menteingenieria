@@ -12,7 +12,7 @@
             <p>
                 En Mente Ingeniería nos caracterizamos por mantener sólidos valores en toda actividad que realizamos, como lo son la honestidad, la tolerancia, la ética profesional y el respeto hacia la diversidad de opiones y creencias. Esto nos permite obtener resultados ganar-ganar con las diferentes personas y organizaciones.
                 
-                Nuestro enfoque está en entregar soluciones creativas en diversos proyectos. Las diferentes habilidades que como equipo nos enriquece, junto con la el trabajo conjunto con las personas en cada organización, generan un ambiente constructivo y colaborativo para conseguir los objetivos que se planteen.
+                Nuestro enfoque está en entregar soluciones creativas en diversos proyectos. Las diferentes habilidades que como equipo nos enriquece, junto con el trabajo conjunto con las personas en cada organización, generan un ambiente constructivo y colaborativo para conseguir los objetivos que se planteen.
 
             </p>
         </section>
@@ -58,12 +58,12 @@
                     <h3>Ingeniero de Ejecución Industrial</h3>
                     <p>
 
-                    Soy un ingeniero, altamente comprometido, disfruto y llevo una apasionada búsqueda de mejora en mi profesión, también el aprendizaje en diferentes áreas científicas y humanas.
+                    Soy un ingeniero altamente comprometido, disfruto y llevo una apasionada búsqueda de mejora en mi profesión, como también el aprendizaje en diferentes áreas científicas y humanas.
 
                     </p>
                     <p>
 
-                    Mi enfoque en investigación me ha permitido llevar a cabo exitosamente proyectos relacionados con la optimización de procesos y manejo de información. Poseo conocimientos en diferentes áreas y me destaco especialmente en el desarrollo de soluciones digitales, web y gestión de la información con bases de datos SQL, Excel, Power Bi y Python. También he tenido la fortuna de adquirir una amplia experiencia en procesos productivos, liderando equipos con el objetivo de alcanzar la excelencia operacional.
+                    Mi enfoque en investigación me ha permitido llevar a cabo exitosamente proyectos relacionados con la optimización de procesos y manejo de información. Poseo conocimientos en diferentes áreas y me destaco especialmente en el desarrollo de soluciones digitales, web y gestión de la información con bases de datos SQL, Excel, Power Bi y Python. También he tenido la fortuna de adquirir una amplia experiencia en procesos productivos, liderando equipos diversos con el objetivo de alcanzar la excelencia operacional.
 
                     </p>
                     <p>
@@ -77,7 +77,7 @@
         <section class="mente-p container">
             <p>
 
-                Nos encantaría poder aportar al éxito de tus proyectos y a que juntos podamos alcanzar los objetivos que se requieren. Nos comprometemos a entregar el máximo de nuestro esfuerzo para que la experiencia de que trabajemos en conjunto sea lo más satisfactoria posible, enfoncandonos en el profesionalismo y la adaptación a las diferntes problematicas que se presenten.
+                Nos encantaría poder aportar al éxito de tus proyectos y a que juntos podamos alcanzar los objetivos que se requieren. Nos comprometemos a entregar el máximo de nuestro esfuerzo para que la experiencia de trabajar en conjunto sea lo más satisfactoria posible, enfoncándonos en el profesionalismo y la adaptación a las diferntes problematicas que se presenten.
 
             </p>
         </section>
