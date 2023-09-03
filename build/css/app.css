@@ -446,6 +446,7 @@ p {
 }
 .form .form__razon {
   resize: vertical;
+  min-height: 20rem;
 }
 .form select {
   color: rgba(37, 43, 72, 0.6);
