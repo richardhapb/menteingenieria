@@ -324,7 +324,7 @@ html {
 body {
   font-family: "News Cycle, Michroma, Manrope, sans-serif";
   font-size: 1.6rem;
-  background-color: #252B48;
+  background-color: #F0F0F0;
   color: #F0F0F0;
 }
 
@@ -342,9 +342,15 @@ a {
   box-shadow: 7px 0px 42px 2px rgba(0, 0, 0, 0.4);
 }
 
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
 /* Header */
 .header {
-  text-align: center;
+  text-align: left;
+  background-color: #252B48;
 }
 
 .logo {

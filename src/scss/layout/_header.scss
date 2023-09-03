@@ -1,7 +1,11 @@
+@use "base/variables" as v;
+
+
 /* Header */
 
 .header {
-    text-align: center;
+    text-align: left;
+    background-color: v.$primary;
 }
 .logo {
     width: 30rem;

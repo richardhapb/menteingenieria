@@ -15,7 +15,7 @@ html {
 body {
     font-family: v.$main-font;
     font-size: 1.6rem;
-    background-color: v.$primary;
+    background-color: v.$aux;
     color: v.$aux;
 }
 
@@ -32,4 +32,10 @@ a {
 
 .shadow {
     box-shadow: 7px 0px 42px 2px v.$box;
+}
+
+// Window
+.container {
+    max-width: v.$max-width;
+    margin: 0 auto;
 }
