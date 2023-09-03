@@ -79,7 +79,7 @@
             }
         }
         @include m.desktop {
-            width: 50%;
+            width: 55%;
             margin-left: auto;
         }
         
@@ -87,6 +87,7 @@
             display: grid;
             grid-template-columns: 1fr 10fr;
             gap: 1rem;
+            max-width: 20rem;
             margin: 0 auto;
 
             p {

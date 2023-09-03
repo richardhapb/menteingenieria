@@ -656,7 +656,7 @@ p {
 }
 @media (min-width: 992px) {
   .footer .icons {
-    width: 50%;
+    width: 55%;
     margin-left: auto;
   }
 }
@@ -664,6 +664,7 @@ p {
   display: grid;
   grid-template-columns: 1fr 10fr;
   gap: 1rem;
+  max-width: 20rem;
   margin: 0 auto;
 }
 .footer .icons .network p {
