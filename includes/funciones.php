@@ -39,14 +39,14 @@ function insertar_contacto() {
 
     $msg = "Hola '$nombre'\n Recibimos tu formulario correctamente, en breve te contactaremos para revisar los detalles.";
 
-    // enviar_mail($email, $asunto, $msg, $headers);
+    enviar_mail($email, $asunto, $msg, $headers);
 
     $mails = "laura.guerrero\@menteingenieria.com, richard.pena\@menteingenieria.com";
     $asunto = "Un cliente ha llenado un formulario";
 
     $msg = "Hola,\n '$nombre' ha enviado un formulario, estos son sus datos:\n Email: '$email'\n Teléfono: '$telefono'\n Motivo: '$razon'\n\n Los contactó a través de '$medio'\n\n Contáctalo pronto.";
 
-    // enviar_mail($mails, $asunto, $msg, $headers);
+    enviar_mail($mails, $asunto, $msg, $headers);
     
 }
 
