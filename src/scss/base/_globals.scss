@@ -1,0 +1,56 @@
+@use "base/variables" as v;
+
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: v.$main-font;
+    font-size: v.$font-size;
+    background-color: v.$aux;
+    color: v.$letter;
+}
+
+h1 {
+    color: v.$letter;
+    font-weight: 700;
+    margin: 5rem 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+
+p, h1, h2, h3 {
+    font-family: v.$main-font;
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* Utilities */
+
+.shadow {
+    box-shadow: 6px 8px 10px 0px v.$box;
+}
+
+// Window
+.container {
+    max-width: v.$max-width;
+    margin: 0 auto;
+}
