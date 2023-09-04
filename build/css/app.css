@@ -443,6 +443,9 @@ p {
   appearance: none;
   padding: 0.5rem;
 }
+.form select {
+  padding: 0.7rem;
+}
 .form .form__razon {
   resize: vertical;
   min-height: 20rem;
