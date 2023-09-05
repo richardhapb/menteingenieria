@@ -685,3 +685,8 @@ p {
   width: 6rem;
   height: 6rem;
 }
+
+.img-brochure {
+  width: 90rem;
+  margin: 0 auto;
+}

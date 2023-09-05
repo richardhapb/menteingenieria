@@ -12,7 +12,7 @@
             <div class="main-nav">
                 <ul>
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="https://view.genial.ly/64e93a21e74949001987f632">Servicios</a></li>
+                    <li><a href="brochure.php">Servicios</a></li>
                     <li><a href="contact.php">Contacto</a></li>
                 </ul>
             </div>
