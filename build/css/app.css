@@ -173,7 +173,7 @@ button,
 [type=button],
 [type=reset],
 [type=submit] {
-  -webkit-appearance: button;
+  appearance: button;
 }
 
 /**
@@ -256,7 +256,7 @@ textarea {
  * 2. Correct the outline style in Safari.
  */
 [type=search] {
-  -webkit-appearance: textfield; /* 1 */
+  appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
 }
 
@@ -689,4 +689,8 @@ p {
 .img-brochure {
   width: 90rem;
   margin: 0 auto;
+}
+
+.actividades li {
+  margin-top: 1.8rem;
 }

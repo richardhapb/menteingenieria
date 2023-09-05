@@ -12,7 +12,7 @@
 
     <p>Dentro de nuestro alcance se encuentran desarrollos con el manejo de información, gestión etratégica, ingeniería de procesos, automatización digital y soportes informáticos, a continuación detallamos algunos de ellos:</p>
 
-    <ul>
+    <ul class="actividades">
         <li>Diseño, limpieza, estructura y normalización de bases de datos.</li>
         <li>Creación, mantenimiento y consultas en bases de datos relacionales SQL.</li>
         <li>Reportabilidad y análisis de datos con Python.</li>
