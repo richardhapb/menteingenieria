@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <?php include("includes/head.php") ?>
+    <?php include("includes/funciones.php") ;reg("======================", "includes/log.txt"); include("includes/head.php");  ?>
     <title>Brochure - Mente Ingeniería</title>
 </head>
 <body>
-<?php include("includes/header.php") ?>    
+<?php include("includes/header.php"); ?>    
 <main class="container mente-p">
     <h1>Nuestros servicios</h1>
     <p> En mente ingeniería nos interesa mantener una relación de confianza con nuestros clientes, en este apartado puedes obtener el catálogo de los servicios que ofrecemos y también algo de información adicional referente a nosotros.</p>
@@ -41,7 +41,7 @@
     <p>También puedes descargarlo en PDF: <a href="brochure/MI-brochure-2023.pdf">Brochure</a></p>
 </main>
 
-<?php include("includes/footer.php") ?>
+<?php include("includes/footer.php"); ?>
 
 <script src="build/js/functions.js"></script>
 <script src="build/js/short-form.js"></script>

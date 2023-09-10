@@ -3,3 +3,4 @@ node_modules
 **/.vscode
 _index.html
 package-lock.json
+*.txt
