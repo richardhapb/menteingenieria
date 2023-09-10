@@ -43,6 +43,7 @@
 
 <?php include("includes/footer.php") ?>
 
+<script src="build/js/functions.js"></script>
 <script src="build/js/short-form.js"></script>
 </body>
 </html>

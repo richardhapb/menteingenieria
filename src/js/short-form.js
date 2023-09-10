@@ -1,13 +1,11 @@
-
 // Initalize
-document.addEventListener("DOMContentLoaded", eventListeners);
+document.addEventListener("DOMContentLoaded", initialize);
 
 /**
  * Initalize after page load with eventListener
  */
-function eventListeners() {
+function initialize() {
     createShortForm();
-
 }
 
 /** Insert short-form to document
@@ -19,11 +17,11 @@ function createShortForm() {
     const body = document.querySelector("BODY");
 
     const layer = document.createElement("DIV");
-    const form = document.createElement("DIV");
+    const divForm = document.createElement("DIV");
 
     const buttonClose = document.createElement("DIV");
 
-    form.classList.add("short-form");
+    divForm.classList.add("short-form");
     buttonClose.classList.add("button-close");
 
     buttonClose.innerHTML = `
@@ -33,7 +31,7 @@ function createShortForm() {
     </svg>
     `
 
-    form.innerHTML = `
+    divForm.innerHTML = `
             <form class="form">
                 <h1>Cotiza</h1>
                 <p>Indicanos dónde y te haremos llegar la cotización junto con el detalle de nuestros servicios de inmediato.</p>
@@ -42,8 +40,10 @@ function createShortForm() {
                 <input class="form__submit" type="submit" value="Enviar">
             </form>
     `
+    const form = divForm.querySelector("FORM");
+
     // Insert in the init of form
-    form.querySelector(".form").insertBefore(buttonClose, form.querySelector(".form").firstChild);
+    form.insertBefore(buttonClose, form.firstChild);
 
     body.classList.add("fix");
     layer.classList.add("window-background");
@@ -52,15 +52,42 @@ function createShortForm() {
         if (e.target !== this){
             return;
         }
-        body.classList.remove("fix");
-        body.removeChild(layer);
+        closeLayer(body, layer);
     };
 
     buttonClose.onclick = function() {
-        body.classList.remove("fix");
-        body.removeChild(layer);
+        closeLayer(body, layer);
     };
 
-    layer.append(form);
+    layer.append(divForm);
     body.appendChild(layer);
+
+    form.addEventListener("submit", function(e){
+        e.preventDefault();
+
+        // Send form if is complete
+        if (validarFormularioVacio(form, "required", false)){
+            console.log("Formulario validado");
+            enviarFormulario(form, "includes/short-form.php");
+            alert(`Formulario enviado con éxito, un email fue enviado a ${form.querySelectorAll("INPUT")[1].value}.`);
+            closeLayer(body, layer);
+            return;
+        }
+        // This don't execute if form has been sent
+        const error = mostrarErrorFormulario(form, "Ambos campos son obligatorios.", true);
+        console.log("Existen campos vacíos");
+    
+        // Elimina el mensaje de error luego de 5 segundos.
+        setTimeout(() => error.remove(), 5000);
+    });
+}
+
+/**
+ * Close the layer of short form
+ * @param {HTMLBodyElement} body Body element
+ * @param {HTMLDivElement} layer Element of layer to close
+ */
+function closeLayer(body, layer){
+    body.classList.remove("fix");
+    body.removeChild(layer);
 }

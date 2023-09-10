@@ -118,27 +118,25 @@ function reiniciarContador(formulario, contador, valor = 1) {
  * Valida un formulario para ver si tiene campos vacíos que son obligatorios.
  * @param {HTMLFormElement} formulario Formulario que se validará
  * @param {String} claseObligatorio Clase de HTML que indica que el campo es obligatorio
+ * @param {Boolean} mensajeSobreCampo Si es true, muestra un mensaje de error sobre el campo
  * @returns {Boolean} true si el formulario se validó o false si no se validó
  */
-function validarFormularioVacio(formulario, claseObligatorio) {
+function validarFormularioVacio(formulario, claseObligatorio, mensajeSobreCampo = true) {
 
     const elementos = formulario.querySelectorAll(`.${claseObligatorio}`);
-    
     const error = document.createElement("P");
     error.classList.add("errorCampo");
     error.textContent = "Debe ingresar información.";
+    
 
     // Revisa que los elementos tengan algún valor
     for (let i = 0; i < elementos.length; i++) {
-        if (elementos[i].value === "" && elementos[i].nodeName !== "SELECT") {
-            elementos[i].parentElement.insertBefore(error, elementos[i])
-            elementos[i].focus();
-            setTimeout(() => error.remove(), 5000);
-            return false;
-        } else if (elementos[i].nodeName === "SELECT" && elementos[i].selectedIndex === 0) {
-            elementos[i].parentElement.insertBefore(error, elementos[i]);
-            elementos[i].focus();
-            setTimeout(() => error.remove(), 5000);
+        if ((elementos[i].value === "" && elementos[i].nodeName !== "SELECT") || (elementos[i].nodeName === "SELECT" && elementos[i].selectedIndex === 0)) {
+            if (mensajeSobreCampo){
+                elementos[i].parentElement.insertBefore(error, elementos[i])
+                elementos[i].focus();
+                setTimeout(() => error.remove(), 5000);
+            }
             return false;
         }
     }
