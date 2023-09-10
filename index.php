@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <?php include("includes/funciones.php") ;reg("======================", "includes/log.txt"); include("includes/head.php");  ?>
+    <?php include("includes/head.php");  ?>
     <title>Brochure - Mente Ingeniería</title>
 </head>
 <body>

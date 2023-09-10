@@ -4,3 +4,6 @@ node_modules
 _index.html
 package-lock.json
 *.txt
+
+/vendor/
+composer.lock
