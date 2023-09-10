@@ -4,10 +4,10 @@
 
 .img-brochure {
     width: 90%;
-    margin: 0 auto;
+    margin: 5rem auto;
 
     @include m.desktop {
-        width: 90rem;
+        width: 100%;
     }
     
 }

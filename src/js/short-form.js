@@ -34,7 +34,7 @@ function createShortForm() {
     divForm.innerHTML = `
             <form class="form">
                 <h1>Cotiza</h1>
-                <p>Indicanos dónde y te haremos llegar la cotización junto con el detalle de nuestros servicios de inmediato.</p>
+                <p>Escribe tu nombre y correo, te haremos llegar de inmediato el listado de nuestros precios junto con el detalle de nuestros servicios.</p>
                 <input class="required" autocomplete="off" type="text" name="nombre" placeholder="Nombre">
                 <input class="required" autocomplete="off" type="text" name="email" placeholder="Email">
                 <input class="form__submit" type="submit" value="Enviar">

@@ -738,11 +738,11 @@ p {
 
 .img-brochure {
   width: 90%;
-  margin: 0 auto;
+  margin: 5rem auto;
 }
 @media (min-width: 992px) {
   .img-brochure {
-    width: 90rem;
+    width: 100%;
   }
 }
 
