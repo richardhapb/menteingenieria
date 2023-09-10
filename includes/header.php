@@ -1,7 +1,7 @@
 <header class="header">
         <div class="container">
             <div  class="logo">
-                <a href="index.php">
+                <a href="/">
                     <picture>
                         <source srcset="build/img/logo-primario.avif" type="image/avif">
                         <source srcset="build/img/logo-primario.webp" type="image/webp">
@@ -11,9 +11,9 @@
             </div>
             <div class="main-nav">
                 <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="brochure.php">Servicios</a></li>
-                    <li><a href="contact.php">Contacto</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="conocenos.php">Conócenos</a></li>
+                    <li><a href="contacto.php">Contacto</a></li>
                 </ul>
             </div>
         </div>
