@@ -1,6 +1,4 @@
 <?php
-reg("================================");
-reg("INICIO");
 
 mb_internal_encoding('UTF-8');
 mb_http_output('UTF-8');
@@ -8,7 +6,6 @@ mb_http_output('UTF-8');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
-reg("MEDIO");
 
 include("../vendor/autoload.php");
 
@@ -62,7 +59,6 @@ define("contact_signature", "
 </table>
 ");
 
-reg("FIN");
 
 function console($data) {
     $output = $data;
@@ -141,7 +137,6 @@ function insert_short_form() {
     $asunto = "Cotización - Mente Ingeniería";
     $msg = "<p>Hola <b>$nombre</b>,<br><br> En adjunto puedes obtener la cotización con el detalle de los servicios que ofrecemos. </p> Atte,<br><br>".contact_signature;
 
-    reg($msg);
     send_email(from, $email, $asunto, $msg, att_path);
     $asunto = "Un cliente ha llenado el formulario de inicio";
 
@@ -161,15 +156,12 @@ function enviar_mail($email, $asunto, $mensaje, $header){
 
 function send_email($from, $to, $subject, $message, $att_path = "") {
 
-    reg("SE EJECUTA");
     $mail = new PHPMailer(true);
     $mail->setLanguage("es", "../vendor/phpmailer/phpmailer/language/phpmailer.lang-es.php");
     $mail->CharSet = "UTF-8";
     try {
-        reg("SE EJECUTA DESDE TRY");
         //Server settings
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-        reg("NO SE EJECUTA");
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.titan.email';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -178,8 +170,6 @@ function send_email($from, $to, $subject, $message, $att_path = "") {
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-
-        reg($mail->Username);
     
         //Recipients
         $mail->setFrom($from, 'Equipo Mente Ingeniería');
@@ -197,7 +187,6 @@ function send_email($from, $to, $subject, $message, $att_path = "") {
             $mail->addAttachment($att_path);         //Add attachments
         }
 
-        reg("Después de to");
         //$mail->addAddress('ellen@example.com');               //Name is optional
         $mail->addReplyTo($from, 'Equipo Mente Ingeniería');
         //$mail->addCC('cc@example.com');
@@ -211,12 +200,9 @@ function send_email($from, $to, $subject, $message, $att_path = "") {
         $mail->Body    = $message;
         
         //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-        reg("Antes de enviar");
         $mail->send();
         echo 'Message has been sent';
     } catch (Exception $e) {
-        reg("ERROR DESDE CATCH");
-        reg("Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
