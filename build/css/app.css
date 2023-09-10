@@ -737,13 +737,8 @@ p {
 }
 
 .img-brochure {
-  width: 90%;
+  width: 100%;
   margin: 5rem auto;
-}
-@media (min-width: 992px) {
-  .img-brochure {
-    width: 100%;
-  }
 }
 
 .actividades li {
