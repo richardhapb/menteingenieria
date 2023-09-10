@@ -393,8 +393,19 @@ p {
   width: 100%;
   margin: 0;
 }
+.short-form .form .button-close {
+  margin-left: auto;
+  color: rgba(0, 0, 0, 0.6);
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  transition: 1s color ease;
+}
+.short-form .form .button-close:hover {
+  color: black;
+}
 .short-form .form h1 {
-  margin: 2rem;
+  margin: 0 2rem 1rem 0;
 }
 .short-form .form input {
   border-color: rgba(0, 0, 0, 0.6);

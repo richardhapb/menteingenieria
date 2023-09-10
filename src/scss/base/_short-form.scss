@@ -24,8 +24,21 @@
         width: 100%;
         margin: 0;
         
+        .button-close {
+            margin-left: auto;
+            color: v.$gray-alpha;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            transition: 1s color ease;
+
+            &:hover {
+                color: black;
+            }
+        }
+
         h1 {
-            margin: 2rem;
+            margin: 0 2rem 1rem 0;
         }
 
         
@@ -33,5 +46,6 @@
             border-color: v.$gray-alpha;
             margin: 2rem 0;
         }
+        
     }
 }
