@@ -7,7 +7,7 @@
 <body>
     <?php include("includes/header.php"); ?>
     <main>
-        <section class="mente-p container">
+        <section class="mente-p container home">
             <h1>Mente Ingeniería</h1>
             <p>
                 En Mente Ingeniería nos caracterizamos por mantener sólidos valores en toda actividad que realizamos, como lo son la honestidad, la tolerancia, la ética profesional y el respeto hacia la diversidad de opiniones y creencias. Esto nos permite obtener resultados ganar-ganar con las diferentes personas y organizaciones.

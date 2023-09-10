@@ -6,7 +6,7 @@
 </head>
 <body>
 <?php include("includes/header.php") ?>    
-<main class="container">
+<main class="container mente-p">
     <h1>Conócenos</h1>
     <p> En mente ingeniería nos interesa mantener una relación de confianza con nuestros clientes, en este apartado puedes obtener el catálogo de los servicios que ofrecemos y también algo de información adicional referente a nosotros.</p>
 

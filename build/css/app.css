@@ -359,6 +359,13 @@ p {
   margin: 0 auto;
 }
 
+.mente-p {
+  padding: 0 2rem;
+}
+.mente-p p {
+  text-align: justify;
+}
+
 /* Header */
 .header {
   text-align: center;
@@ -487,12 +494,8 @@ p {
   padding: 1rem;
 }
 
-.mente-p {
-  padding: 0 2rem;
-}
-.mente-p p {
+.home p {
   margin: 0;
-  text-align: justify;
 }
 
 .presentation {
@@ -687,8 +690,13 @@ p {
 }
 
 .img-brochure {
-  width: 90rem;
+  width: 90%;
   margin: 0 auto;
+}
+@media (min-width: 992px) {
+  .img-brochure {
+    width: 90rem;
+  }
 }
 
 .actividades li {

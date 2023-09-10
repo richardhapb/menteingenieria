@@ -1,7 +1,15 @@
+@use "base/mixins" as m;
+
+
 
 .img-brochure {
-    width: 90rem;
+    width: 90%;
     margin: 0 auto;
+
+    @include m.desktop {
+        width: 90rem;
+    }
+    
 }
 
 .actividades {

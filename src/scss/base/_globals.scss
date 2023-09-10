@@ -54,3 +54,10 @@ p {
     max-width: v.$max-width;
     margin: 0 auto;
 }
+
+.mente-p {
+    padding: 0 2rem;
+    p {
+        text-align: justify;
+    }
+}
