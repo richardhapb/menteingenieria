@@ -1,0 +1,37 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+
+.window-background {
+    background-color: v.$gray-alpha;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    place-items: center;
+}
+
+.short-form {
+    width: 90%;
+    max-width: 60rem;
+    
+    .form {
+        background-color: v.$aux;
+        width: 100%;
+        margin: 0;
+        
+        h1 {
+            margin: 2rem;
+        }
+
+        
+        input {
+            border-color: v.$gray-alpha;
+            margin: 2rem 0;
+        }
+    }
+}

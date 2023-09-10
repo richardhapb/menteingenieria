@@ -13,6 +13,7 @@ html {
 }
 
 body {
+    position: relative;
     font-family: v.$main-font;
     font-size: v.$font-size;
     background-color: v.$aux;
@@ -60,4 +61,8 @@ p {
     p {
         text-align: justify;
     }
+}
+
+.fix {
+    overflow: hidden;
 }

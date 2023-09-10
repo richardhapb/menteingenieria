@@ -320,6 +320,7 @@ html {
 }
 
 body {
+  position: relative;
   font-family: "News Cycle", Michroma, Manrope, sans-serif;
   font-size: 2rem;
   background-color: #F0F0F0;
@@ -364,6 +365,40 @@ p {
 }
 .mente-p p {
   text-align: justify;
+}
+
+.fix {
+  overflow: hidden;
+}
+
+.window-background {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+}
+
+.short-form {
+  width: 90%;
+  max-width: 60rem;
+}
+.short-form .form {
+  background-color: #F0F0F0;
+  width: 100%;
+  margin: 0;
+}
+.short-form .form h1 {
+  margin: 2rem;
+}
+.short-form .form input {
+  border-color: rgba(0, 0, 0, 0.6);
+  margin: 2rem 0;
 }
 
 /* Header */

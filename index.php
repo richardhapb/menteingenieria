@@ -39,11 +39,11 @@
     <p>Puedes revisarlo online aquí: <a href="https://view.genial.ly/64e93a21e74949001987f632">Brochure</a></p>
 
     <p>También puedes descargarlo en PDF: <a href="brochure/MI-brochure-2023.pdf">Brochure</a></p>
-
-
 </main>
 
 <?php include("includes/footer.php") ?>
+
+<script src="build/js/short-form.js"></script>
 </body>
 </html>
 
