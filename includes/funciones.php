@@ -81,12 +81,12 @@ function insertar_contacto() {
     try {
         // Acceso a la DB
         require "database.php";
-        $nombre = $_POST["nombre"];
-        $email = $_POST["email"];
-        $telefono = $_POST["telefono"];
-        $empresa = $_POST["empresa"];
-        $medio = $_POST["medio"];
-        $razon = $_POST["razon"];
+        $nombre = trim($_POST["nombre"]);
+        $email = trim($_POST["email"]);
+        $telefono = trim($_POST["telefono"]);
+        $empresa = trim($_POST["empresa"]);
+        $medio = trim($_POST["medio"]);
+        $razon = trim($_POST["razon"]);
         
         // Constula SQL
         $sql = "INSERT INTO tblContactos (nombre, email, telefono, empresa, medio, razon) VALUES ('$nombre', '$email', '$telefono', '$empresa', '$medio', '$razon')";
@@ -101,12 +101,18 @@ function insertar_contacto() {
 
 
     $asunto = "Contacto - Mente Ingeniería";
-    $msg = "<p>Hola <b>$nombre</b>,<br><br> Hemmos recibido tu solicutd a través de nuestro formualario. Te contactaremos ante de las próximas 24 horas.</p> Atte,<br><br>".contact_signature;
+    $msg = "<p>Hola <b>$nombre</b>,<br><br> Hemos recibido tu solicutd a través de nuestro formualario. Te contactaremos antes de las próximas 24 horas.</p> Atte,<br><br>".contact_signature;
 
     send_email(from, $email, $asunto, $msg);
     $asunto = "Un cliente ha llenado el formulario de contacto";
 
-    $msg = "<p>Hola,<br> <b>$nombre</b> ha enviado una solicitud, estos son sus datos: <br> <br> <b>$email</b>.</p>";
+    $msg = "<p>Hola,<br> <b>$nombre</b> ha enviado una solicitud, estos son sus datos: 
+    <br> <b> Email: </b>$email
+    <br> <b> Teléfono: </b>$telefono
+    <br> <b> Empresa: </b>$empresa
+    <br> <b> Medio: </b>$medio
+    <br> <b> Razón: </b>$razon
+    </p>";
 
     send_email(from, mails, $asunto, $msg);
     
@@ -116,8 +122,8 @@ function insert_short_form() {
     try {
         // Acceso a la DB
         require "database.php";
-        $nombre = $_POST["nombre"];
-        $email = $_POST["email"];
+        $nombre = trim($_POST["nombre"]);
+        $email = trim($_POST["email"]);
         
         // Constula SQL
         $sql = "INSERT INTO tblContactos (nombre, email) VALUES ('$nombre', '$email')";

@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <?php include("includes/head.php");  ?>
-    <title>Brochure - Mente Ingeniería</title>
+    <title>Home - Mente Ingeniería</title>
 </head>
 <body>
 <?php include("includes/header.php"); ?>    

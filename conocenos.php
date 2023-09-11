@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Home - Mente Ingeniería</title>
+    <title>Conócenos - Mente Ingeniería</title>
     <?php include("includes/head.php"); ?>
 </head>
 <body>
