@@ -6,6 +6,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-P8Q8PTW9');</script>
 <!-- End Google Tag Manager -->
 
+
+<?php
+// Timezone configuration
+date_default_timezone_set('America/Santiago');
+?>
+
+
 <meta charset="UTF-8">
 <meta name="description" content="Empresa de consultoría, asesoría e ingeniería para orgaizaciones pequeñas o medianas.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
