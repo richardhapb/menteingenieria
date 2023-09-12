@@ -81,8 +81,8 @@ function insertar_contacto() {
     try {
         // Acceso a la DB
         require "database.php";
-        $nombre = trim($_POST["nombre"]);
-        $email = trim($_POST["email"]);
+        $nombre = ucwords(trim($_POST["nombre"]));
+        $email = strtolower(trim($_POST["email"]));
         $telefono = trim($_POST["telefono"]);
         $empresa = trim($_POST["empresa"]);
         $medio = trim($_POST["medio"]);
@@ -122,8 +122,15 @@ function insert_short_form() {
     try {
         // Acceso a la DB
         require "database.php";
-        $nombre = trim($_POST["nombre"]);
-        $email = trim($_POST["email"]);
+        $nombre = ucwords(trim($_POST["nombre"]));
+        $email = strtolower(trim($_POST["email"]));
+        reg("================");
+        reg("Variables");
+        reg($nombre);
+        reg($email);
+        reg("POST");
+        reg($_POST["nombre"]);
+        reg($_POST["email"]);
         
         // Constula SQL
         $sql = "INSERT INTO tblContactos (nombre, email) VALUES ('$nombre', '$email')";

@@ -65,20 +65,13 @@ function createShortForm() {
     form.addEventListener("submit", function(e){
         e.preventDefault();
 
-        // Send form if is complete
-        if (validarFormularioVacio(form, "required", false)){
-            console.log("Formulario validado");
-            enviarFormulario(form, "includes/short-form.php");
-            alert(`Formulario enviado con éxito, un email fue enviado a ${form.querySelectorAll("INPUT")[1].value}.`);
+        const email = form.querySelector("[name=email]").value.trim().toLowerCase();
+
+        const result = sendForm(form, "includes/short-form.php", `Formulario enviado con éxito, un email fue enviado a ${email}.`, "Ambos campos son obligatorios.", false);
+
+        if(result) {
             closeLayer(body, layer);
-            return;
         }
-        // This don't execute if form has been sent
-        const error = mostrarErrorFormulario(form, "Ambos campos son obligatorios.", true);
-        console.log("Existen campos vacíos");
-    
-        // Elimina el mensaje de error luego de 5 segundos.
-        setTimeout(() => error.remove(), 5000);
     });
 }
 

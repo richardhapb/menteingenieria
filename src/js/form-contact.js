@@ -13,20 +13,13 @@ select.selectedIndex = 0; // Selecciona el primer elemento (disabled)
 
 formulario.addEventListener("submit", function(e){
     e.preventDefault();
-    // Si el formulario se valida
-    if(validarFormularioVacio(formulario, claseObligatorio)) {
-        console.log("Formulario validado");
-        enviarFormulario(formulario, "includes/form-contacto.php");
-        alert("Formulario enviado con éxito, en breve te contactaremos.");
-        limpiarFormulario(formulario);
-        select.selectedIndex = 0; // Selecciona el primer elemento (disabled)
-        return;
-    }
-    const error = mostrarErrorFormulario(formulario, "Hay campos obligatorios que están vacíos", true);
-    console.log("Existen campos vacíos");
 
-    // Elimina el mensaje de error luego de 5 segundos.
-    setTimeout(() => error.remove(), 5000);
+    const result = sendForm(formulario, "includes/form-contacto.php", "Formulario enviado con éxito, en breve te contactaremos.", "Existen campos vacíos");
+    
+    if(result){
+        limpiarFormulario(formulario);
+        select.selectedIndex = 0;
+    }
 });
 
 // Cambia la clase una vez se selecciona un valor para cambiar el color del texto
