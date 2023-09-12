@@ -22,7 +22,7 @@
                     <picture>
                         <source srcset="build/img/lg.avif" type="image/avif">
                         <source srcset="build/img/lg.webp" type="image/webp">
-                        <img loading="lazy" width=300 height=200 src="build/img/lg.png" alt="Imágen Laura Guerrero">
+                        <img loading="lazy" width=300 height=200 src="build/img/lg.jpg" alt="Imágen Laura Guerrero">
                     </picture>
                 </div>
                 <div class="description">

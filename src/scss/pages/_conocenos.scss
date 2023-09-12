@@ -3,8 +3,8 @@
 
 
 
-$img-width: 14.57rem;
-$img-height: 21.34rem;
+$img-width: 75.80rem;
+$img-height: 87.00rem;
 
 .home {
     p {
@@ -32,8 +32,9 @@ $img-height: 21.34rem;
     img {
         
         @include m.phone {
-            width: calc($img-width * 2);
-            height: calc($img-height * 2);
+            //width: calc($img-width * 2);
+            width: auto;
+            height: calc($img-height / 2);
         }
         
     }

@@ -678,8 +678,8 @@ p {
 }
 @media (min-width: 480px) {
   .left img, .right img {
-    width: 29.14rem;
-    height: 42.68rem;
+    width: auto;
+    height: 43.5rem;
   }
 }
 .left .presentation-img, .right .presentation-img {

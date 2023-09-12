@@ -27,7 +27,7 @@
                 <option value="otro">Otro</option>
             </select>
             <label>Indique la razón por la que nos contacta</label>
-            <textarea class="form__razon required" autocomplete="off" name="razon"cols="30" rows="10" placeholder="¿En qué podemos ayudar?"></textarea>
+            <textarea class="form__razon required" autocomplete="off" name="razon"cols="30" rows="10" placeholder="¿En qué podemos ayudar?" maxlength="700"></textarea>
             <input class="form__submit" type="submit" value="Enviar">
         </form>
     </main>
