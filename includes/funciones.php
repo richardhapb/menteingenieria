@@ -1,5 +1,7 @@
 <?php
 
+define("LOG", __DIR__ . "/../log.txt");
+
 mb_internal_encoding('UTF-8');
 mb_http_output('UTF-8');
 
@@ -7,11 +9,11 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 
-include("../vendor/autoload.php");
+include(__DIR__."/../vendor/autoload.php");
 
-define("mails", ["laura.guerrero@menteingenieria.com", "richard.pena@menteingenieria.com"]);
-define("from", "contacto@menteingenieria.com");
-define("att_path", "../att/MING-001-Listado_de_precios.pdf");
+define("MI_MAILS", ["laura.guerrero@menteingenieria.com", "richard.pena@menteingenieria.com"]);
+define("FROM_EMAIL", "contacto@menteingenieria.com");
+define("QUOTE_PATH", __DIR__."/../att/MING-001-Listado_de_precios.pdf");
 define("contact_signature", "
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Michroma&family=News+Cycle:wght@400;700&display=swap');
@@ -63,11 +65,11 @@ define("contact_signature", "
 /**
  * Make a register to a file for debug
  *
- * @param  mixed $data Data to log
+ * @param  string $data Data to log
  * @param  string $log_file Path and name of log file
  * @return void
  */
-function reg($data, string $log_file = "log.txt") : void {
+function reg(string $data, string $log_file = LOG) : void {
     
     $file = fopen($log_file, "a") or die("Unable to open file");
 
@@ -81,97 +83,49 @@ function reg($data, string $log_file = "log.txt") : void {
 /**
  * Insert a register to MySQL DataBase
  *
- * @return void
+ * @return int The insert id, 0 in case if have an error
  */
-function insertar_contacto() {
+function insertToDB(mysqli $db, string $table, array $names, array $data):int {
     try {
-        // Acceso a la DB
-        require "database.php";
-        connectDB();
-        $nombre = ucwords(trim($_POST["nombre"]));
-        $email = strtolower(trim($_POST["email"]));
-        $telefono = trim($_POST["telefono"]);
-        $empresa = trim($_POST["empresa"]);
-        $medio = trim($_POST["medio"]);
-        $razon = trim($_POST["razon"]);
-        
-        // Constula SQL
-        $sql = "INSERT INTO tblContactos (nombre, email, telefono, empresa, medio, razon) VALUES ('$nombre', '$email', '$telefono', '$empresa', '$medio', '$razon')";
+        // Make the sql query from names
+        $sql = "INSERT INTO $table (";
 
-        // Realizar consulta
-        $result = mysqli_query($db, $sql);
-        mysqli_close($db);
-        echo json_encode("Consulta realizada exitosamente.");
-    } catch (\Throwable $th) {
-        echo json_encode("ERROR");
-    }
-
-
-    $asunto = "Contacto - Mente Ingeniería";
-    $msg = "<p>Hola <b>$nombre</b>,<br><br> Hemos recibido tu solicutd a través de nuestro formualario. Te contactaremos antes de las próximas 24 horas.</p> Atte,<br><br>".contact_signature;
-
-    send_email(from, $email, $asunto, $msg);
-    $asunto = "Un cliente ha llenado el formulario de contacto";
-
-    $msg = "<p>Hola,<br> <b>$nombre</b> ha enviado una solicitud, estos son sus datos: 
-    <br> <b> Email: </b>$email
-    <br> <b> Teléfono: </b>$telefono
-    <br> <b> Empresa: </b>$empresa
-    <br> <b> Medio: </b>$medio
-    <br> <b> Razón: </b>$razon
-    </p>";
-
-    send_email(from, mails, $asunto, $msg);
-    
-}
-
-
-/**
- * Insert to database the index form (short form)
- *
- * @return void 
- */
-function insert_short_form() : void {
-    try {
-        // Acceso a la DB
-        require "database.php";
-        connectDB();
-        $nombre = ucwords(trim($_POST["nombre"]));
-        $email = strtolower(trim($_POST["email"]));
-        reg("================");
-        reg("Variables");
-        reg($nombre);
-        reg($email);
-        reg("POST");
-        reg($_POST["nombre"]);
-        reg($_POST["email"]);
-        
-        // Constula SQL
-        $sql = "INSERT INTO tblContactos (nombre, email) VALUES ('$nombre', '$email')";
-        // Realizar consulta
-        $result = mysqli_query($db, $sql);
-        if ($result){
-            echo json_encode("Consulta realizada exitosamente.");
-        } else {
-            echo json_encode("Hubo un error en la consuta.");
+        foreach($names as $name){
+            $sql .= $name . ", ";
         }
-        mysqli_close($db);
+        // Cut the last comma
+        $sql = mb_substr($sql, 0, strlen($sql) - 2); 
+        $sql .= ") VALUES (";
+
+        // Make sql query from data
+        foreach($data as $d){
+            if(is_int($d) || is_float($d)){
+                $sql .= $d . ", ";
+            } else {
+                $sql .= "'" . $d . "', ";
+            }
+        }
+        // Cut the last comma
+        $sql = mb_substr($sql, 0, strlen($sql) - 2); 
+        $sql .= ")";
+
+        // Query DataBase
+        $result = mysqli_query($db, $sql);
+
+        $id = mysqli_insert_id($db);
+
+        // Evaluate if is ok
+        reg("QUERY SUCCESSFULLY");
+
+        return $id;
     } catch (\Throwable $th) {
-        echo json_encode("ERROR");
+        reg("ERROR");
+        echo json_encode("ERROR IN QUERY");
+        return 0;
     }
-
-
-    $asunto = "Cotización - Mente Ingeniería";
-    $msg = "<p>Hola <b>$nombre</b>,<br><br> En adjunto puedes obtener la cotización con el detalle de los servicios que ofrecemos. </p> Atte,<br><br>".contact_signature;
-
-    send_email(from, $email, $asunto, $msg, att_path);
-    $asunto = "Un cliente ha llenado el formulario de inicio";
-
-    $msg = "<p>Hola,<br> <b>$nombre</b> ha solicitado una cotización y ha sido enviada, su correo es: <b>$email</b>.</p>";
-
-    send_email(from, mails, $asunto, $msg);
-    
 }
+
+
 
 /**
  * Send an email that can contain a file attached
@@ -234,4 +188,36 @@ function send_email(string|array $from, string|array $to, string $subject, strin
     } catch (Exception $e) {
         return false;
     }
+}
+
+/**
+ * Get the names and data from post.
+ *
+ * @param  array $POST The $_POST variable from Form
+ * @param array $exclude Names of values that don't interest obtain
+ * @return array [$names, $data]
+ */
+function getPost(array $POST, array $exclude = []):array {
+    $names = array_keys($POST);
+    $data = [];
+    $final = [];
+    $j = 0;
+
+    for($i = 0; $i < count($POST); $i++){
+        if(!in_array($names[$i], $exclude)){
+            array_push($data, str_replace("'", "''" , trim($POST[$names[$i]])));
+
+            switch($data[$j]){
+                case "nombre":
+                    $data[$j] = ucwords($data[$i]);
+                    break;
+                case "email":
+                    $data[$j] = strtolower($data[$i]);
+            }
+            $final[$names[$i]] = $data[$j];
+            $j++;
+        }
+    }
+
+    return $final;
 }

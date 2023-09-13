@@ -9,7 +9,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <?php
 // Timezone configuration
+include "includes/funciones.php";
 date_default_timezone_set('America/Santiago');
+reg("=========================================");
+$date = new DateTime();
+reg($date->format("d-m-Y H:i:s"));
 ?>
 
 
