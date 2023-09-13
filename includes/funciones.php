@@ -60,15 +60,14 @@ define("contact_signature", "
 ");
 
 
-function console($data) {
-    $output = $data;
-    if (is_array($output))
-        $output = implode(",", $output);
-
-    echo "<script>console.log(' Debug: " . $output . "' );</script>";
-}
-
-function reg($data, $log_file = "log.txt") {
+/**
+ * Make a register to a file for debug
+ *
+ * @param  mixed $data Data to log
+ * @param  string $log_file Path and name of log file
+ * @return void
+ */
+function reg($data, string $log_file = "log.txt") : void {
     
     $file = fopen($log_file, "a") or die("Unable to open file");
 
@@ -77,10 +76,18 @@ function reg($data, $log_file = "log.txt") {
     fclose($file);
 }
 
+
+
+/**
+ * Insert a register to MySQL DataBase
+ *
+ * @return void
+ */
 function insertar_contacto() {
     try {
         // Acceso a la DB
         require "database.php";
+        connectDB();
         $nombre = ucwords(trim($_POST["nombre"]));
         $email = strtolower(trim($_POST["email"]));
         $telefono = trim($_POST["telefono"]);
@@ -118,10 +125,17 @@ function insertar_contacto() {
     
 }
 
-function insert_short_form() {
+
+/**
+ * Insert to database the index form (short form)
+ *
+ * @return void 
+ */
+function insert_short_form() : void {
     try {
         // Acceso a la DB
         require "database.php";
+        connectDB();
         $nombre = ucwords(trim($_POST["nombre"]));
         $email = strtolower(trim($_POST["email"]));
         reg("================");
@@ -159,15 +173,17 @@ function insert_short_form() {
     
 }
 
-function enviar_mail($email, $asunto, $mensaje, $header){
-    // use wordwrap() if lines are longer than 70 characters
-    $msg = wordwrap($mensaje, 70);
-
-    // send email
-    mail($email, $asunto, $msg, $header);
-}
-
-function send_email($from, $to, $subject, $message, $att_path = "") {
+/**
+ * Send an email that can contain a file attached
+ *
+ * @param  string|array $from Sender email, that can be more of 1 in array
+ * @param  string|array $to Receiber email, that can be more of 1 in array
+ * @param  string $subject Subject of email
+ * @param  string $message Message of email, that can be HTML
+ * @param  string $att_path Path of attachment if exists, if is empty, can't send attachment
+ * @return bool True when email has been sended successfully
+ */
+function send_email(string|array $from, string|array $to, string $subject, string $message, string $att_path = "") :bool {
 
     $mail = new PHPMailer(true);
     $mail->setLanguage("es", "../vendor/phpmailer/phpmailer/language/phpmailer.lang-es.php");
@@ -214,8 +230,8 @@ function send_email($from, $to, $subject, $message, $att_path = "") {
         
         //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
         $mail->send();
-        echo 'Message has been sent';
+        return true;
     } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        return false;
     }
 }

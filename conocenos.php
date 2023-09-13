@@ -12,7 +12,7 @@
             <p>
                 En Mente Ingeniería nos caracterizamos por mantener sólidos valores en toda actividad que realizamos, como lo son la honestidad, la tolerancia, la ética profesional y el respeto hacia la diversidad de opiniones y creencias. Esto nos permite obtener resultados ganar-ganar con las diferentes personas y organizaciones.
                 
-                Nuestro enfoque está en entregar soluciones creativas en diversos proyectos. Las diferentes habilidades que como equipo nos enriquece, junto con el trabajo conjunto con las personas en cada organización, generan un ambiente constructivo y colaborativo para conseguir los objetivos que se plantean.
+                Nuestro enfoque está en entregar soluciones creativas en diversos proyectos. Las diferentes habilidades que como equipo nos enriquece, sumado al trabajo conjunto con las personas en cada organización, generan un ambiente constructivo y colaborativo para conseguir los objetivos que se plantean.
 
             </p>
         </section>
@@ -30,7 +30,7 @@
                     <h3>Ingeniera Civil Industrial</h3>
                     <p>
 
-                    Soy una ingeniera con un enfoque apasionado en la optimización energética y la sostenibilidad, y me enorgullece destacar mi amplia experiencia en proyectos que impactan positivamente en diversas áreas industriales, incluyendo minería, energía, combustibles y servicios.
+                    Soy una ingeniera con un enfoque apasionado en la optimización energética y la sostenibilidad, me enorgullece destacar mi amplia experiencia en proyectos que impactan positivamente en diversas áreas industriales, incluyendo minería, energía, combustibles y servicios.
 
                     </p>
                     <p>
@@ -50,7 +50,7 @@
                     <picture>
                         <source srcset="build/img/rp.avif" type="image/avif">
                         <source srcset="build/img/rp.webp" type="image/webp">
-                        <img loading="lazy" width=300 height=200 src="build/img/rp.png" alt="Imágen Laura Guerrer">
+                        <img loading="lazy" width=300 height=200 src="build/img/rp.png" alt="Imágen Laura Guerrero">
                     </picture>
                 </div>
                 <div class="description">
@@ -68,7 +68,7 @@
                     </p>
                     <p>
 
-                    Creo fervientemente que el desarrollo de la ingeniería y el conocimiento organizacional permitirán generar una estructura sólida, sostenible y con un grandioso porvenir en las diferentes área empresariales, humanas e industriales.
+                    Creo fervientemente que el desarrollo de la ingeniería y el conocimiento organizacional permitirán generar una estructura sólida, sostenible y con un grandioso porvenir en las diferentes áreas empresariales, humanas e industriales.
 
                     </p>
                 </div>
