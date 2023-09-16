@@ -1,6 +1,6 @@
 <?php
 
-define("LOG", __DIR__ . "/../log.txt");
+define("LOG", __DIR__ . "/../../log.txt");
 
 mb_internal_encoding('UTF-8');
 mb_http_output('UTF-8');
@@ -109,6 +109,7 @@ function insertToDB(mysqli $db, string $table, array $names, array $data):int {
         $sql = mb_substr($sql, 0, strlen($sql) - 2); 
         $sql .= ")";
 
+        reg($sql);
         // Query DataBase
         $result = mysqli_query($db, $sql);
 
@@ -140,7 +141,7 @@ function insertToDB(mysqli $db, string $table, array $names, array $data):int {
 function send_email(string|array $from, string|array $to, string $subject, string $message, string $att_path = "") :bool {
 
     $mail = new PHPMailer(true);
-    $mail->setLanguage("es", "../vendor/phpmailer/phpmailer/language/phpmailer.lang-es.php");
+    $mail->setLanguage("es", __DIR__."../vendor/phpmailer/phpmailer/language/phpmailer.lang-es.php");
     $mail->CharSet = "UTF-8";
     try {
         //Server settings
@@ -193,11 +194,12 @@ function send_email(string|array $from, string|array $to, string $subject, strin
 /**
  * Get the names and data from post.
  *
+ * @param mysqli $db Database for validating
  * @param  array $POST The $_POST variable from Form
  * @param array $exclude Names of values that don't interest obtain
  * @return array [$names, $data]
  */
-function getPost(array $POST, array $exclude = []):array {
+function getPost(mysqli $db, array $POST, array $exclude = []):array {
     $names = array_keys($POST);
     $data = [];
     $final = [];
@@ -205,7 +207,7 @@ function getPost(array $POST, array $exclude = []):array {
 
     for($i = 0; $i < count($POST); $i++){
         if(!in_array($names[$i], $exclude)){
-            array_push($data, str_replace("'", "''" , trim($POST[$names[$i]])));
+            array_push($data, str_replace("'", "''" , mysqli_real_escape_string($db ,trim($POST[$names[$i]]))));
 
             switch($data[$j]){
                 case "nombre":

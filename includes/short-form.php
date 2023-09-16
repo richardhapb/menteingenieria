@@ -4,11 +4,11 @@ require "funciones.php";
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
 
-    $post = getPost($_POST);
 
     require "database.php";
     $db = connectDB();    
     
+    $post = getPost($db, $_POST);
 
     if(!insertToDB($db, "tblContactos", array_keys($post), array_values($post))){
         reg("SQL QUERY ERROR");

@@ -2,13 +2,14 @@
 require "funciones.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST"){
-    // Get data from POST
-    $post = getpost($_POST);
-    $post1 = getPost($_POST, ["solicitud"]);
-    $post2 = getPost($_POST, array_keys($post1)); // Obtains razon
 
     require "database.php";
     $db = connectDB();
+
+    // Get data from POST
+    $post = getpost($db, $_POST);
+    $post1 = getPost($db, $_POST, ["solicitud"]);
+    $post2 = getPost($db, $_POST, array_keys($post1)); // Obtains razon
 
     $result = insertToDB($db, "tblContactos", array_keys($post1), array_values($post1));
     
