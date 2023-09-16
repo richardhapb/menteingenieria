@@ -94,7 +94,7 @@ function insertToDB(mysqli $db, string $table, array $names, array $data):int {
             $sql .= $name . ", ";
         }
         // Cut the last comma
-        $sql = mb_substr($sql, 0, strlen($sql) - 2); 
+        $sql = mb_substr($sql, 0, mb_strlen($sql) - 2); 
         $sql .= ") VALUES (";
 
         // Make sql query from data
@@ -105,8 +105,8 @@ function insertToDB(mysqli $db, string $table, array $names, array $data):int {
                 $sql .= "'" . $d . "', ";
             }
         }
-        // Cut the last comma
-        $sql = mb_substr($sql, 0, strlen($sql) - 2); 
+        // Cut the last comma 
+        $sql = mb_substr($sql, 0, mb_strlen($sql) - 2); 
         $sql .= ")";
 
         reg($sql);
@@ -209,12 +209,16 @@ function getPost(mysqli $db, array $POST, array $exclude = []):array {
         if(!in_array($names[$i], $exclude)){
             array_push($data, str_replace("'", "''" , mysqli_real_escape_string($db ,trim($POST[$names[$i]]))));
 
-            switch($data[$j]){
+            switch($names[$i]){
                 case "nombre":
                     $data[$j] = ucwords($data[$i]);
                     break;
                 case "email":
-                    $data[$j] = strtolower($data[$i]);
+                    $data[$j] = filter_var(strtolower($data[$i]), FILTER_VALIDATE_EMAIL);
+                    if (!$data[$j]){
+                        exit;
+                    }
+                    break;
             }
             $final[$names[$i]] = $data[$j];
             $j++;
