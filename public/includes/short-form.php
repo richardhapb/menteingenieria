@@ -1,11 +1,9 @@
 <?php
 
-require "funciones.php";
+require "config/app.php";
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
 
-
-    require "database.php";
     $db = connectDB();    
     
     $post = getPost($db, $_POST);
@@ -24,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     
     $msg = "<p>Hola,<br> <b>".$post["nombre"]."</b> ha solicitado una cotización y ha sido enviada, su correo es: <b>$email</b>.</p>";
     
-    send_email(FROM_EMAIL, MI_MAILS, $asunto, $msg);
+    // send_email(FROM_EMAIL, MI_MAILS, $asunto, $msg);
     
 }
 

@@ -1,19 +1,14 @@
 <?php
 
-define("LOG", __DIR__ . "/../../log.txt");
-
-mb_internal_encoding('UTF-8');
-mb_http_output('UTF-8');
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 
-include(__DIR__."/../vendor/autoload.php");
 
 define("MI_MAILS", ["laura.guerrero@menteingenieria.com", "richard.pena@menteingenieria.com"]);
 define("FROM_EMAIL", "contacto@menteingenieria.com");
-define("QUOTE_PATH", __DIR__."/../att/MING-001-Listado_de_precios.pdf");
+define("QUOTE_PATH", ROOT ."/att/MING-001-Listado_de_precios.pdf");
 define("contact_signature", "
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Michroma&family=News+Cycle:wght@400;700&display=swap');
@@ -141,7 +136,7 @@ function insertToDB(mysqli $db, string $table, array $names, array $data):int {
 function send_email(string|array $from, string|array $to, string $subject, string $message, string $att_path = "") :bool {
 
     $mail = new PHPMailer(true);
-    $mail->setLanguage("es", __DIR__."../vendor/phpmailer/phpmailer/language/phpmailer.lang-es.php");
+    $mail->setLanguage("es", ROOT."/vendor/phpmailer/phpmailer/language/phpmailer.lang-es.php");
     $mail->CharSet = "UTF-8";
     try {
         //Server settings

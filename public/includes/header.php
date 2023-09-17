@@ -5,7 +5,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <header class="header">
         <div class="container">
-            <div  class="logo">
+            <div class="logo">
                 <a href="/">
                     <picture>
                         <source srcset="build/img/logo-primario.avif" type="image/avif">

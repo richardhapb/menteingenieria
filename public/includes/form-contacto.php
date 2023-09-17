@@ -1,9 +1,8 @@
 <?php
-require "funciones.php";
+require "config/app.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
-    require "database.php";
     $db = connectDB();
 
     // Get data from POST
@@ -35,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
         }
     }
     
-    send_email(FROM_EMAIL, MI_MAILS, $asunto, $msg);
+    // send_email(FROM_EMAIL, MI_MAILS, $asunto, $msg);
 }
 
 ?>
