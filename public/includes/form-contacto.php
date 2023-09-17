@@ -1,4 +1,7 @@
 <?php
+
+use App\Mail;
+
 require "config/app.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST"){
@@ -19,22 +22,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
     mysqli_close($db);
 
-    $asunto = "Contacto - Mente Ingeniería";
-    $msg = "<p>Hola <b>".$post["nombre"]."</b>,<br><br> Hemos recibido tu solicutd a través de nuestro formulario. Te contactaremos antes de las próximas 24 horas.</p> Atte,<br><br>".contact_signature;
     
-    send_email(FROM_EMAIL, $post["email"], $asunto, $msg);
-
-    $asunto = "Un cliente ha llenado el formulario de contacto";
+    $msg = "<p>Hola <b>".$post["nombre"]."</b>,<br><br> Hemos recibido tu solicutd a través de nuestro formulario. Te contactaremos antes de las próximas 24 horas.</p> Atte,<br><br>";
+    
+    $mailUser = new Mail([$post["email"]], "Contacto - Mente Ingeniería", $msg);
+    $mailUser->sendMail();
     
     $msg = "<p>Hola,<br> <b>".$post["nombre"]."</b> ha enviado una solicitud, estos son sus datos:<br>";
 
     foreach($post as $n => $d){
         if($n !== "nombre"){
-            $msg .= "<br> <b>". ucwords($n) . ":</b>" . $d;
+            $msg .= "<br> <b>". ucwords($n) . ": </b>" . $d;
         }
     }
     
-    // send_email(FROM_EMAIL, MI_MAILS, $asunto, $msg);
+    $mailMI = new Mail(Mail::getTeamMails(), "Un cliente ha llenado el formulario de contacto", $msg);
+    $mailMI->sendMail();
 }
 
 ?>
