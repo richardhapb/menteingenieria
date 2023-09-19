@@ -4,31 +4,39 @@ namespace Model;
 
 use mysqli;
 
+
+// This class is the base for tables administration in database
 class Table {
     protected static $table = "";
     protected static $columns = [];
 
+    // DATABASE
     protected static $db;
 
     protected $id;
 
+    // Set the database instance
     public static function setDB(mysqli $db){
         self::$db = $db;
     }
 
+    // Give all of registers for table
     public static function all():array {
         $query = "SELECT * FROM " . static::$table;
         return static::sqlQuery($query);
     }
 
-    public static function search(string $column, string $value){
-        $query = "SELECT id FROM " . static::$table . " ";
-        $query .= "WHERE " . $column . " = ". $value;
+    // Search for a register with the specificated value
+    public static function search(string $column, string $value):array{
+        $query = "SELECT * FROM " . static::$table . " ";
+        $query .= "WHERE " . $column . "='". $value . "'";
+        reg("QUERY DE SEARCH: " . $query);
         $results = self::sqlQuery($query);
 
         return $results;
     }
 
+    // Return objects for each row that has been found
     protected static function sqlQuery(string $query):array {
         $result = self::$db->query($query);
 
@@ -42,11 +50,12 @@ class Table {
         return $results;
     }
 
+    // Create a new register with the currently attributes
     public function create(): int {
         try {
             $attributes = $this->sanitize();
 
-            // Make the sql query from names
+            // Make the sql query from values
             $query = "INSERT INTO " . static::$table . " (";
             $query .= join(", ", array_keys($attributes));
             $query .= ") VALUES (";
@@ -61,10 +70,12 @@ class Table {
             $query = mb_substr($query, 0, mb_strlen($query) - 2); 
             $query .= ")";
 
+            // For debug
             reg($query);
 
             self::$db->query($query);
             $result = self::$db->insert_id;
+            // Assign the new id
             $this->id = $result;
     
             // Evaluate if is ok
@@ -78,6 +89,7 @@ class Table {
         }
     }
     
+    // Sanitize the values of attributes
     public function sanitize():array {
         $sanitizated = [];
 
@@ -91,6 +103,7 @@ class Table {
         return $sanitizated;
     }
 
+    // Create a object from an array with register
     protected static function createObject(array $row){
         $object = new static;
 
@@ -103,35 +116,46 @@ class Table {
         return $object;
     }
 
-    public function update():bool{
+    // Update data of a register, replaceNulls indicates if nulls overwrites another values
+    public function update(bool $replaceNulls = false):bool{
         $newValues = $this->sanitize();
         $queryValues = "";
         // Only is in the columns
         foreach ($newValues as $c => $v){
             if(in_array($c, static::$columns)){
-                if(is_int($v) || is_float($v)){
-                    $queryValues .= $c . "=" . $v . ", ";
-                } else {
-                    $queryValues .= $c . "=" .  "'" . $v . "', ";
+                reg("Valor de v: " . $v);
+                reg("!empty = " . var_export(!empty($v), true) . " || replaceNulls = " . var_export($replaceNulls, true) . " = " . var_export(!is_null($v) || $replaceNulls, true));
+                // Don't overwrite if new is empty
+                if(!empty($v) || $replaceNulls){
+                    if(is_int($v) || is_float($v)){
+                        $queryValues .= $c . "=" . $v . ", ";
+                    } else {
+                        $queryValues .= $c . "=" .  "'" . $v . "', ";
+                    }
                 }
             }
         }
 
-        if(!empty($values)){
-            $queryValues = mb_substr($queryValues, 0, mb_strlen($queryValues) - 2); 
-            $queryValues .= ")";
+        // Cut the last comma
+        if(!empty($newValues)){
+            $queryValues = mb_substr($queryValues, 0, mb_strlen($queryValues) - 2);
         }
 
+        // Make final query
         $query = "UPDATE " . static::$table . " ";
         $query .= "SET " . $queryValues . " ";
         $query .= "WHERE id = " . $this->id;
 
+        // For debug
+        reg("QUERY DE UPDATE: " . $query);
         $result = self::$db->query($query);
 
         return $result;
     }
 
+    // Synchronize the object from $_POST or from DB register, that depends if $_POST is passed or not
     public function synchronize(array $post = []):void {
+        // If $_POST is passed
         if(!empty($post)){
             foreach($post as $c => $v){
                 if (property_exists($this, $c) && !is_null($v)){
@@ -141,7 +165,6 @@ class Table {
         } elseif(!is_null($this->id)) {
             $query = "SELECT * FROM " . static::$table . " ";
             $query .= "WHERE id=" . $this->id;
-            reg("UPDATE DE DATOS: ".$query);
             $results = static::sqlQuery($query);
 
             foreach(static::$columns as $c){

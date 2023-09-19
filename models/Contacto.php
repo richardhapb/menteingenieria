@@ -2,6 +2,7 @@
 
 namespace Model;
 
+// This class represent the tblContactos table in DataBase
 class Contacto extends Table {
     public static $table = "tblContactos";
     public static $columns = ["id", "nombre", "email", "telefono", "empresa", "medio", "fechaHora"];
@@ -26,6 +27,7 @@ class Contacto extends Table {
         $this->fechaHora = $args["fechaHora"] ?? null;
     }
 
+    // Validates if value are corrects
     public function validate():bool {
         $result = true;
         if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
@@ -35,6 +37,7 @@ class Contacto extends Table {
         return $result;
     }
 
+    // Standarizes the values that DataBase expceted
     public function standarize():void {
         $this->nombre = ucwords(strtolower($this->nombre));
         $this->email = strtolower($this->email);
