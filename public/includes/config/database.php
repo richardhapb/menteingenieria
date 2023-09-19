@@ -18,9 +18,10 @@ function connectDB():mysqli {
     // $userpass = "Mentedbrp23";
     // $dbname = "u195520240_mente_db";
 
-    $db = mysqli_connect($hostname, $username, $userpass, $dbname);
+    $db = new mysqli($hostname, $username, $userpass, $dbname);
 
-    if (!$db){
+    if ($db->connect_errno){
+        reg("Hubo un error en la conexión: " . $db->connect_errno);
         echo json_encode("Hubo un error en la conexión");
         exit;
     }

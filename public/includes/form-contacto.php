@@ -1,6 +1,9 @@
 <?php
 
 use App\Mail;
+use Model\Contacto;
+use Model\Solicitud;
+use Model\Table;
 
 require "config/app.php";
 
@@ -8,31 +11,40 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
     $db = connectDB();
 
-    // Get data from POST
-    $post = getpost($db, $_POST);
-    $post1 = getPost($db, $_POST, ["solicitud"]);
-    $post2 = getPost($db, $_POST, array_keys($post1)); // Obtains razon
+    Table::setDB($db);
 
-    $result = insertToDB($db, "tblContactos", array_keys($post1), array_values($post1));
+    $contacto = new Contacto();
+
+    $contacto->synchronize($_POST);
+    $contacto->standarize();
+    $idContacto["idContacto"] = $contacto->create();
+    if(!$idContacto == -1){
+        reg("SQL QUERY ERROR");
+    }
+
+    $contacto->synchronize();
+
+
+    $solicitud = new Solicitud();
+
+    $solicitud->synchronize(array_merge($_POST, $idContacto));
+    if(!$solicitud->create() == -1){
+        reg("SQL QUERY ERROR");
+    }
+
+    $solicitud->synchronize();
+
     
-    // SECOND TABLE
-
-    $post2["idContacto"] = $result; // Add the client id
-    insertToDB($db, "tblSolicitudes", array_keys($post2), array_values($post2));
-
-    mysqli_close($db);
-
+    $msg = "<p>Hola <b>".$contacto->nombre."</b>,<br><br> Hemos recibido tu solicutd a través de nuestro formulario. Te contactaremos antes de las próximas 24 horas.</p> Atte,<br><br>";
     
-    $msg = "<p>Hola <b>".$post["nombre"]."</b>,<br><br> Hemos recibido tu solicutd a través de nuestro formulario. Te contactaremos antes de las próximas 24 horas.</p> Atte,<br><br>";
-    
-    $mailUser = new Mail([$post["email"]], "Contacto - Mente Ingeniería", $msg);
+    $mailUser = new Mail([$contacto->email], "Contacto - Mente Ingeniería", $msg);
     $mailUser->sendMail();
     
-    $msg = "<p>Hola,<br> <b>".$post["nombre"]."</b> ha enviado una solicitud, estos son sus datos:<br>";
+    $msg = "<p>Hola,<br> <b>". $contacto->nombre ."</b> ha enviado una solicitud, estos son sus datos:<br>";
 
-    foreach($post as $n => $d){
-        if($n !== "nombre"){
-            $msg .= "<br> <b>". ucwords($n) . ": </b>" . $d;
+    foreach($contacto::$columns as $c){
+        if($c !== "nombre"){
+            $msg .= "<br> <b>". ucwords($c) . ": </b>" . $contacto->$c;
         }
     }
     
