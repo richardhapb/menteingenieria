@@ -15,7 +15,7 @@ function css(callback){
     src("src/scss/**/*.scss")
         .pipe(plumber())
         .pipe(sass())
-        .pipe(dest("public/build/css"));
+        .pipe(dest("public_html/build/css"));
 
     callback();
 }
@@ -27,7 +27,7 @@ function compressImg(callback){
 
     src("src/img/**/*.{jpg,png}")
         .pipe(cache(imagemin(settings)))
-        .pipe(dest("public/build/img"));
+        .pipe(dest("public_html/build/img"));
 
     callback();
 }
@@ -39,7 +39,7 @@ function imageWebp(callback){
 
     src("src/img/**/*.{jpg,png}")
         .pipe(webp(settings))
-        .pipe(dest("public/build/img"));
+        .pipe(dest("public_html/build/img"));
 
     callback();
 }
@@ -51,7 +51,7 @@ function imageAvif(callback){
 
     src("src/img/**/*.{jpg,png}")
         .pipe(avif(settings))
-        .pipe(dest("public/build/img"));
+        .pipe(dest("public_html/build/img"));
 
     callback();
 }
@@ -59,7 +59,7 @@ function imageAvif(callback){
 function javascript(callback){
 
     src("src/js/**/*.js")
-        .pipe(dest("public/build/js"));
+        .pipe(dest("public_html/build/js"));
 
     callback();
 }
