@@ -407,10 +407,16 @@ p {
 .short-form .form h1 {
   margin: 0 2rem 1rem 0;
 }
+.short-form .form .form__select {
+  border-color: rgba(0, 0, 0, 0.6);
+  height: 6rem;
+  margin: 1rem 0;
+}
 .short-form .form input {
   border-color: rgba(0, 0, 0, 0.6);
-  margin: 2rem 0;
+  margin: 1rem 0;
   height: 6rem;
+  appearance: auto;
 }
 
 /* Header */

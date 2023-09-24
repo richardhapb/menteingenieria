@@ -12,6 +12,7 @@ class Solicitud extends Table{
     public $idContacto;
     public $solicitud;
     public $fechaHora;
+    public $idServicio;
 
     public function __construct(array $args = [])
     {
@@ -19,6 +20,7 @@ class Solicitud extends Table{
         $this->idContacto = $args["idContacto"] ?? "";
         $this->solicitud = $args["solicitud"] ?? "";
         $this->fechaHora = $args["fechaHora"] ?? null;
+        $this->idServicio = $args["idServicio"] ?? "";
     }
 
 }

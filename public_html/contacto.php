@@ -2,7 +2,15 @@
 <html lang="es">
 <head>
     <title>Formulario de contacto - Mente Ingeniería</title>
-    <?php include("includes/head.php"); ?>
+    <?php
+
+use Model\Servicio;
+
+    include("includes/head.php"); 
+    include("includes/form-contacto.php");
+
+    $servicios = Servicio::all();
+    ?>
 </head>
 <body>
     <?php  include("includes/header.php");  ?>
@@ -17,14 +25,12 @@
             <input class="required" autocomplete="off" type="text" name="telefono" placeholder="+569...">
             <label>Indique su empresa</label>
             <input class="required" autocomplete="off" type="text" name="empresa" placeholder="Empresa">
-            <label>¿A través de que medio nos ubicó?</label>
-            <select class="form__select required" name="medio">
-                <option value="" disabled>Seleccione...</option>
-                <option value="linkedin">LinkedIn</option>
-                <option value="instagram">Instagram</option>
-                <option value="correo">Correo electrónico</option>
-                <option value="recomendacion">Recomendación</option>
-                <option value="otro">Otro</option>
+            <label>Indiquenos que servicio le interesa</label>
+            <select class="form__select required" name="idServicio">
+                <option value="" selected disabled>-- Seleccione servicio --</option>
+                <?php foreach($servicios as $s) {?>
+                    <option value="<?php echo $s->id ?>"><?php echo $s->servicio ?></option>
+                <?php } ?>
             </select>
             <label>Indique la razón por la que nos contacta</label>
             <textarea class="form__razon required" autocomplete="off" name="solicitud"cols="30" rows="10" placeholder="¿En qué podemos ayudar?" maxlength="700"></textarea>

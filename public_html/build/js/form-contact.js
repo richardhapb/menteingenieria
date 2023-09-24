@@ -14,7 +14,7 @@ select.selectedIndex = 0; // Selecciona el primer elemento (disabled)
 formulario.addEventListener("submit", function(e){
     e.preventDefault();
 
-    const result = sendForm(formulario, "includes/form-contacto.php", "Formulario enviado con éxito, en breve te contactaremos.", "Existen campos vacíos");
+    const result = sendForm(formulario, "contacto.php", "Formulario enviado con éxito, en breve te contactaremos.", "Existen campos vacíos");
     
     if(result){
         limpiarFormulario(formulario);

@@ -41,11 +41,17 @@
             margin: 0 2rem 1rem 0;
         }
 
-        
+        .form__select {
+            border-color: v.$gray-alpha;
+            height: 6rem;
+            margin: 1rem 0;
+        }
+
         input {
             border-color: v.$gray-alpha;
-            margin: 2rem 0;
+            margin: 1rem 0;
             height: 6rem;
+            appearance: auto;
         }
         
     }

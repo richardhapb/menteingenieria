@@ -40,6 +40,20 @@
     <p>También puedes descargar nuestro brochure en PDF: <a href="brochure/MI-brochure-2023.pdf">Brochure</a></p>
 </main>
 
+    <form class="form invisible">
+        <h1>Solicita información</h1>
+        <p>Escribe tu nombre y correo, indicanos que norma te interesa y te haremos llegar de inmediato más información.</p>
+        <input class="required" autocomplete="off" type="text" name="nombre" placeholder="Nombre">
+        <input class="required" autocomplete="off" type="text" name="email" placeholder="Email">
+        <select class="form__select required" name="idServicio">
+            <option value="" selected disabled>-- Seleccione servicio --</option>
+            <?php foreach($servicios as $s) {?>
+                <option value="<?php echo $s->id ?>"><?php echo $s->servicio ?></option>
+            <?php } ?>
+        </select>
+        <input class="form__submit" type="submit" value="Enviar">
+    </form>
+
 <?php include("includes/footer.php"); ?>
 
 <script src="build/js/validation.js"></script>

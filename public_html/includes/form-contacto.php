@@ -5,13 +5,13 @@ use Model\Contacto;
 use Model\Solicitud;
 use Model\Table;
 
-require "config/app.php";
+require_once "config/app.php";
+
+$db = connectDB();
+Table::setDB($db);
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST"){
-
-    $db = connectDB();
-
-    Table::setDB($db);
 
     $contacto = new Contacto();
 
