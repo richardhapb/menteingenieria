@@ -5,7 +5,7 @@ namespace Model;
 // This class represent the Solicitud table from Database
 class Solicitud extends Table{
     public static $table = "tblSolicitudes";
-    public static $columns = ["id", "idContacto", "solicitud", "fechaHora"];
+    public static $columns = ["id", "idContacto", "solicitud", "fechaHora", "idServicio"];
 
     
     public $id;

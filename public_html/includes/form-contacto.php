@@ -30,8 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
         if(!$idContacto == -1){
             reg("SQL QUERY ERROR");
         }
-        $contacto->synchronize();
     }
+    $contacto->synchronize();
 
     $solicitud = new Solicitud();
 
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     // Updates data in object
     $solicitud->synchronize();
     
-    $msg = "<p>Hola <b>".$contacto->nombre."</b>,<br><br> Hemos recibido tu solicutd a través de nuestro formulario. Te contactaremos antes de las próximas 24 horas.</p> Atte,<br><br>";
+    $msg = "<p>Hola <b>".$contacto->nombre."</b>,<br><br> Hemos recibido tu solicitud a través de nuestro formulario. Te contactaremos antes de las próximas 24 horas.</p> Atte,<br><br>";
     
     // Send to user mail
     $mailUser = new Mail([$contacto->email], "Contacto - Mente Ingeniería", $msg);
@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     $msg = "<p>Hola,<br> <b>". $contacto->nombre ."</b> ha enviado una solicitud, estos son sus datos:<br>";
 
     foreach($contacto::$columns as $c){
-        if($c !== "nombre"){
+        if($c !== "nombre" && $c != "fechaHora" && $c !== "id"){
             $msg .= "<br> <b>". ucwords($c) . ": </b>" . $contacto->$c;
         }
     }

@@ -4,7 +4,7 @@
     <title>Formulario de contacto - Mente Ingeniería</title>
     <?php
 
-use Model\Servicio;
+    use Model\Servicio;
 
     include("includes/head.php"); 
     include("includes/form-contacto.php");

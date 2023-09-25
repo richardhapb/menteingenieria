@@ -123,8 +123,8 @@ class Table {
         // Only is in the columns
         foreach ($newValues as $c => $v){
             if(in_array($c, static::$columns)){
-                reg("Valor de v: " . $v);
-                reg("!empty = " . var_export(!empty($v), true) . " || replaceNulls = " . var_export($replaceNulls, true) . " = " . var_export(!is_null($v) || $replaceNulls, true));
+                // reg("Valor de v: " . $v);
+                // reg("!empty = " . var_export(!empty($v), true) . " || replaceNulls = " . var_export($replaceNulls, true) . " = " . var_export(!is_null($v) || $replaceNulls, true));
                 // Don't overwrite if new is empty
                 if(!empty($v) || $replaceNulls){
                     if(is_int($v) || is_float($v)){

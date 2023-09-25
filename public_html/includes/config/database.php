@@ -6,17 +6,23 @@
  * @return mysqli Returns the database that connected.
  */
 function connectDB():mysqli {
+
+if(LOCAL) {
+    
     //Local
     $hostname = "localhost";
     $username = "root";
     $userpass = "";
     $dbname = "mente_db";
     
+} else {
+
     // Hostinger
-    // $hostname = "127.0.0.1:3306";
-    // $username = "u195520240_richard";
-    // $userpass = "Mentedbrp23";
-    // $dbname = "u195520240_mente_db";
+    $hostname = "127.0.0.1:3306";
+    $username = "u195520240_richard";
+    $userpass = "Mentedbrp23";
+    $dbname = "u195520240_mente_db";
+}
 
     $db = new mysqli($hostname, $username, $userpass, $dbname);
 

@@ -5,7 +5,7 @@ namespace Model;
 // This class represent the tblContactos table in DataBase
 class Contacto extends Table {
     public static $table = "tblContactos";
-    public static $columns = ["id", "nombre", "email", "telefono", "empresa", "medio", "fechaHora"];
+    public static $columns = ["id", "nombre", "email", "telefono", "empresa", "fechaHora"];
 
     
     public $id;
@@ -13,7 +13,6 @@ class Contacto extends Table {
     public $email;
     public $telefono;
     public $empresa;
-    public $medio;
     public $fechaHora;
 
     public function __construct(array $args = [])
@@ -23,7 +22,6 @@ class Contacto extends Table {
         $this->email = $args["email"] ?? "";
         $this->telefono = $args["telefono"] ?? "";
         $this->empresa = $args["empresa"] ?? "";
-        $this->medio = $args["medio"] ?? "";
         $this->fechaHora = $args["fechaHora"] ?? null;
     }
 

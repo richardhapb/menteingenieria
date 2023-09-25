@@ -31,22 +31,9 @@ function createShortForm() {
     </svg>
     `
 
-    divForm.innerHTML = `
-            <form class="form">
-                <h1>Solicita información</h1>
-                <p>Escribe tu nombre y correo, indicanos que norma te interesa y te haremos llegar de inmediato más información.</p>
-                <input class="required" autocomplete="off" type="text" name="nombre" placeholder="Nombre">
-                <input class="required" autocomplete="off" type="text" name="email" placeholder="Email">
-                <select class="form__select required" name="idServicio">
-                    <option value="" selected disabled>-- Seleccione servicio --</option>
-                    <?php foreach($servicios as $s) {?>
-                        <option value="<?php echo $s->id ?>"><?php echo $s->servicio ?></option>
-                    <?php } ?>
-                </select>
-                <input class="form__submit" type="submit" value="Enviar">
-            </form>
-    `
-    const form = divForm.querySelector("FORM");
+    const form = document.querySelector("FORM");
+
+    divForm.appendChild(form);
 
     // Insert in the init of form
     form.insertBefore(buttonClose, form.firstChild);
@@ -73,7 +60,7 @@ function createShortForm() {
 
         const email = form.querySelector("[name=email]").value.trim().toLowerCase();
 
-        const result = sendForm(form, "includes/short-form.php", `Formulario enviado con éxito, un email fue enviado a ${email}.`, "Los campos son obligatorios.", false);
+        const result = sendForm(form, "index.php", `Formulario enviado con éxito, un email fue enviado a ${email}.`, "Los campos son obligatorios.", false);
 
         if(result) {
             closeLayer(body, layer);

@@ -2,16 +2,16 @@
 
 use App\Mail;
 use Model\Contacto;
+use Model\Servicio;
 use Model\Solicitud;
 use Model\Table;
 
-require "config/app.php";
+require_once "config/app.php";
+
+$db = connectDB();
+Table::setDB($db);
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
-
-    $db = connectDB();
-
-    Table::setDB($db);
 
     $contacto = new Contacto();
     $contacto->synchronize($_POST);
@@ -34,8 +34,12 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         $contacto->synchronize();
     }
     
+    $servicio = Servicio::search("id", $_POST["idServicio"]);
+
     // Is generic for this request
-    $regSolicitud["solicitud"] = "Solicitud de listado de precios.";
+    $regSolicitud["idServicio"] = $servicio[0]->id;
+    $regSolicitud["solicitud"] = $servicio[0]->servicio;
+    reg(var_export($regSolicitud, true));
 
     $solicitud = new Solicitud();
 
@@ -47,12 +51,13 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     // Updates object data
     $solicitud->synchronize();
 
-    $msg = "<p>Hola <b>".$contacto->nombre."</b>,<br><br> En adjunto puedes obtener la cotización con el detalle de los servicios que ofrecemos. </p> Atte,<br><br>";
+    $msg = "<p>Hola <b>".$contacto->nombre."</b>,<br><br> En adjunto puedes obtener el detalle referente al servicio de " . $servicio[0]->servicio . ". </p> Atte,<br><br>";
 
     // Send the user mail
     $mailUser = new Mail([$contacto->email], "Cotización - Mente Ingeniería", $msg, [QUOTE_PATH]);
+    $mailUser->sendMail();
 
-    $msg = "<p>Hola,<br> <b>".$contacto->nombre."</b> ha solicitado una cotización y ha sido enviada, su correo es: <b>" . $contacto->email . "</b>.</p>";
+    $msg = "<p>Hola,<br> <b>".$contacto->nombre."</b> ha solicitado información de <b>" . $servicio[0]->servicio . "</b> y ha sido enviada, su correo es: <b>" . $contacto->email . "</b>.</p>";
     
     // Send the MI mail
     $mailMI = new Mail(Mail::getTeamMails(), "Un cliente ha llenado el formulario de inicio", $msg);
