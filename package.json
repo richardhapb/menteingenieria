@@ -2,7 +2,7 @@
   "name": "Menteingenieria",
   "version": "1.0.0",
   "description": "Implementing sass to web",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "sass": "sass --watch src/scss:build/css"
   },
