@@ -1,74 +1,73 @@
 
-const {src, dest, watch, parallel} = require("gulp");
+const { src, dest, watch, parallel } = require('gulp');
 
 // CSS and error handle
-const sass = require("gulp-sass")(require("sass"));
-const plumber = require("gulp-plumber");
+const sass = require('gulp-sass')(require('sass'));
+const plumber = require('gulp-plumber');
 
 // Images
-const cache = require("gulp-cache");
-const imagemin = require("gulp-imagemin");
-const webp = require("gulp-webp");
-const avif = require("gulp-avif");
+const cache = require('gulp-cache');
+const imagemin = require('gulp-imagemin');
+const webp = require('gulp-webp');
+const avif = require('gulp-avif');
 
-function css(callback){
-    src("src/scss/**/*.scss")
-        .pipe(plumber())
-        .pipe(sass())
-        .pipe(dest("public_html/build/css"));
+function css (callback) {
+  src('src/scss/**/*.scss')
+    .pipe(plumber())
+    .pipe(sass())
+    .pipe(dest('public_html/build/css'));
 
-    callback();
+  callback();
 }
 
-function compressImg(callback){
-    const settings = {
-        optimizationLevel: 3
-    };
+function compressImg (callback) {
+  const settings = {
+    optimizationLevel: 3
+  };
 
-    src("src/img/**/*.{jpg,png}")
-        .pipe(cache(imagemin(settings)))
-        .pipe(dest("public_html/build/img"));
+  src('src/img/**/*.{jpg,png}')
+    .pipe(cache(imagemin(settings)))
+    .pipe(dest('public_html/build/img'));
 
-    callback();
+  callback();
 }
 
-function imageWebp(callback){
-    const settings = {
-        quality: 50
-    };
+function imageWebp (callback) {
+  const settings = {
+    quality: 50
+  };
 
-    src("src/img/**/*.{jpg,png}")
-        .pipe(webp(settings))
-        .pipe(dest("public_html/build/img"));
+  src('src/img/**/*.{jpg,png}')
+    .pipe(webp(settings))
+    .pipe(dest('public_html/build/img'));
 
-    callback();
+  callback();
 }
 
-function imageAvif(callback){
-    const settings = {
-        quality: 50
-    };
+function imageAvif (callback) {
+  const settings = {
+    quality: 50
+  };
 
-    src("src/img/**/*.{jpg,png}")
-        .pipe(avif(settings))
-        .pipe(dest("public_html/build/img"));
+  src('src/img/**/*.{jpg,png}')
+    .pipe(avif(settings))
+    .pipe(dest('public_html/build/img'));
 
-    callback();
+  callback();
 }
 
-function javascript(callback){
+function javascript (callback) {
+  src('src/js/**/*.js')
+    .pipe(dest('public_html/build/js'));
 
-    src("src/js/**/*.js")
-        .pipe(dest("public_html/build/js"));
-
-    callback();
+  callback();
 }
 
-function dev(callback){
-    watch("src/scss/**/*.scss", css);
-    watch("src/js/**/*.js", javascript);
+function dev (callback) {
+  watch('src/scss/**/*.scss', css);
+  watch('src/js/**/*.js', javascript);
 
-    callback();
+  callback();
 }
 
 exports.dev = parallel(compressImg, imageAvif, imageWebp, javascript, dev);

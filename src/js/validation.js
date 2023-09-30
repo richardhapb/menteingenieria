@@ -5,12 +5,12 @@
  * @returns {Boolean} True if email is validated.
  */
 
-function validateEmail(email){
-    return String(email)
-        .toLowerCase()
-        .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        );
+function validateEmail (email) {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
 }
 
 /**
@@ -23,26 +23,25 @@ function validateEmail(email){
  * @returns {Boolean} True in case that the form is ok
  */
 
-function sendForm(form, phpUrl , okMessage, errorMessage, topMessage = true) {
+function sendForm (form, phpUrl, okMessage, errorMessage, topMessage = true) {
+  const email = form.querySelector('[name=email]').value.trim().toLowerCase();
+  const validEmail = validateEmail(email);
 
-        const email = form.querySelector("[name=email]").value.trim().toLowerCase();
-        const validEmail = validateEmail(email);
+  // Send form if is complete
+  if (validarFormularioVacio(form, 'required', topMessage) && validEmail) {
+    console.log('Formulario validado');
+    enviarFormulario(form, phpUrl);
+    alert(okMessage);
+    return true;
+  }
 
-        // Send form if is complete
-        if (validarFormularioVacio(form, "required", topMessage) && validEmail){
-            console.log("Formulario validado");
-            enviarFormulario(form, phpUrl);
-            alert(okMessage);
-            return true;
-        }
+  if (!validEmail && email !== '') {
+    errorMessage = 'Email inválido.';
+  }
+  // This don't execute if form has been sent
+  const error = mostrarErrorFormulario(form, errorMessage, true);
 
-        if(!validEmail && email !== ""){
-            errorMessage = "Email inválido.";
-        }
-        // This don't execute if form has been sent
-        const error = mostrarErrorFormulario(form, errorMessage, true);
-    
-        // Elimina el mensaje de error luego de 5 segundos.
-        setTimeout(() => error.remove(), 5000);
-        return false;
+  // Elimina el mensaje de error luego de 5 segundos.
+  setTimeout(() => error.remove(), 5000);
+  return false;
 }
