@@ -21,6 +21,7 @@
     "gulp-plumber": "^1.2.1",
     "gulp-sass": "^5.1.0",
     "gulp-webp": "^4.0.1",
-    "sass": "^1.66.1"
+    "sass": "^1.66.1",
+    "semistandard": "^17.0.0"
   }
 }

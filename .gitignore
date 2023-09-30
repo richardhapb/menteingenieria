@@ -1,9 +1,6 @@
-node_modules
 **/.DS_Store
 **/.vscode
 _index.html
 package-lock.json
 *.txt
-
-/vendor/
 composer.lock
