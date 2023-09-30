@@ -1,15 +1,17 @@
 
-const { src, dest, watch, parallel } = require('gulp');
-
-// CSS and error handle
-const sass = require('gulp-sass')(require('sass'));
-const plumber = require('gulp-plumber');
+import gulp from 'gulp';
+import plumber from 'gulp-plumber';
 
 // Images
-const cache = require('gulp-cache');
-const imagemin = require('gulp-imagemin');
-const webp = require('gulp-webp');
-const avif = require('gulp-avif');
+import cache from 'gulp-cache';
+import imagemin from 'gulp-imagemin';
+import webp from 'gulp-webp';
+import avif from 'gulp-avif';
+
+const { src, dest, watch, parallel } = gulp;
+
+// CSS and error handle
+import sass from 'sass';
 
 function css (callback) {
   src('src/scss/**/*.scss')
@@ -70,4 +72,5 @@ function dev (callback) {
   callback();
 }
 
-exports.dev = parallel(compressImg, imageAvif, imageWebp, javascript, dev);
+const _dev = parallel(compressImg, imageAvif, imageWebp, javascript, dev);
+export { _dev as dev };
