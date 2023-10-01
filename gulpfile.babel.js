@@ -1,4 +1,3 @@
-
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 
@@ -8,10 +7,10 @@ import imagemin from 'gulp-imagemin';
 import webp from 'gulp-webp';
 import avif from 'gulp-avif';
 
-const { src, dest, watch, parallel } = gulp;
-
 // CSS and error handle
 import sass from 'sass';
+
+const { src, dest, watch, parallel } = gulp;
 
 function css (callback) {
   src('src/scss/**/*.scss')
