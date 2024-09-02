@@ -5,10 +5,16 @@ const claseObligatorio = 'required';
 const claseSelect = 'form__select';
 
 const formulario = document.querySelector(`.${claseFormulario}`);
-const select = formulario.querySelector(`.${claseSelect}`);
+try {
+  const select = formulario.querySelector(`.${claseSelect}`);
+  if (select){
+    select.selectedIndex = 0; // Selecciona el primer elemento (disabled)
+  }
+} catch (error) {
+  console.log(error)
+}
 
 limpiarFormulario(formulario);
-select.selectedIndex = 0; // Selecciona el primer elemento (disabled)
 
 formulario.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -17,9 +23,18 @@ formulario.addEventListener('submit', function (e) {
 
   if (result) {
     limpiarFormulario(formulario);
-    select.selectedIndex = 0;
+    try {
+      select.selectedIndex = 0; // Selecciona el primer elemento (disabled)
+    } catch (error) {
+      console.log(error)
+    }
   }
 });
 
-// Cambia la clase una vez se selecciona un valor para cambiar el color del texto
-select.addEventListener('change', () => select.classList.add(`${claseSelect}--selected`));
+try {
+  // Cambia la clase una vez se selecciona un valor para cambiar el color del texto
+  select.addEventListener('change', () => select.classList.add(`${claseSelect}--selected`));
+  
+} catch (error) {
+  console.log(error)
+}

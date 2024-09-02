@@ -28,9 +28,8 @@ if(LOCAL) {
 }
 Mail::setFromName("Equipo Mente Ingeniería");
 Mail::setFromMail("contacto@menteingenieria.com");
-Mail::setFromPass('MenteIngenieria!23');
 Mail::setFromSignatureFromFile(ROOT . "/contact-signature.html");
-Mail::setSMTP("smtp.titan.email");
+Mail::setSMTP("smtp.mail.me.com");
 
 ?>
 

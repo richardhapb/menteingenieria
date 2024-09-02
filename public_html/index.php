@@ -4,11 +4,7 @@
 <head>
     <?php
 
-    use Model\Servicio;
-
-    include("includes/head.php"); 
-    include("includes/short-form.php");
-    $servicios = Servicio::all();
+    include("includes/head.php");
     
     ?>
 
@@ -38,12 +34,6 @@
         <p>Escribe tu nombre y correo, indicanos que servicio te interesa y te haremos llegar de inmediato más información.</p>
         <input class="required" autocomplete="off" type="text" name="nombre" placeholder="Nombre">
         <input class="required" autocomplete="off" type="text" name="email" placeholder="Email">
-        <select class="form__select required" name="idServicio">
-            <option value="" selected disabled>-- Selecciona servicio --</option>
-            <?php foreach($servicios as $s) {?>
-                <option value="<?php echo $s->id ?>"><?php echo $s->servicio ?></option>
-            <?php } ?>
-        </select>
         <input class="form__submit" type="submit" value="Enviar">
     </form>
 

@@ -11,7 +11,6 @@ class Mail {
     protected static $fromName = "";
     protected static $fromMail = "";
     protected static $fromSignature = "";
-    protected static $fromPass = "";
     protected static $smtp = "";
 
 
@@ -54,15 +53,6 @@ class Mail {
      */
     public static function setfromName(string $name):void{
         self::$fromName = $name;
-    }
-    /**
-     * set fromPass attribute
-     *
-     * @param  string $pass Pass to set
-     * @return void
-     */
-    public static function setfromPass(string $pass):void{
-        self::$fromPass = $pass;
     }
     /**
      * set signature for from mail
@@ -258,10 +248,10 @@ class Mail {
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = self::$smtp;                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = self::$fromMail;                     //SMTP username
-            $mail->Password   = self::$fromPass;                               //SMTP password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+            $mail->Username   = $_ENV["MAIL_USER"];                     //SMTP username
+            $mail->Password   = $_ENV["MAIL_PASS"];                               //SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
+            $mail->Port       = $_ENV['MAIL_PORT'];                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         
             //Recipients
