@@ -10,9 +10,9 @@ function connectDB():mysqli {
 if(LOCAL) {
     
     //Local
-    $hostname = "localhost";
+    $hostname = "127.0.0.1";
     $username = "root";
-    $userpass = "";
+    $userpass = "root";
     $dbname = "mente_db";
     
 } else {

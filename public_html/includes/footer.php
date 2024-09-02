@@ -12,7 +12,7 @@
             <div class="person">
                 <ul>
                     <li><span>Richard Peña</span></li>
-                    <li><span>Teléfono:</span> +56944175484</li>
+                    <li><span>Teléfono:</span> +56934447286</li>
                     <li><span>Email:</span> <a href="mailto:richard.pena@menteingenieria.com">richard.pena@menteingenieria.com</a></li>
                 </ul>
             </div>
