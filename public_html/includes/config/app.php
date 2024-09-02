@@ -9,10 +9,12 @@ define("PUB", ROOT . "/public_html");
 
 define("LOCAL", str_contains(ROOT, "richard"));
 
-
 require PUB . "/includes/config/database.php";
 require PUB . "/includes/config/funciones.php";
 require ROOT . "/vendor/autoload.php";
+
+$dotenv = Dotenv\Dotenv::createImmutable(ROOT);
+$dotenv->load();
 
 // Log file in root
 define("LOG", ROOT . "/log.txt");
@@ -22,7 +24,7 @@ use App\Mail;
 if(LOCAL) {
     Mail::setTeamMails(["richard.pena@menteingenieria.com", "richard.hapb@icloud.com"]);
 } else {   
-    Mail::setTeamMails(["richard.pena@menteingenieria.com", "laura.guerrero@menteingenieria.com"]);
+    Mail::setTeamMails(["richard.pena@menteingenieria.com"]);
 }
 Mail::setFromName("Equipo Mente Ingeniería");
 Mail::setFromMail("contacto@menteingenieria.com");

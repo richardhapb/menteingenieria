@@ -1,27 +1,27 @@
 // Initalize
-document.addEventListener('DOMContentLoaded', initialize);
+document.addEventListener("DOMContentLoaded", initialize);
 
 /**
  * Initalize after page load with eventListener
  */
-function initialize () {
-  createShortForm();
+function initialize() {
+  closeLayer(document.querySelector("BODY"), document.querySelector("FORM"));
 }
 
 /** Insert short-form to document
  * @param {HTMLElement} previousElement HTML Element that new form insert after
  */
 
-function createShortForm () {
-  const body = document.querySelector('BODY');
+function createShortForm() {
+  const body = document.querySelector("BODY");
 
-  const layer = document.createElement('DIV');
-  const divForm = document.createElement('DIV');
+  const layer = document.createElement("DIV");
+  const divForm = document.createElement("DIV");
 
-  const buttonClose = document.createElement('DIV');
+  const buttonClose = document.createElement("DIV");
 
-  divForm.classList.add('short-form');
-  buttonClose.classList.add('button-close');
+  divForm.classList.add("short-form");
+  buttonClose.classList.add("button-close");
 
   buttonClose.innerHTML = `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -30,15 +30,15 @@ function createShortForm () {
     </svg>
     `;
 
-  const form = document.querySelector('FORM');
+  const form = document.querySelector("FORM");
 
   divForm.appendChild(form);
 
   // Insert in the init of form
   form.insertBefore(buttonClose, form.firstChild);
 
-  body.classList.add('fix');
-  layer.classList.add('window-background');
+  body.classList.add("fix");
+  layer.classList.add("window-background");
 
   layer.onclick = function (e) {
     if (e.target !== this) {
@@ -54,12 +54,18 @@ function createShortForm () {
   layer.append(divForm);
   body.appendChild(layer);
 
-  form.addEventListener('submit', function (e) {
+  form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const email = form.querySelector('[name=email]').value.trim().toLowerCase();
+    const email = form.querySelector("[name=email]").value.trim().toLowerCase();
 
-    const result = sendForm(form, 'index.php', `Formulario enviado con éxito, un email fue enviado a ${email}.`, 'Los campos son obligatorios.', false);
+    const result = sendForm(
+      form,
+      "index.php",
+      `Formulario enviado con éxito, un email fue enviado a ${email}.`,
+      "Los campos son obligatorios.",
+      false
+    );
 
     if (result) {
       closeLayer(body, layer);
@@ -72,7 +78,7 @@ function createShortForm () {
  * @param {HTMLBodyElement} body Body element
  * @param {HTMLDivElement} layer Element of layer to close
  */
-function closeLayer (body, layer) {
-  body.classList.remove('fix');
+function closeLayer(body, layer) {
+  body.classList.remove("fix");
   body.removeChild(layer);
 }

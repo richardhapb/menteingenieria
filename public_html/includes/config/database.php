@@ -7,21 +7,21 @@
  */
 function connectDB():mysqli {
 
-if(LOCAL) {
+    if(LOCAL) {
     
-    //Local
-    $hostname = "127.0.0.1";
-    $username = "root";
-    $userpass = "root";
-    $dbname = "mente_db";
+        //Local
+        $hostname = "127.0.0.1";
+        $username = "root";
+        $userpass = "root";
+        $dbname = "mente_db";
+        
+    } else {
     
-} else {
-
-    // Hostinger
-    $hostname = "127.0.0.1:3306";
-    $username = "u195520240_richard";
-    $userpass = "Mentedbrp23";
-    $dbname = "u195520240_mente_db";
+        // Hostinger
+        $hostname = $_ENV["HOSTNAME"];
+        $username = $_ENV["USERNAME"];
+        $userpass = $_ENV["USERPASS"];
+        $dbname = $_ENV["DBNAME"];
 }
 
     $db = new mysqli($hostname, $username, $userpass, $dbname);

@@ -6,3 +6,4 @@ _index.html
 package-lock.json
 *.txt
 composer.lock
+.env
