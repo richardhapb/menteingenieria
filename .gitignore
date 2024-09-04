@@ -1,9 +1,50 @@
-node_modules
+.venv
+**/node_modules
 vendor
 **/.DS_Store
 **/.vscode
 _index.html
 package-lock.json
-*.txt
+log.txt
 composer.lock
+**/backup
+**/migrations
+
+# Archivos compilados de Python
+*.pyc
+__pycache__/
+
+# Base de datos SQLite
+db.sqlite3
+db.sqlite3-journal
+
+# Configuración de entornos locales
 .env
+*.env
+
+# Archivos de configuración del editor de código
+.vscode/
+
+# Archivos de Logs
+*.log
+logs/
+*.pot
+
+# Archivos generados por pytest o coverage
+*.cover
+.coverage
+*.coveragerc
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+
+# Archivos de distribución y compilación
+*.egg-info/
+*.egg
+dist/
+build/
+
+# Archivos estáticos generados
+staticfiles/
+media/
