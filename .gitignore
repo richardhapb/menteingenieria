@@ -10,6 +10,7 @@ composer.lock
 **/backup
 **/migrations
 **/public_html
+**/assets
 
 # Archivos compilados de Python
 *.pyc

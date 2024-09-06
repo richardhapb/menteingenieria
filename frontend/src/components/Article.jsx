@@ -9,15 +9,15 @@ const Article = article => {
     const getUsers = async () => {
       try {
         const data = await getUsuarios();
-        console.log(data);
         setUsers(data);
       } catch (error) {
         console.log(error);
       }
     };
     getUsers();
-    console.log(article);
-  }, [article]);
+  }, []);
+
+  const author = users.find(user => user.id === article.autor);
   return (
     <div className="tertiary-bg-color hover:bg-zinc-200 hover:cursor-pointer rounded-xl p-3 size-full flex flex-col justify-between my-4 md:my-0">
       <div className="px-2">
@@ -29,9 +29,9 @@ const Article = article => {
           <span className="font-semibold">Autor:</span>
           {" " +
             /* {First name and last name} */
-            users.find(user => user.id === article.autor).first_name +
-            " " +
-            users.find(user => user.id === article.autor).last_name}
+            (author
+              ? author.first_name + " " + author.last_name
+              : "Desconocido")}
         </div>
         <div className="py-2">
           <span className="font-semibold">Fecha:</span>{" "}

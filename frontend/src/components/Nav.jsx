@@ -1,28 +1,57 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
-function Nav() {
+const Nav = () => {
+  const home = useLocation().pathname === "/";
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        document.querySelector("header").classList.add("bg-gray-900");
+      } else {
+        document.querySelector("header").classList.remove("bg-gray-900");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div>
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav
+        className={
+          "w-full px-4 sm:px-6 lg:px-8 bg-opacity-15 " +
+          (home ? "bg-gray-600" : "bg-gray-600 bg-opacity-30")
+        }
+      >
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <div className="text-2xl font-bold text-gray-800">
-            <Link to="/">Mente Ingeniería</Link>
+          <div className="text-2xl font-bold text-gray-800 whitespace-nowrap max-w-48">
+            <Link to="/">
+              <img src="../src/assets/logo_.png" />
+            </Link>
           </div>
 
           {/* Navigation Links */}
-          <div className="hidden md:flex space-x-6">
-            <Link to="#features" className="text-gray-600 hover:text-gray-900">
-              Features
+          <div className="hidden md:flex space-x-32 flex-grow justify-center">
+            <Link to="/" className="text-gray-200 hover:text-gray-300 text-xl">
+              Home
             </Link>
-            <Link to="#pricing" className="text-gray-600 hover:text-gray-900">
-              Pricing
+            <Link
+              to="/blog"
+              className="text-gray-200 hover:text-gray-300 text-xl"
+            >
+              Blog
             </Link>
-            <Link to="#resources" className="text-gray-600 hover:text-gray-900">
-              Resources
-            </Link>
-            <Link to="#community" className="text-gray-600 hover:text-gray-900">
-              Community
+            <Link
+              to="/about"
+              className="text-gray-200 hover:text-gray-300 text-xl"
+            >
+              About
             </Link>
           </div>
 
@@ -30,9 +59,9 @@ function Nav() {
           <div className="hidden md:flex">
             <Link
               to="#signup"
-              className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"
+              className="text-white py-2 px-4 rounded-lg hover:bg-gray-400 transition duration-300 whitespace-nowrap bg-gray-900 opacity-70 font-bold text-xl"
             >
-              Get Started
+              Contáctanos
             </Link>
           </div>
 
@@ -60,6 +89,6 @@ function Nav() {
       </nav>
     </div>
   );
-}
+};
 
 export default Nav;

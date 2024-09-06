@@ -10,9 +10,13 @@
 }
 
 .bg-color {
-  background-color: var(--bg-color, #FAFAFA);
+  background-color: var(--bg-color, #FCFCFC);
 }
 
 .tertiary-bg-color {
   background-color: var(--tertiary-color, #F3F3F3);
+}
+
+.bg-primary-color {
+  background-color: #1C1C1C
 }
