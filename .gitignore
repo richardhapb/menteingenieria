@@ -9,6 +9,7 @@ log.txt
 composer.lock
 **/backup
 **/migrations
+**/public_html
 
 # Archivos compilados de Python
 *.pyc
