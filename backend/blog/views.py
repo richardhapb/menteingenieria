@@ -9,11 +9,13 @@ class ArticuloList(generics.ListCreateAPIView):
     serializer_class = ArticuloSerializer
 
 class ArticuloDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Articulo.objects.all()
     serializer_class = ArticuloSerializer
 
-    def get_queryset(self):
-        return Articulo.objects.filter(publicado=True)
-
 class UserList(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer

@@ -6,11 +6,23 @@
   --primary-color: #252B48;
   --secondary-color: #445069;
   --tertiary-color: #F3F3F3;
-  --bg-color: #FCFCFC; 
+  --aux-color: #F7E987;
+  --bg-color: #0C0C0C; 
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: var(--bg-color);
 }
 
 .bg-color {
   background-color: var(--bg-color, #FCFCFC);
+}
+
+.bg-aux-color {
+  background-color: var(--aux-color, #F7E987);
 }
 
 .tertiary-bg-color {
@@ -18,5 +30,5 @@
 }
 
 .bg-primary-color {
-  background-color: #1C1C1C
+  background-color: var(--bg-color);
 }

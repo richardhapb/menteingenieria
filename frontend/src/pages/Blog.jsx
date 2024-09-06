@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getArticulos } from "../api/articulo.js";
 import Article from "../components/Article.jsx";
+import { Link } from "react-router-dom";
+
 const Blog = () => {
   const [articles, setArticles] = useState([]);
   useEffect(() => {
@@ -20,7 +22,9 @@ const Blog = () => {
       <ul className="mx-auto text-center md:grid md:grid-cols-3 md:gap-3 p-4">
         {articles.map(article => (
           <li key={article.id}>
-            <Article {...article} />
+            <Link to={`/blog/${article.id}`}>
+              <Article {...article} />
+            </Link>
           </li>
         ))}
       </ul>
