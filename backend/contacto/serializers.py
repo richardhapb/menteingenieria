@@ -12,6 +12,10 @@ class ServicioSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class SolicitudSerializer(serializers.ModelSerializer):
+    # Si contacto es una relación foránea
+    contacto = serializers.PrimaryKeyRelatedField(queryset=Contacto.objects.all(), required=False)
+
     class Meta:
         model = Solicitud
-        fields = '__all__'
+        fields = ['contacto', 'texto']  # Asegúrate de incluir 'contacto'
+

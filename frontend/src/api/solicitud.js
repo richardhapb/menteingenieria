@@ -1,14 +1,9 @@
 
 import axios from 'axios';
 
-const API_URL = process.env.API_URL;  
+const API_URL = import.meta.env.VITE_API_URL;
 
-export const getSolicitudes = async () => {
-  try {
-    const response = await axios.get(`${API_URL}/solicitud`);
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching data", error);
-    throw error;
-  }
-};
+export const newSolicitud = async (solicitud) => {
+  const res = await axios.post(`${API_URL}/solicitud/`, solicitud);
+  return res.data;
+}
