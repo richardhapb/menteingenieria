@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className="flex flex-col md:flex-row mx-auto justify-between p-8 max-w-screen-lg">
+    <div className="flex flex-col md:flex-row mx-auto justify-between p-8 max-w-screen-lg bg-opacity-0">
       <div className="flex flex-col gap-2">
         <h2 className="text-2xl font-bold py-2">Contacto</h2>
         <p>Richard Peña</p>

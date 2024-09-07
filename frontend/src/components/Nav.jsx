@@ -69,15 +69,19 @@ const Nav = ({ setIsOpen, isOpen, setIsVisible }) => {
     <div>
       <nav
         className={
-          "w-full px-4 sm:px-6 lg:px-8 bg-opacity-15 bg-gray-600 " +
+          "w-full px-4 sm:px-6 lg:px-8 bg-opacity-15 bg-gray-600 header-linear " +
           (home ? "" : "bg-opacity-20")
         }
       >
-        <div className="flex justify-between items-center py-4 flex-col md:flex-row">
+        <div className="relative flex justify-between items-center py-4 flex-col md:flex-row">
           {/* Logo */}
-          <div className="text-2xl font-bold text-gray-800 whitespace-nowrap w-1/2 md:max-w-48">
+          <div className=" text-2xl font-bold text-gray-800 whitespace-nowrap w-1/2 md:max-w-48">
             <Link to="/">
-              <img src="../src/assets/logo_.png" alt="Mente Ingeniería" />
+              <img
+                src="../src/assets/logo_.png"
+                alt="Mente Ingeniería"
+                className="z-30"
+              />
             </Link>
           </div>
           <div className="text-center flex flex-col-reverse md:flex-row justify-between items-center flex-grow">

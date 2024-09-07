@@ -1,9 +1,9 @@
 import Contact from "./Contact.jsx";
 import Nav from "./Nav.jsx";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { GeneralContext } from "../contexts/GeneralContext.jsx";
+import NewsAI from "./NewsAI.jsx";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +22,7 @@ function Header() {
     <header className={home ? "relative w-full md:h-screen " : ""}>
       {home ? (
         <video
-          className="absolute top-0 left-0 w-full h-full md:h-screen object-cover z-0 opacity-90"
+          className="absolute top-0 left-0 w-full h-full md:h-screen object-cover z-0  image-linear-s"
           src="../src/assets/header.mp4"
           alt="Video"
           autoPlay
@@ -46,7 +46,7 @@ function Header() {
         />
         {/* Texto u otros elementos adicionales */}
         {home && (
-          <div className="flex-grow flex items-center justify-between px-8 flex-col-reverse md:flex-row py-6">
+          <div className="flex-grow flex items-center justify-between px-8 flex-col-reverse md:flex-row py-6 z-20">
             <div className="flex flex-col px-3 max-w-xl gap-10">
               <h1 className="text-5xl font-bold text-center my-8">
                 Potencia tu negocio con IA
@@ -59,14 +59,16 @@ function Header() {
               </h2>
             </div>
             <div
-              className={`transition-all duration-500 ease-in-out transform w-3/4 md:w-80 ${
+              className={`transition-all duration-500 ease-in-out transform w-3/4 md:w-80 z-30 ${
                 isOpen
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 -translate-y-5"
               }`}
             >
-              {home && isVisible && <Contact />}
+              {home && isVisible ? <Contact /> : ""}
             </div>
+
+            {home && !isVisible ? <NewsAI /> : ""}
           </div>
         )}
       </div>
