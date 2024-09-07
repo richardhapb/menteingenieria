@@ -6,6 +6,8 @@ import Home from "./pages/Home.jsx";
 import ArticleEntry from "./pages/ArticleEntry.jsx";
 import About from "./pages/About.jsx";
 import GeneralContextProvider from "./contexts/GeneralContext.jsx";
+import "@fontsource/news-cycle/400.css";
+import "@fontsource/news-cycle/700.css";
 
 function App() {
   return (

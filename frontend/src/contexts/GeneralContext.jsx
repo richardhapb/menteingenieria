@@ -5,8 +5,16 @@ export const GeneralContext = createContext();
 const GeneralContextProvider = ({ children }) => {
   const [contactRequest, setContactRequest] = useState(false);
   const [home, setHome] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   const location = useLocation();
+
+  useEffect(() => {
+    const dark = localStorage.getItem("darkMode");
+    if (dark) {
+      setDarkMode(JSON.parse(dark));
+    }
+  }, []);
 
   useEffect(() => {
     setHome(location.pathname === "/");
@@ -17,6 +25,8 @@ const GeneralContextProvider = ({ children }) => {
       value={{
         contactRequest,
         setContactRequest,
+        darkMode,
+        setDarkMode,
         home
       }}
     >
