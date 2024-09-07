@@ -17,10 +17,6 @@ from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Ruta donde se guardarán las imágenes
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-MEDIA_URL = '/media/'
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -43,6 +39,7 @@ INSTALLED_APPS = [
     'contacto',
     'rest_framework',
     'blog',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -83,8 +80,12 @@ WSGI_APPLICATION = 'menteingenieria.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': config('DBNAME'),
+        'USER': config('USERNAME'),
+        'PASSWORD': config('USERPASS'),
+        'HOST': config('HOSTNAME'),
+        'PORT': '3306',
     }
 }
 
@@ -146,3 +147,31 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config('MAIL_USER')
 EMAIL_HOST_PASSWORD = config('MAIL_PASS')
+
+
+# Configuración para S3
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_BUCKET_NAME')
+AWS_S3_REGION_NAME = config('AWS_REGION') 
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+# Directorio donde se guardarán temporalmente los archivos estáticos antes de subirlos a S3
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# settings.py
+
+# Directorio donde se guardarán temporalmente los archivos estáticos antes de subirlos a S3
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Almacenar archivos estáticos en S3
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'  
+
+# Almacenar archivos multimedia en S3
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/' 
+

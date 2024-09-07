@@ -11,10 +11,9 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'News Cycle', sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  background-color: var(--bg-color);
 }
 
 .image-linear {
@@ -28,8 +27,22 @@ body {
 }
 
 .image-linear-xs {
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 2%, rgba(0, 0, 0, 0.4) 10%, black 50%, rgba(0, 0, 0, 0.5) 98%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 2%, rgba(0, 0, 0, 0.4) 10%, black 50%, rgba(0, 0, 0, 0.5) 98%, transparent 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 2%, rgba(0, 0, 0, 0.9) 10%, black 50%, rgba(0, 0, 0, 0.9) 98%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 2%, rgba(0, 0, 0, 0.9) 10%, black 50%, rgba(0, 0, 0, 0.9) 98%, transparent 100%);
+}
+
+.image-linear-xs-logo {
+  mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.6) 10%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0.6) 90%, transparent 100%);
+}
+
+.image-linear-xs-h {
+  mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.9) 20%, black 50%, rgba(0, 0, 0, 0.9) 98%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.9) 20%, black 50%, rgba(0, 0, 0, 0.9) 98%, transparent 100%);
+}
+
+.image-linear-xs-f {
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.9) 20%, black 50%, rgba(0, 0, 0, 0.9) 98%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.9) 20%, black 50%, rgba(0, 0, 0, 0.9) 98%, transparent 100%);
 }
 
 .horizontal-linear-l {
@@ -51,74 +64,23 @@ body {
   background-color: var(--bg-color, #FCFCFC);
 }
 
+.bg-primary-color {
+  background-color: var(--primary-color, #252B48);
+}
+
+.bg-tertiary-color {
+  background-color: var(--tertiary-color, #F3F3F3);
+}
+
 .bg-aux-color {
   background-color: var(--aux-color, #F7E987);
 }
 
-.tertiary-bg-color {
-  background-color: var(--tertiary-color, #F3F3F3);
+.light-mode {
+  background-color: var(--tertiary-color);
+  color: black;
 }
-
-.bg-primary-color {
+.dark-mode {
   background-color: var(--bg-color);
-}
-
-@keyframes slide-in-left {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slide-in-right {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slide-out-left {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-}
-
-@keyframes slide-out-right {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}
-
-.slide-in-left {
-  animation: slide-in-left 1s ease forwards;
-}
-
-.slide-in-right {
-  animation: slide-in-right 1s ease forwards;
-}
-
-.slide-out-left {
-  animation: slide-out-left 1s ease forwards;
-}
-
-.slide-out-right {
-  animation: slide-out-right 1s ease forwards;
+  color: white;
 }

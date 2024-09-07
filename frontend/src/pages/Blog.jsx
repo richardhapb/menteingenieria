@@ -19,7 +19,7 @@ const Blog = () => {
 
   return (
     <div>
-      <ul className="mx-auto text-center md:grid md:grid-cols-3 md:gap-3 p-4">
+      <ul className="mx-auto text-center md:grid md:grid-cols-3 md:gap-5 p-4 max-w-6xl">
         {articles.map(article => (
           <li key={article.id}>
             <Link to={`/blog/${article.id}`}>
