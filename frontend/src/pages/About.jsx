@@ -1,18 +1,18 @@
 const About = () => {
   return (
-    <div className="relative text-whit shadow-lg mx-auto bg-opacity-15 flex flex-col min-h-screen">
+    <div className="relative text-whit shadow-lg mx-auto bg-opacity-15 flex flex-col min-h-screen overflow-hidden image-linear-s">
       <div className="absolute w-full">
         <img
           src="../src/assets/about.webp"
           alt="Acerca de nosotros"
-          className="w-full image-linear opacity-5"
+          className=" w-full image-linear opacity-20 "
         />
       </div>
       <div className="w-full p-8 py-20 my-20">
-        <h1 className="text-3xl font-bold mb-4 py-6 leading-8 text-center">
+        <h1 className="text-3xl font-bold my-10 py-6 leading-8 text-center">
           Acerca de Mente Ingeniería
         </h1>
-        <p className="text-white text-lg w-full p-3">
+        <p className="text-white text-lg w-full p-3 my-10">
           En Mente Ingeniería somos un equipo de ingenieros apasionados por la
           tecnología y la innovación. Nuestro enfoque está en mejorar los
           procesos empresariales a través de la implementación de herramientas

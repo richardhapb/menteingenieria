@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getServicios } from "../api/servicio.js";
+import ServicesItem from "../components/ServicesItem.jsx";
 
 function Home() {
   const [services, setServices] = useState([]);
@@ -18,39 +19,23 @@ function Home() {
 
   return (
     <div className="p-10">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-        rerum ipsum voluptatibus est nemo eveniet, nobis corporis tempore quia
-        voluptas aliquid provident in repudiandae temporibus sit rem, debitis
-        quaerat placeat?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-        rerum ipsum voluptatibus est nemo eveniet, nobis corporis tempore quia
-        voluptas aliquid provident in repudiandae temporibus sit rem, debitis
-        quaerat placeat?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-        rerum ipsum voluptatibus est nemo eveniet, nobis corporis tempore quia
-        voluptas aliquid provident in repudiandae temporibus sit rem, debitis
-        quaerat placeat?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-        rerum ipsum voluptatibus est nemo eveniet, nobis corporis tempore quia
-        voluptas aliquid provident in repudiandae temporibus sit rem, debitis
-        quaerat placeat?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-        rerum ipsum voluptatibus est nemo eveniet, nobis corporis tempore quia
-        voluptas aliquid provident in repudiandae temporibus sit rem, debitis
-        quaerat placeat?
-      </p>
-      <ul>
+      <div className="flex flex-col justify-between">
+        <h1 className="text-4xl font-bold text-center my-8">
+          El 70% de las empresas que adoptan IA y automatización reducen sus
+          costos operativos en un 30%
+          <p className="text-sm font-normal py-4">
+            {" "}
+            (Fuente: McKinsey & Company)
+          </p>
+        </h1>
+      </div>
+      <ul className="my-10">
         {services
-          ? services.map(service => <li key={service.id}>{service.nombre}</li>)
+          ? services.map(service => (
+              <li key={service.id}>
+                <ServicesItem {...service} />
+              </li>
+            ))
           : ""}
       </ul>
     </div>

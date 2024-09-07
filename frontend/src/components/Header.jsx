@@ -49,13 +49,13 @@ function Header() {
           <div className="flex-grow flex items-center justify-between px-8 flex-col-reverse md:flex-row py-6 z-20">
             <div className="flex flex-col px-3 max-w-xl gap-10">
               <h1 className="text-5xl font-bold text-center my-8">
-                Potencia tu negocio con IA
+                Impulsa tu negocio con nosotros
               </h1>
               <h2 className="text-lg py-2">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam
-                laudantium vero necessitatibus obcaecati? Libero totam placeat
-                praesentium quod quidem beatae architecto molestias itaque
-                reiciendis, eum facilis deleniti et neque inventore?
+                Juntos, llevamos tus procesos a la excelencia, optimizando cada
+                etapa con inteligencia artificial y ciencia de datos. Aumenta la
+                eficiencia y toma decisiones estratégicas basadas en datos para
+                un crecimiento sostenible y rentable.
               </h2>
             </div>
             <div

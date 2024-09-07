@@ -32,9 +32,19 @@ body {
   -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 2%, rgba(0, 0, 0, 0.4) 10%, black 50%, rgba(0, 0, 0, 0.5) 98%, transparent 100%);
 }
 
+.horizontal-linear-l {
+  mask-image: linear-gradient(to right, transparent 1%,  rgba(0, 0, 0, 0.8) 10%, black 50%, rgba(0, 0, 0, 0.7) 98%);
+  -webkit-mask-image: linear-gradient(to right, transparent 1%,  rgba(0, 0, 0, 0.8) 10%, black 50%, rgba(0, 0, 0, 0.7) 98%);
+}
+
+.horizontal-linear-r {
+  mask-image: linear-gradient(to left, transparent 1%,  rgba(0, 0, 0, 0.8) 10%, black 50%, rgba(0, 0, 0, 0.7) 98%);
+  -webkit-mask-image: linear-gradient(to left, transparent 1%,  rgba(0, 0, 0, 0.8) 10%, black 50%, rgba(0, 0, 0, 0.7) 98%);
+}
+
 .header-linear {
   mask-image: linear-gradient(to top,transparent 1%,  rgba(0, 0, 0, 0.8) 30%, black 50%, rgba(0, 0, 0, 0.7) 98%);
-  /* -webkit-mask-image: linear-gradient(to top,transparent 5%,  rgba(0, 0, 0, 0.3) 20%, black 50%, rgba(0, 0, 0, 0.7) 98%); */
+  -webkit-mask-image: linear-gradient(to top,transparent 5%,  rgba(0, 0, 0, 0.3) 20%, black 50%, rgba(0, 0, 0, 0.7) 98%);
 }
 
 .bg-color {
@@ -51,4 +61,64 @@ body {
 
 .bg-primary-color {
   background-color: var(--bg-color);
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out-left {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-out-right {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.slide-in-left {
+  animation: slide-in-left 1s ease forwards;
+}
+
+.slide-in-right {
+  animation: slide-in-right 1s ease forwards;
+}
+
+.slide-out-left {
+  animation: slide-out-left 1s ease forwards;
+}
+
+.slide-out-right {
+  animation: slide-out-right 1s ease forwards;
 }
