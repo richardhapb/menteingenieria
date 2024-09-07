@@ -1,9 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { getUsuario } from "../api/usuario.js";
 import formatDate from "../utils/formatDate.js";
+import { GeneralContext } from "../contexts/GeneralContext.jsx";
+import ReactMarkdown from "react-markdown";
 
 const Article = article => {
   const [user, setUser] = useState([]);
+
+  const { darkMode } = useContext(GeneralContext);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -18,7 +22,12 @@ const Article = article => {
   }, []);
 
   return (
-    <div className="tertiary-bg-color hover:bg-zinc-200 hover:cursor-pointer rounded-xl p-3 size-full flex flex-col justify-between my-4 md:my-0 text-black hover:opacity-70">
+    <div
+      className={
+        "hover:bg-zinc-200 hover:cursor-pointer rounded-xl p-3 size-full flex flex-col justify-between my-4 md:my-0 hover:opacity-70 " +
+        (darkMode ? "bg-tertiary-color text-black" : "bg-gray-300 shadow-lg")
+      }
+    >
       <div className="px-2">
         <img src={article.imagen} className="mx-auto p-2" />
       </div>
@@ -35,12 +44,12 @@ const Article = article => {
           {" " + formatDate(article.fecha)}
         </div>
       </div>
-      <div>
+      <ReactMarkdown className="text-left">
         {
           article.contenido.slice(0, 200) +
             (article.contenido.length > 200 ? "..." : "") /* Truncate content */
         }
-      </div>
+      </ReactMarkdown>
     </div>
   );
 };

@@ -21,7 +21,6 @@ const NewsAI = () => {
         max_tokens: 200, // Limita el tamaño del texto
         temperature: 0.7 // Controla la creatividad del texto generado
       });
-      console.log(response.choices[0].text);
       const generatedText = response.choices[0].text;
       setNews(generatedText);
       setLoading(false);
@@ -43,7 +42,7 @@ const NewsAI = () => {
   }, []);
 
   return (
-    <div className="p-6 bg-opacity-10 shadow-lg rounded-md text-slate-300 bg-gray-400 max-w-xl">
+    <div className="p-6 bg-opacity-90 shadow-lg rounded-md text-black bg-gray-400 max-w-xl">
       <h2 className="text-2xl font-bold mb-4">Recomendaciones de la IA</h2>
       {loading ? <p>Cargando recomendación...</p> : <p>{news}</p>}
     </div>

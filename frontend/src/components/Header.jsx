@@ -1,7 +1,6 @@
 import Contact from "./Contact.jsx";
 import Nav from "./Nav.jsx";
-import { useState, useEffect } from "react";
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { GeneralContext } from "../contexts/GeneralContext.jsx";
 import NewsAI from "./NewsAI.jsx";
 
@@ -9,20 +8,24 @@ function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
-  const { contactRequest, setContactRequest, home } =
+  const { contactRequest, setContactRequest, home, darkMode } =
     useContext(GeneralContext);
 
   useEffect(() => {
     setIsOpen(home && contactRequest);
     setIsVisible(home && contactRequest);
     setContactRequest(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [home]);
 
   return (
-    <header className={home ? "relative w-full md:h-screen " : ""}>
+    <header className={home ? "relative w-full overflow-hidden  " : ""}>
       {home ? (
         <video
-          className="absolute top-0 left-0 w-full h-full md:h-screen object-cover z-0  image-linear-s"
+          className={
+            "absolute top-0 left-0 w-full h-full object-cover z-0 " +
+            (darkMode ? "image-linear-s" : "")
+          }
           src="../src/assets/header.mp4"
           alt="Video"
           autoPlay
@@ -35,7 +38,7 @@ function Header() {
       )}
       <div
         className={
-          "relative z-10 flex flex-col h-full text-white transition-all ease-in-out duration-400"
+          "z-10 flex flex-col h-full text-white" + (home ? "min-h-[700px]" : "")
         }
       >
         <Nav

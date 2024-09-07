@@ -83,8 +83,12 @@ WSGI_APPLICATION = 'menteingenieria.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': config('DBNAME'),
+        'USER': config('USERNAME'),
+        'PASSWORD': config('USERPASS'),
+        'HOST': config('HOSTNAME'),
+        'PORT': '3306',
     }
 }
 
