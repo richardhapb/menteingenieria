@@ -1,10 +1,5 @@
 import { useState, useEffect } from "react";
-import { OpenAI } from "openai";
-
-const openai = new OpenAI({
-  apiKey: import.meta.env.VITE_OPENAI_API_KEY,
-  dangerouslyAllowBrowser: true
-});
+import { getOpenAiText } from "../api/openai.js";
 
 const NewsAI = () => {
   const [news, setNews] = useState("");
@@ -14,20 +9,13 @@ const NewsAI = () => {
   const fetchNews = async () => {
     setLoading(true);
     try {
-      const response = await openai.completions.create({
-        model: "gpt-3.5-turbo-instruct",
-        prompt:
-          "Estás mostrando texto en un página web, dale recomendaciones al cliente referente a como la implementación de la IA, la investigación de operaciones o la inteligencia de negocios lo puede ayudar a mejorar su rentabilidad y sostenibilidad, basate en datos y propón soluciones prácticas, nombrá las metodologías, por ejemplo: ML o Lean, no es necesario que nombre estas dos. No uses más de 40 palabras. Y no repitas la anterior.",
-        max_tokens: 200, // Limita el tamaño del texto
-        temperature: 0.7 // Controla la creatividad del texto generado
-      });
-      const generatedText = response.choices[0].text;
-      setNews(generatedText);
+      const PROMPT =
+        "Estás mostrando texto en un página web, dale recomendaciones al cliente referente a como la implementación de la IA, la investigación de operaciones o la inteligencia de negocios lo puede ayudar a mejorar su rentabilidad y sostenibilidad, basate en datos y propón soluciones prácticas, nombrá las metodologías, por ejemplo: ML o Lean, no es necesario que nombre estas dos. No uses más de 40 palabras. Y no repitas la anterior.";
+      const response = await getOpenAiText(PROMPT);
+      setNews(response.text);
       setLoading(false);
     } catch (error) {
-      console.error("Error fetching news:", error);
-      setNews("No se pudo obtener la noticia. Inténtalo de nuevo más tarde.");
-      setLoading(false);
+      console.error("Error fetching data", error);
     }
   };
 

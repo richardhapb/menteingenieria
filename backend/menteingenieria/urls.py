@@ -24,4 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('contacto.urls')),
     path('api/blog/', include('blog.urls')),
+    path('api/openai_request/', include('openai_requests.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
