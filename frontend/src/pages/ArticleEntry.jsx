@@ -5,8 +5,8 @@ import { getArticulo } from "../api/articulo.js";
 import { getUsuario } from "../api/usuario.js";
 import formatDate from "../utils/formatDate.js";
 import { Link } from "react-router-dom";
-import ReactMarkdown from "react-markdown";
 import { GeneralContext } from "../contexts/GeneralContext.jsx";
+import Markdown from "markdown-to-jsx";
 
 const ArticleEntry = () => {
   const id = window.location.pathname.split("/").pop();
@@ -75,173 +75,41 @@ const ArticleEntry = () => {
         </div>
       </div>
 
-      <ReactMarkdown
+      <Markdown
         className="mx-6 md:mx-auto max-w-3xl my-4"
-        components={{
-          h1(props) {
-            const { node, ...rest } = props;
-            return (
-              <h1
-                style={{
-                  fontSize: "2em",
-                  fontWeight: "bold",
-                  marginBottom: "1em"
-                }}
-                {...rest}
-              />
-            );
-          },
-          h2(props) {
-            const { node, ...rest } = props;
-            return (
-              <h2
-                style={{
-                  fontSize: "1.5em",
-                  fontWeight: "bold",
-                  margin: "1em 0 0.5em 0"
-                }}
-                {...rest}
-              />
-            );
-          },
-          h3(props) {
-            const { node, ...rest } = props;
-            return (
-              <h3
-                style={{
-                  fontSize: "1.17em",
-                  fontWeight: "bold",
-                  margin: "1em 0 0.5em 0"
-                }}
-                {...rest}
-              />
-            );
-          },
-          h4(props) {
-            const { node, ...rest } = props;
-            return (
-              <h4
-                style={{
-                  fontSize: "1em",
-                  fontWeight: "bold",
-                  margin: "1em 0 0.5em 0"
-                }}
-                {...rest}
-              />
-            );
-          },
-          div(props) {
-            const { node, ...rest } = props;
-            return (
-              <div
-                style={{
-                  fontSize: "1.2em"
-                }}
-                {...rest}
-              />
-            );
-          },
-          p(props) {
-            const { node, ...rest } = props;
-            return (
-              <p
-                style={{
-                  margin: "1em 0"
-                }}
-                {...rest}
-              />
-            );
-          },
-          a(props) {
-            const { node, ...rest } = props;
-            return (
-              <a
-                style={{
-                  color: "#3182ce",
-                  textDecoration: "underline"
-                }}
-                {...rest}
-              />
-            );
-          },
-          img(props) {
-            const { node, ...rest } = props;
-            return (
-              <img
-                style={{
-                  maxWidth: "100%",
-                  height: "auto",
-                  margin: "1em auto"
-                }}
-                {...rest}
-              />
-            );
-          },
-          ul(props) {
-            const { node, ...rest } = props;
-            return (
-              <ul
-                style={{
-                  fontSize: "1em",
-                  margin: "1em 0"
-                }}
-                {...rest}
-              />
-            );
-          },
-          ol(props) {
-            const { node, ...rest } = props;
-            return (
-              <ol
-                style={{
-                  fontSize: "1em",
-                  margin: "1em 0"
-                }}
-                {...rest}
-              />
-            );
-          },
-          li(props) {
-            const { node, ...rest } = props;
-            return (
-              <li
-                style={{
-                  margin: "0.5em 0"
-                }}
-                {...rest}
-              />
-            );
-          },
-          blockquote(props) {
-            const { node, ...rest } = props;
-            return (
-              <blockquote
-                style={{
-                  borderLeft: "4px solid #3182ce",
-                  padding: "0.5em 1em",
-                  margin: "1em 0"
-                }}
-                {...rest}
-              />
-            );
-          },
-          code(props) {
-            const { node, ...rest } = props;
-            return (
-              <code
-                style={{
-                  backgroundColor: "#f7fafc",
-                  padding: "0.2em 0.4em",
-                  borderRadius: "0.2em"
-                }}
-                {...rest}
-              />
-            );
+        options={{
+          forceBlock: true,
+          overrides: {
+            img: {
+              props: { className: "w-full" }
+            },
+            h1: { props: { className: "text-4xl font-bold pt-5" } },
+            h2: { props: { className: "text-3xl font-bold pt-5" } },
+            h3: { props: { className: "text-2xl font-bold pt-5" } },
+            h4: { props: { className: "text-xl font-bold pt-5" } },
+            h5: { props: { className: "text-lg font-bold pt-5" } },
+            p: { props: { className: "text-lg py-4" } },
+            a: {
+              props: {
+                className:
+                  "text-blue-500 hover:text-blue-700 underline cursor-pointer"
+              }
+            },
+            ul: { props: { className: "list-disc list-inside pl-4" } },
+            ol: {
+              props: { className: "list-decimal pl-8" }
+            },
+            li: { props: { className: "text-lg" } },
+            blockquote: {
+              props: {
+                className: "border-l-4 border-gray-500 bg-gray-100 p-4 italic"
+              }
+            }
           }
         }}
       >
         {article.contenido}
-      </ReactMarkdown>
+      </Markdown>
       <Link to="/blog" className="mx-auto my-12 text-center max-w-1/3">
         <p
           className={
