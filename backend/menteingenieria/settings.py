@@ -58,6 +58,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
+    'http://3.145.58.151'
 ]
 
 ROOT_URLCONF = 'menteingenieria.urls'
@@ -141,6 +142,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "http://3.145.58.151"
 ]
 
 REST_FRAMEWORK = {
