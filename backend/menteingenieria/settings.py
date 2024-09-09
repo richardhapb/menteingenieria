@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'blog',
     'storages',
+    'openai_requests',
 ]
 
 MIDDLEWARE = [
@@ -46,23 +47,30 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'openai_requests.middleware.RestrictIPMiddleware',
+    # 'openai_requests.middleware.RestrictIPMiddleware',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = True
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
-    'http://3.145.58.151'
+    'https://3.145.58.151',
+    'http://179.2.28.24',
+    'https://179.2.28.24',
+    'https://www.menteingenieria.com',
+    'https://menteingenieria.com',
+
 ]
 
 ALLOWED_HOSTS = [
     '3.145.58.151',  
     'menteingenieria.com',
+    'www.menteingenieria.com',
     'localhost',  
 ]
 
@@ -147,7 +155,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "http://3.145.58.151"
+    "http://3.145.58.151",
+    "https://3.145.58.151",
+    "https://www.menteingenieria.com",
+    "https://menteingenieria.com",
 ]
 
 REST_FRAMEWORK = {

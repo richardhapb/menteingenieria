@@ -162,12 +162,8 @@ const Nav = ({ setIsOpen, isOpen, setIsVisible }) => {
             {/* Mobile Menu Button */}
             <div className="md:hidden mb-5 md:mb-0">
               <button
-                className={
-                  "focus:outline-none " +
-                  (darkMode
-                    ? "text-gray-100 hover:text-gray-300"
-                    : "text-gray-950 hover:text-gray-600")
-                }
+                className=
+                  "focus:outline-none text-gray-100 hover:text-gray-300" 
                 onClick={toggleMenu}
               >
                 {/* Mobile menu icon */}
