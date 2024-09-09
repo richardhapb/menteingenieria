@@ -13,7 +13,6 @@ from pathlib import Path
 import os
 from decouple import config
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -58,6 +57,13 @@ CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
+    'http://3.145.58.151'
+]
+
+ALLOWED_HOSTS = [
+    '3.145.58.151',  
+    'menteingenieria.com',
+    'localhost',  
 ]
 
 ROOT_URLCONF = 'menteingenieria.urls'
@@ -141,6 +147,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "http://3.145.58.151"
 ]
 
 REST_FRAMEWORK = {
