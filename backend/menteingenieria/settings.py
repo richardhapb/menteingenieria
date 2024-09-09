@@ -59,6 +59,7 @@ CSRF_COOKIE_SECURE = True
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
+    'http://localhost:4173',
     'https://3.145.58.151',
     'http://179.2.28.24',
     'https://179.2.28.24',
@@ -159,6 +160,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://3.145.58.151",
     "https://www.menteingenieria.com",
     "https://menteingenieria.com",
+    'http://localhost:4173',
 ]
 
 REST_FRAMEWORK = {

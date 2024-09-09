@@ -17,7 +17,6 @@ const ArticleEntry = () => {
   const { darkMode } = useContext(GeneralContext);
 
   useEffect(() => {
-    console.log(id);
     const getArticle = async () => {
       try {
         const data = await getArticulo(id);
@@ -30,6 +29,7 @@ const ArticleEntry = () => {
   }, [id]);
 
   useEffect(() => {
+    if (!article.autor) return;
     const getUser = async () => {
       try {
         const data = await getUsuario(article.autor);
@@ -67,7 +67,9 @@ const ArticleEntry = () => {
       <div className="flex flex-col md:flex-row justify-center">
         <div className="mx-auto max-w-3xl my-4">
           <span className="font-italic font-semibold">Autor: </span>
-          {user.first_name + " " + user.last_name}
+          {user.first_name
+            ? user.first_name + " " + user.last_name
+            : "Desconocido"}
         </div>
         <div className="mx-auto max-w-3xl my-4">
           <span className="font-italic font-semibold">Fecha: </span>
