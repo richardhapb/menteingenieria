@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { getUsuario } from "../api/usuario.js";
 import formatDate from "../utils/formatDate.js";
 import { GeneralContext } from "../contexts/GeneralContext.jsx";
-import ReactMarkdown from "react-markdown";
+import Markdown from "markdown-to-jsx";
 
 const Article = article => {
   const [user, setUser] = useState([]);
@@ -49,12 +49,15 @@ const Article = article => {
           {" " + formatDate(article.fecha)}
         </div>
       </div>
-      <ReactMarkdown className="text-left">
-        {
-          article.contenido.slice(0, 200) +
-            (article.contenido.length > 200 ? "..." : "") /* Truncate content */
-        }
-      </ReactMarkdown>
+      <Markdown
+        className="text-left"
+        options={{
+          forceBlock: true
+        }}
+      >
+        {article.contenido.slice(0, 200) +
+          (article.contenido.length > 200 ? "..." : "")}
+      </Markdown>
     </div>
   );
 };

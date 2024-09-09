@@ -7,5 +7,10 @@ export default defineConfig({
   optimizeDeps: {
     include: ['markdown-to-jsx'],
   },
+  build: {
+    commonjsOptions: {
+      include: [/node_modules/],
+    }
+  },
 })
 
