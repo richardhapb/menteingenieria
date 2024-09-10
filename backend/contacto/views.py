@@ -40,8 +40,6 @@ def procesar_solicitud(datos, solicitud):
         print(f"Error inesperado: {e}")
 
 def enviar_correo(solicitud):
-        print("Enviando correos...")
-        print(solicitud)
         asunto = f"Solicitud de contacto de {solicitud.contacto.nombre}"
         mensaje = f"Se ha recibido una nueva solicitud de contacto\n\n" \
                     f"Nombre: {solicitud.contacto.nombre}\n" \
@@ -53,7 +51,6 @@ def enviar_correo(solicitud):
                         f"<strong>Nombre:</strong> {solicitud.contacto.nombre}<br />" \
                         f"<strong>Email:</strong> {solicitud.contacto.email}<br />" \
                         f"<strong>Teléfono:</strong> {solicitud.contacto.telefono}<br />" \
-                        f"<strong>Empresa:</strong> {solicitud.contacto.empresa}<br />" \
                         f"<strong>Mensaje:</strong><p>{solicitud.texto}</p>"
         utils.correo_contacto(asunto, mensaje, [config('CONTACT_MAIL')], html_message)
 
@@ -99,7 +96,7 @@ class SolicitudViewSet(viewsets.ModelViewSet):
         solicitud = serializer.save(contacto=contacto)
 
         # Iniciar el procesamiento de la solicitud en un hilo
-        solicitud_thread = threading.Thread(target=procesar_solicitud, args=(solicitud,))
+        solicitud_thread = threading.Thread(target=procesar_solicitud, args=(datos, solicitud))
         solicitud_thread.start()
 
     def create(self, request, *args, **kwargs):
