@@ -37,7 +37,10 @@ const Footer = () => {
             <ul className="flex flex-col gap-3 text-l">
               {/* Icono y red */}
               <li>
-                <Link to="#" target="_blank">
+                <Link
+                  to="https://www.linkedin.com/company/mente-ingenieria"
+                  target="_blank"
+                >
                   <div className="flex gap-2 items-center hover:text-slate-400 text-lg">
                     <img
                       src={`${
@@ -51,7 +54,10 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="#" target="_blank">
+                <Link
+                  to="https://www.instagram.com/mente.ingenieria/"
+                  target="_blank"
+                >
                   <div className="flex gap-2 items-center hover:text-slate-400 text-lg">
                     <img
                       src={`${
@@ -65,7 +71,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="#" target="_blank">
+                <Link to="https://x.com/mente_ing" target="_blank">
                   <div className="flex gap-2 items-center hover:text-slate-400 text-lg">
                     <img
                       src={`${
