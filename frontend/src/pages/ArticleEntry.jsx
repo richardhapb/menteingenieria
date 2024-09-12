@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import { useEffect, useState, useContext } from "react";
 import { getArticulo } from "../api/articulo.js";
 import { getUsuario } from "../api/usuario.js";
@@ -7,10 +5,11 @@ import formatDate from "../utils/formatDate.js";
 import { Link } from "react-router-dom";
 import { GeneralContext } from "../contexts/GeneralContext.jsx";
 import Markdown from "markdown-to-jsx";
+import renderMathInElement from "katex/contrib/auto-render"; // Importar auto-render de KaTeX
+import "katex/dist/katex.min.css"; // Importar los estilos de KaTeX
 
 const ArticleEntry = () => {
   const id = window.location.pathname.split("/").pop();
-
   const [article, setArticle] = useState({});
   const [user, setUser] = useState({});
 
@@ -46,6 +45,23 @@ const ArticleEntry = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Usar KaTeX auto-render después de cargar el artículo
+  useEffect(() => {
+    if (article.contenido) {
+      const element = document.getElementById("article-content");
+      renderMathInElement(element, {
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "$$ ", right: "$$ ", display: true },
+          { left: "$$ ", right: " $$ ", display: true },
+          { left: "$", right: "$", display: false },
+          { left: "\\[", right: "\\]", display: true },
+          { left: "\\(", right: "\\)", display: false }
+        ]
+      });
+    }
+  }, [article]);
+
   return (
     <div className="min-h-screen">
       <div className="relative">
@@ -77,41 +93,44 @@ const ArticleEntry = () => {
         </div>
       </div>
 
-      <Markdown
-        className="mx-6 md:mx-auto max-w-3xl my-4"
-        options={{
-          forceBlock: true,
-          overrides: {
-            img: {
-              props: { className: "w-full" }
-            },
-            h1: { props: { className: "text-4xl font-bold pt-5" } },
-            h2: { props: { className: "text-3xl font-bold pt-5" } },
-            h3: { props: { className: "text-2xl font-bold pt-5" } },
-            h4: { props: { className: "text-xl font-bold pt-5" } },
-            h5: { props: { className: "text-lg font-bold pt-5" } },
-            p: { props: { className: "text-lg py-4" } },
-            a: {
-              props: {
-                className:
-                  "text-blue-500 hover:text-blue-700 underline cursor-pointer"
-              }
-            },
-            ul: { props: { className: "list-disc list-inside pl-4" } },
-            ol: {
-              props: { className: "list-decimal pl-8" }
-            },
-            li: { props: { className: "text-lg" } },
-            blockquote: {
-              props: {
-                className: "border-l-4 border-gray-500 bg-gray-100 p-4 italic"
+      <div id="article-content" className="mx-6 md:mx-auto max-w-3xl my-4">
+        <Markdown
+          className="mx-6 md:mx-auto max-w-3xl my-4"
+          options={{
+            forceBlock: true,
+            overrides: {
+              img: {
+                props: { className: "w-full" }
+              },
+              h1: { props: { className: "text-4xl font-bold pt-5" } },
+              h2: { props: { className: "text-3xl font-bold pt-5" } },
+              h3: { props: { className: "text-2xl font-bold pt-5" } },
+              h4: { props: { className: "text-xl font-bold pt-5" } },
+              h5: { props: { className: "text-lg font-bold pt-5" } },
+              p: { props: { className: "text-lg py-4" } },
+              a: {
+                props: {
+                  className:
+                    "text-blue-500 hover:text-blue-700 underline cursor-pointer"
+                }
+              },
+              ul: { props: { className: "list-disc list-inside pl-4" } },
+              ol: {
+                props: { className: "list-decimal pl-8" }
+              },
+              li: { props: { className: "text-lg" } },
+              blockquote: {
+                props: {
+                  className: "border-l-4 border-gray-500 bg-gray-100 p-4 italic"
+                }
               }
             }
-          }
-        }}
-      >
-        {article.contenido}
-      </Markdown>
+          }}
+        >
+          {String.raw`${article.contenido}`}
+        </Markdown>
+      </div>
+
       <Link to="/blog" className="mx-auto my-12 text-center max-w-1/3">
         <p
           className={
