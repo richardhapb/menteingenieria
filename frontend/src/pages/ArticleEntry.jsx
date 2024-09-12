@@ -12,6 +12,7 @@ const ArticleEntry = () => {
   const id = window.location.pathname.split("/").pop();
   const [article, setArticle] = useState({});
   const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const { darkMode } = useContext(GeneralContext);
 
@@ -29,6 +30,7 @@ const ArticleEntry = () => {
 
   useEffect(() => {
     if (!article.autor) return;
+    setLoading(false);
     const getUser = async () => {
       try {
         const data = await getUsuario(article.autor);
@@ -47,6 +49,7 @@ const ArticleEntry = () => {
 
   // Usar KaTeX auto-render después de cargar el artículo
   useEffect(() => {
+    if (loading) return;
     if (article.contenido) {
       const element = document.getElementById("article-content");
       renderMathInElement(element, {
@@ -60,7 +63,7 @@ const ArticleEntry = () => {
         ]
       });
     }
-  }, [article]);
+  }, [loading, article]);
 
   return (
     <div className="min-h-screen">
