@@ -26,18 +26,19 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'openai_requests.middleware.RestrictIPMiddleware',
+    # 'openai_requests.middleware.RestrictIPMiddleware',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
 CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'Lax'
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
@@ -45,7 +46,6 @@ CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1',
     'https://3.145.58.151',
     'https://3.145.58.151:443',
-    '3.145.58.151:443',
     'http://3.145.58.151:443',
     'http://179.2.28.24',
     'https://179.2.28.24',
@@ -53,7 +53,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://172.26.13.221',
     'https://www.menteingenieria.com',
     'https://menteingenieria.com',
-
+    '*'
 ]
 
 ALLOWED_HOSTS = [
@@ -61,6 +61,7 @@ ALLOWED_HOSTS = [
     'menteingenieria.com',
     'www.menteingenieria.com',
     'localhost',  
+    '172.26.13.221'
 ]
 
 ROOT_URLCONF = 'menteingenieria.urls'
@@ -138,12 +139,16 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "http://3.145.58.151",
-    "https://3.145.58.151",
-    "https://www.menteingenieria.com",
-    "https://menteingenieria.com",
+    'http://localhost:5173',
     'http://localhost:4173',
+    'http://127.0.0.1',
+    'https://3.145.58.151',
+    'http://179.2.28.24',
+    'https://179.2.28.24',
+    'http://172.26.13.221',
+    'https://172.26.13.221',
+    'https://www.menteingenieria.com',
+    'https://menteingenieria.com',
 ]
 
 REST_FRAMEWORK = {
