@@ -33,7 +33,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "openai_requests.middleware.RestrictIPMiddleware",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -90,12 +89,12 @@ WSGI_APPLICATION = "menteingenieria.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
+        "ENGINE": "django.db.backends.postgres",
         "NAME": config("DBNAME"),
         "USER": config("USERNAME"),
         "PASSWORD": config("USERPASS"),
         "HOST": config("HOSTNAME"),
-        "PORT": "3306",
+        "PORT": config("PORT"),
     }
 }
 
