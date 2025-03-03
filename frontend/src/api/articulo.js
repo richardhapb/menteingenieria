@@ -4,7 +4,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 export const getArticulos = async () => {
   try {
-    const response = await axios.get(`${API_URL}/blog/articulos`);
+    const response = await axios.get(`${API_URL}/blog/articulos/`);
     return response.data;
   } catch (error) {
     console.error("Error fetching data", error);

@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("f0a46dd2d8b581227e01653297436068/", admin.site.urls),
-    path("api/", include("contacto.urls")),
-    path("api/blog/", include("blog.urls")),
-    path("api/openai_request/", include("openai_requests.urls")),
+    path("", include("contacto.urls")),
+    path("blog/", include("blog.urls")),
+    path("openai_request/", include("openai_requests.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
