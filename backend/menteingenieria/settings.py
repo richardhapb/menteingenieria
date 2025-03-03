@@ -39,29 +39,9 @@ CORS_ALLOW_CREDENTIALS = True
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = "Lax"
 
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
-    "http://localhost:4173",
-    "http://127.0.0.1",
-    "https://3.145.58.151",
-    "https://3.145.58.151:443",
-    "http://3.145.58.151:443",
-    "http://179.2.28.24",
-    "https://179.2.28.24",
-    "http://172.26.13.221",
-    "https://172.26.13.221",
-    "https://www.menteingenieria.com",
-    "https://menteingenieria.com",
-]
-
-ALLOWED_HOSTS = [
-    "3.145.58.151",
-    "menteingenieria.com",
-    "www.menteingenieria.com",
-    "localhost",
-    "172.26.13.221",
-    "127.0.0.1",
-]
+CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS", cast=lambda v: [s.strip() for s in v.split(" ")])
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=lambda v: [s.strip() for s in v.split(" ")])
+CORS_ALLOWED_ORIGINS = config("CORS_ALLOWED_ORIGINS", cast=lambda v: [s.strip() for s in v.split(" ")])
 
 ROOT_URLCONF = "menteingenieria.urls"
 
@@ -89,7 +69,7 @@ WSGI_APPLICATION = "menteingenieria.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgres",
+        "ENGINE": "django.db.backends.postgresql",
         "NAME": config("DBNAME"),
         "USER": config("USERNAME"),
         "PASSWORD": config("USERPASS"),
@@ -136,18 +116,6 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "http://localhost:4173",
-    "http://127.0.0.1",
-    "https://3.145.58.151",
-    "http://179.2.28.24",
-    "https://179.2.28.24",
-    "http://172.26.13.221",
-    "https://172.26.13.221",
-    "https://www.menteingenieria.com",
-    "https://menteingenieria.com",
-]
 
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
