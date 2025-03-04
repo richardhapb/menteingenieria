@@ -4,8 +4,8 @@ import { getUsuario } from "../api/usuario.js";
 import formatDate from "../utils/formatDate.js";
 import { GeneralContext } from "../contexts/GeneralContext.jsx";
 import Markdown from "markdown-to-jsx";
-import 'katex/dist/katex.min.css';
 import renderMathInElement from 'katex/dist/contrib/auto-render.mjs';
+import 'katex/dist/katex.min.css';
 
 const Article = article => {
   const [user, setUser] = useState([]);
@@ -60,7 +60,7 @@ const Article = article => {
           <span className="font-semibold">Autor:</span>
           {" " +
             /* {First name and last name} */
-            (user ? user.first_name + " " + user.last_name : "Desconocido")}
+            (user ? user.first_name + " " + user.last_name : "")}
         </div>
         <div className="py-2">
           <span className="font-semibold">Fecha:</span>{" "}
