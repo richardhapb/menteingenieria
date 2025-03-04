@@ -4,7 +4,7 @@ from decouple import config
 from django.core.cache import cache
 from django.http import JsonResponse
 from django.utils import timezone
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect, ensure_csrf_cookie
 from django.views.decorators.http import require_http_methods
 from django_ratelimit.decorators import ratelimit
 from openai import OpenAI
@@ -22,10 +22,13 @@ IMPORTANTE: Limita a 40 palabras. No uses listas, ni numeradas ni en viñetas.
 """
 TIME_THRESHOLD = 20
 
+@require_http_methods(["GET"])
+@ensure_csrf_cookie
+def get_csrf_token(_):
+    """Get CSRF token for AJAX requests"""
+    return JsonResponse({"status": True})
 
-@csrf_protect
-@require_http_methods(["POST"])
-@ratelimit(key="ip", rate="10/m", block=True)
+
 def openai_request(request):
     # Get client IP for logging
     client_ip = get_client_ip(request)
