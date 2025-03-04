@@ -1,13 +1,16 @@
 import { useState, useEffect, useContext } from "react";
+import React from "react";
 import { getUsuario } from "../api/usuario.js";
 import formatDate from "../utils/formatDate.js";
 import { GeneralContext } from "../contexts/GeneralContext.jsx";
 import Markdown from "markdown-to-jsx";
+import 'katex/dist/katex.min.css';
+import renderMathInElement from 'katex/dist/contrib/auto-render.mjs';
 
 const Article = article => {
   const [user, setUser] = useState([]);
-
   const { darkMode } = useContext(GeneralContext);
+  const contentRef = React.useRef(null);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -21,6 +24,22 @@ const Article = article => {
     getUsers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Add KaTeX rendering after markdown is processed
+  useEffect(() => {
+    if (contentRef.current) {
+      renderMathInElement(contentRef.current, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      });
+    }
+  }, [article.contenido]);
+
   return (
     <div
       className={
@@ -48,15 +67,30 @@ const Article = article => {
           {" " + formatDate(article.fecha)}
         </div>
       </div>
-      <Markdown
-        className="text-left"
-        options={{
-          forceBlock: true
-        }}
-      >
-        {article.contenido.slice(0, 200) +
-          (article.contenido.length > 200 ? "..." : "")}
-      </Markdown>
+      <div ref={contentRef}>
+        <Markdown
+          className="text-left"
+          options={{
+            forceBlock: true,
+            overrides: {
+              // Add custom handling for math blocks if needed
+              math: {
+                component: ({ children, ...props }) => (
+                  <div className="math-display" {...props}>{children}</div>
+                )
+              },
+              inlineMath: {
+                component: ({ children, ...props }) => (
+                  <span className="math-inline" {...props}>{children}</span>
+                )
+              }
+            }
+          }}
+        >
+          {article.contenido.slice(0, 200) +
+            (article.contenido.length > 200 ? "..." : "")}
+        </Markdown>
+      </div>
     </div>
   );
 };

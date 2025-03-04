@@ -9,9 +9,7 @@ const NewsAI = () => {
   const fetchNews = async () => {
     setLoading(true);
     try {
-      const PROMPT =
-        "Estás mostrando texto en un página web, dale recomendaciones al cliente referente a como la implementación de la IA, la investigación de operaciones o la inteligencia de negocios lo puede ayudar a mejorar su rentabilidad y sostenibilidad, basate en datos y propón soluciones prácticas, nombrá las metodologías, por ejemplo: ML o Lean, no es necesario que nombre estas dos. No uses más de 40 palabras. Y no repitas la anterior.";
-      const response = await getOpenAiText(PROMPT);
+      const response = await getOpenAiText();
       setNews(response.text);
       setLoading(false);
     } catch (error) {
