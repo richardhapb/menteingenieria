@@ -33,11 +33,11 @@ Link: [https://menteingenieria.com](https://menteingenieria.com)
 └── frontend/
     └── src/
         └── components/
-        │   ├── Article.jsx    # Blog article component
-        │   ├── Contact.jsx    # Contact form
-        │   ├── Header.jsx     # Site header
-        │   ├── Nav.jsx        # Navigation
-        │   ├── NewsAI.jsx     # AI-generated content
+        │   ├── Article.jsx      # Blog article component
+        │   ├── Contact.jsx      # Contact form
+        │   ├── Header.jsx       # Site header
+        │   ├── Nav.jsx          # Navigation
+        │   ├── NewsAI.jsx       # AI-generated content
         │   └── ServicesItem.jsx # Service listings
         └── pages/
             ├── About.jsx        # About page
