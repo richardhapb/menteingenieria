@@ -4,7 +4,7 @@ from decouple import config
 from django.core.cache import cache
 from django.http import JsonResponse
 from django.utils import timezone
-from django.views.decorators.csrf import csrf_protect, ensure_csrf_cookie
+from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_http_methods
 from openai import OpenAI
 
@@ -28,8 +28,6 @@ def get_csrf_token(_):
     """Get CSRF token for AJAX requests"""
     return JsonResponse({"status": True})
 
-
-@csrf_protect
 def openai_request(request):
     # Get client IP for logging
     client_ip = get_client_ip(request)
@@ -94,15 +92,11 @@ def openai_request(request):
         )
 
 def get_client_ip(request):
-    """Get client IP address from request with basic validation"""
+    """Get client IP address from request"""
     x_forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
     if x_forwarded_for:
-        ip = x_forwarded_for.split(",")[0].strip()
-        # Basic IP validation
-        try:
-            ipaddress.ip_address(ip)
-            return ip
-        except ValueError:
-            return request.META.get("REMOTE_ADDR")
-    return request.META.get("REMOTE_ADDR")
+        ip = x_forwarded_for.split(",")[0]
+    else:
+        ip = request.META.get("REMOTE_ADDR")
+    return ip
 

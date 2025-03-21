@@ -9,10 +9,8 @@ import {
 } from "react-icons/fa";
 import { GeneralContext } from "../contexts/GeneralContext";
 
-// This section handles the animation and deploy of services in home page
-
 // eslint-disable-next-line react/prop-types
-const ServicesItem = ({ nombre: name, descripcion: description }) => {
+const ServicesItem = ({ name: name, description: description }) => {
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);
 
@@ -33,6 +31,7 @@ const ServicesItem = ({ nombre: name, descripcion: description }) => {
         );
 
         const currentRef = ref.current;
+
         if (currentRef) {
             observer.observe(currentRef);
         }
@@ -59,9 +58,9 @@ const ServicesItem = ({ nombre: name, descripcion: description }) => {
         <div
             ref={ref}
             className={` flex flex-col items-center gap-10 p-10 text-l transition-all duration-[1400ms] ease-in-out ${serv.location === "r"
-                    ? "md:flex-row-reverse rounded-md bg-opacity-10 horizontal-linear-l " +
-                    (darkMode ? "bg-slate-400 " : "bg-slate-950 ")
-                    : "md:flex-row horizontal-linear-r "
+                ? "md:flex-row-reverse rounded-md bg-opacity-10 horizontal-linear-l " +
+                (darkMode ? "bg-slate-400 " : "bg-slate-950 ")
+                : "md:flex-row horizontal-linear-r "
                 } ${isVisible
                     ? "translate-x-0 opacity-100"
                     : serv.location === "l"
