@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getServicios } from "../api/servicio.js";
+import { getServices } from "../api/service.js";
 import ServicesItem from "../components/ServicesItem.jsx";
 
 function Home() {
@@ -8,7 +8,7 @@ function Home() {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const data = await getServicios();
+        const data = await getServices();
         setServices(data);
       } catch (error) {
         console.error(error);

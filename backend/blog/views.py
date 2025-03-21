@@ -1,16 +1,15 @@
 from rest_framework import generics
-from .models import Articulo
-from .serializers import ArticuloSerializer, UserSerializer
+from .models import Article
+from .serializers import ArticleSerializer, UserSerializer
 from django.contrib.auth.models import User
 
-# Create your views here.
-class ArticuloList(generics.ListCreateAPIView):
-    queryset = Articulo.objects.all().filter(publicado=True).order_by('-fecha')
-    serializer_class = ArticuloSerializer
+class ArticleList(generics.ListCreateAPIView):
+    queryset = Article.objects.all().filter(published=True).order_by('-date')
+    serializer_class = ArticleSerializer
 
-class ArticuloDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Articulo.objects.all()
-    serializer_class = ArticuloSerializer
+class ArticleDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
 
 class UserList(generics.ListCreateAPIView):
     queryset = User.objects.all()

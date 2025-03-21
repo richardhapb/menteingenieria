@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from .models import Articulo
+from .models import Article
 from django.contrib.auth.models import User
 
-class ArticuloSerializer(serializers.ModelSerializer):
+class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Articulo
-        fields = ['id', 'titulo', 'autor', 'contenido', 'imagen', 'fecha']
+        model = Article
+        fields = ['id', 'title', 'author', 'content', 'image', 'date']
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

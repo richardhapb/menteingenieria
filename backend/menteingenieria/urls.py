@@ -22,8 +22,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path("f0a46dd2d8b581227e01653297436068/", admin.site.urls),
-    path("", include("contacto.urls")),
+    path(getattr(settings, "ADMIN_URI", "admin/"), admin.site.urls),
+    path("", include("contact.urls")),
     path("blog/", include("blog.urls")),
     path("openai_request/", include("openai_requests.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

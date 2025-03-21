@@ -5,7 +5,7 @@ const NewsAI = () => {
   const [news, setNews] = useState("");
   const [loading, setLoading] = useState(true);
 
-  // Función para obtener una noticia desde OpenAI
+  // "Openai news"
   const fetchNews = async () => {
     setLoading(true);
     try {
@@ -17,14 +17,14 @@ const NewsAI = () => {
     }
   };
 
-  // Actualiza la noticia cada 1 minuto
+  // Update each minute
   useEffect(() => {
-    fetchNews(); // Llama a la función cuando el componente se monta
+    fetchNews();
     const interval = setInterval(() => {
-      fetchNews(); // Actualiza la noticia cada minuto
-    }, 30000); // 30,000ms = 1/2 minuto
+      fetchNews();
+    }, 30000);
 
-    return () => clearInterval(interval); // Limpia el intervalo cuando el componente se desmonta
+    return () => clearInterval(interval);
   }, []);
 
   return (

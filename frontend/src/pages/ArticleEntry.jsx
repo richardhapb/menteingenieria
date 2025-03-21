@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
-import { getArticulo } from "../api/articulo.js";
-import { getUsuario } from "../api/usuario.js";
+import {  getArticle } from "../api/article.js";
+import {  getUser } from "../api/user.js";
 import formatDate from "../utils/formatDate.js";
 import { Link } from "react-router-dom";
 import { GeneralContext } from "../contexts/GeneralContext.jsx";
@@ -18,34 +18,34 @@ const ArticleEntry = () => {
     const { darkMode } = useContext(GeneralContext);
 
     useEffect(() => {
-        const getArticle = async () => {
+        const getArticleFromApi = async () => {
             try {
-                const data = await getArticulo(id);
+                const data = await getArticle(id);
                 setArticle(data);
             } catch (error) {
                 console.log(error);
             }
         };
-        getArticle();
+        getArticleFromApi();
     }, [id]);
 
     useEffect(() => {
-        if (!article.autor) return;
+        if (!article.author) return;
         setLoading(false);
-        const getUser = async () => {
+        const getUserFromApi = async () => {
             try {
-                const data = await getUsuario(article.autor);
+                const data = await getUser(article.author);
                 setUser(data);
             } catch (error) {
                 console.log(error);
             }
         };
-        getUser();
+        getUserFromApi();
     }, [article]);
 
     // Process content to protect LaTeX from Markdown parsing
     useEffect(() => {
-        if (article.contenido) {
+        if (article.content) {
             /**
              * Protect LaTeX expressions in the markdown content.
              *
@@ -73,10 +73,10 @@ const ArticleEntry = () => {
                 return { processedText, latexMap }
             }
 
-            const { processedText, latexMap } = protectLatex(article.contenido);
+            const { processedText, latexMap } = protectLatex(article.content);
             setProcessedContent({ text: processedText, latexMap });
         }
-    }, [article.contenido]);
+    }, [article.content]);
 
     // Scroll to top
     useEffect(() => {
@@ -122,10 +122,10 @@ const ArticleEntry = () => {
     return (
         <div className="min-h-screen">
             <div className="relative">
-                {article.imagen ? (
+                {article.image ? (
                     <img
-                        src={article.imagen}
-                        alt={article.titulo}
+                        src={article.image}
+                        alt={article.title}
                         className="w-full z-0 object-cover max-h-96"
                     />
                 ) : (
@@ -133,7 +133,7 @@ const ArticleEntry = () => {
                 )}
                 <div className="absolute inset-0 flex items-center text-4xl font-bold text-white z-10 justify-center">
                     <h1 className="text-5xl font-bold bg-gray-900 bg-opacity-90 h-40 w-full flex items-center px-6">
-                        {article.titulo}
+                        {article.title}
                     </h1>
                 </div>
             </div>
@@ -146,7 +146,7 @@ const ArticleEntry = () => {
                 </div>
                 <div className="mx-auto max-w-3xl my-4">
                     <span className="font-italic font-semibold">Fecha: </span>
-                    {formatDate(article.fecha)}
+                    {formatDate(article.date)}
                 </div>
             </div>
 

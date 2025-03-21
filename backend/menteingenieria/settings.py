@@ -17,7 +17,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "corsheaders",
-    "contacto",
+    "contact",
     "rest_framework",
     "blog",
     "storages",
@@ -101,9 +101,11 @@ AUTH_PASSWORD_VALIDATORS = [
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
-        'LOCATION': '127.0.0.1:11211',
+        'LOCATION': config("CACHE_URI"),
     }
 }
+
+ADMIN_URI = config("ADMIN_URI")
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -147,17 +149,14 @@ AWS_S3_OBJECT_PARAMETERS = {
     "CacheControl": "max-age=86400",
 }
 
-# Directorio donde se guardarán temporalmente los archivos estáticos antes de subirlos a S3
+# Directory where static files will be temporarily stored before uploading to S3
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-# Directorio donde se guardarán temporalmente los archivos estáticos antes de subirlos a S3
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
-# Almacenar archivos estáticos en S3
+# Store static files in S3
 STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
 
-# Almacenar archivos multimedia en S3
+# Store media files in S3
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
 

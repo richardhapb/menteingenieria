@@ -6,7 +6,6 @@ from django.http import JsonResponse
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_protect, ensure_csrf_cookie
 from django.views.decorators.http import require_http_methods
-from django_ratelimit.decorators import ratelimit
 from openai import OpenAI
 
 logger = logging.getLogger(__name__)
@@ -21,6 +20,7 @@ Muestra recomendaciones concretas para aumentar rentabilidad y sostenibilidad me
 IMPORTANTE: Limita a 40 palabras. No uses listas, ni numeradas ni en viñetas.
 """
 TIME_THRESHOLD = 20
+MAX_REQUESTS_PER_HOUR = 800
 
 @require_http_methods(["GET"])
 @ensure_csrf_cookie
@@ -29,12 +29,24 @@ def get_csrf_token(_):
     return JsonResponse({"status": True})
 
 
+@csrf_protect
 def openai_request(request):
     # Get client IP for logging
     client_ip = get_client_ip(request)
 
     # Check global cache first (shared across all users)
     current_time = timezone.now()
+    
+    request_count = cache.get("request_count", 0)
+
+    if request_count >= MAX_REQUESTS_PER_HOUR:
+        logger.warning(f"Rate limit exceeded for {client_ip}")
+        return JsonResponse({"error": "Rate limit exceeded"}, status=429)
+
+    # Reset the count each hour
+    request_count += 1 if current_time.minute != 0 else 0
+    cache.set("request_count", request_count)
+
     last_request_time = cache.get("last_request_time")
     last_request_content = cache.get("last_request_content")
 
@@ -48,7 +60,7 @@ def openai_request(request):
         cache.set("last_request_time", current_time, TIME_THRESHOLD)
 
     # Get API key securely
-    api_key = config("OPENAI_API_KEY")
+    api_key = str(config("OPENAI_API_KEY"))
     if not api_key:
         logger.error("OpenAI API key not configured")
         return JsonResponse({"error": "Service configuration error"}, status=500)
@@ -76,17 +88,21 @@ def openai_request(request):
 
     except Exception as e:
         logger.error(f"OpenAI request failed for {client_ip}: {e}")
-        # Return generic error message (don't expose detailed errors to users)
+        # Return generic error message
         return JsonResponse(
             {"error": "Unable to generate recommendations at this time"}, status=500
         )
 
-
 def get_client_ip(request):
-    """Get client IP address from request"""
+    """Get client IP address from request with basic validation"""
     x_forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
     if x_forwarded_for:
-        ip = x_forwarded_for.split(",")[0]
-    else:
-        ip = request.META.get("REMOTE_ADDR")
-    return ip
+        ip = x_forwarded_for.split(",")[0].strip()
+        # Basic IP validation
+        try:
+            ipaddress.ip_address(ip)
+            return ip
+        except ValueError:
+            return request.META.get("REMOTE_ADDR")
+    return request.META.get("REMOTE_ADDR")
+

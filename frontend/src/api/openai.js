@@ -15,7 +15,14 @@ api.interceptors.request.use(async (config) => {
     // If CSRF not initialized yet, get it first
     if (!csrfInitialized) {
         try {
-            await axios.get(`${API_URL}/openai_request/csrf/`, { withCredentials: true });
+            await axios.get(`${API_URL}/openai_request/csrf/`, {
+                withCredentials: true,
+                headers: {
+                    "Accept": "application/json",
+                    "X-Requested-With": "XMLHttpRequest"
+                }
+            });
+
             csrfInitialized = true;
         } catch (error) {
             console.error("Failed to initialize CSRF token:", error);
@@ -49,7 +56,7 @@ function getCsrfToken() {
 
 export const getOpenAiText = async () => {
     try {
-        const response = await api.post('/openai_request/request/', {}, {});
+        const response = await api.post('/openai_request/request/', {}, { headers: { "Content-Type": "application/json" } });
 
         return response.data;
     } catch (error) {
