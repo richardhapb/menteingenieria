@@ -7,6 +7,10 @@ import Markdown from "markdown-to-jsx";
 import renderMathInElement from 'katex/dist/contrib/auto-render.mjs';
 import 'katex/dist/katex.min.css';
 
+/// This handles how an article is displayed in the blog view, 
+/// render the markdown to HTML and transform LaTeX formulas to HTML with 
+/// custom fonts.
+
 const Article = article => {
     const [user, setUser] = useState([]);
     const { darkMode } = useContext(GeneralContext);

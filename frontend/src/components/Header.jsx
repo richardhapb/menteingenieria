@@ -4,6 +4,9 @@ import { useState, useEffect, useContext } from "react";
 import { GeneralContext } from "../contexts/GeneralContext.jsx";
 import NewsAI from "./NewsAI.jsx";
 
+/// Header with video and handle open and close of contact form,
+/// also hold de OpenAI recommendation modal.
+
 function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(false);

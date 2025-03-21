@@ -8,6 +8,12 @@ import Markdown from "markdown-to-jsx";
 import renderMathInElement from 'katex/dist/contrib/auto-render.mjs';
 import 'katex/dist/katex.min.css';
 
+/// This is the full page of the blog article, this render the markdown and LaTeX
+/// is similar to article preview but add more logic for avoid conflicts
+/// between markdown and LaTeX rendering.
+
+/// TODO: Generate functions for repeated code between preview and full article
+
 const ArticleEntry = () => {
     const id = window.location.pathname.split("/").pop();
     const [article, setArticle] = useState({});

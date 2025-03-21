@@ -9,6 +9,12 @@ import {
 } from "react-icons/fa";
 import { GeneralContext } from "../contexts/GeneralContext";
 
+/// Handles the rendering and animation of services in center of the home page
+/// make an horizontal animation and use a custom icon for each service
+
+// TODO: Make the service names from database and their associated icons
+// for making it dynamic and flexible for future changes.
+
 // eslint-disable-next-line react/prop-types
 const ServicesItem = ({ name: name, description: description }) => {
     const [isVisible, setIsVisible] = useState(false);

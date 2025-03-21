@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { getOpenAiText } from "../api/openai.js";
 
+/// Handles the request and update of OpenAI modal
+
 const NewsAI = () => {
   const [news, setNews] = useState("");
   const [loading, setLoading] = useState(true);

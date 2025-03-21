@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { GeneralContext } from "../contexts/GeneralContext.jsx";
 import { useContext } from "react";
 
+/// Footer structure, is a static html with dinamically load of image depending of `VITE_PUBLIC_URL` variable
+
 const Footer = () => {
     const { darkMode } = useContext(GeneralContext);
     return (

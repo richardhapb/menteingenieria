@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+// This module handles the request to openai API from backend
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 // Initialize csrf token

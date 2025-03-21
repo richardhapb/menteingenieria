@@ -1,7 +1,8 @@
 from django.contrib import admin
 from .models import Contact, Service, Request
 
-# Register your models here.
+# Routes for API response
+
 admin.site.register(Contact)
 admin.site.register(Service)
 admin.site.register(Request)

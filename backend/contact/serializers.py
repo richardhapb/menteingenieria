@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import Contact, Service, Request
 
+# API behavior
+
 class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact

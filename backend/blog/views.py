@@ -3,6 +3,8 @@ from .models import Article
 from .serializers import ArticleSerializer, UserSerializer
 from django.contrib.auth.models import User
 
+# Only with api behavior
+
 class ArticleList(generics.ListCreateAPIView):
     queryset = Article.objects.all().filter(published=True).order_by('-date')
     serializer_class = ArticleSerializer

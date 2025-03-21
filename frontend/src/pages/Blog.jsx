@@ -3,6 +3,8 @@ import { getArticles } from "../api/article.js";
 import Article from "../components/Article.jsx";
 import { Link } from "react-router-dom";
 
+/// Main blog view
+
 const Blog = () => {
     const [articles, setArticles] = useState([]);
     useEffect(() => {

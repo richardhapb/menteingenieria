@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+/// Handles the local storage usage
+
 export const useLocalStorage = (key, initialValue) => {
     const [storedValue, setStoredValue] = useState(() => {
         try {

@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
+// Get list of articles
 export const getArticles = async () => {
   try {
     const response = await axios.get(`${API_URL}/blog/articles/`);
@@ -12,6 +13,7 @@ export const getArticles = async () => {
   }
 };
 
+// Get an article by id
 export const getArticle = async id => {
   try {
     const response = await axios.get(`${API_URL}/blog/articles/${id}/`);

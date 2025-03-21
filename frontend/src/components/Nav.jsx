@@ -6,6 +6,11 @@ import { MdLightMode, MdDarkMode } from "react-icons/md";
 
 import { useLocalStorage } from "../hooks/useLocalStorage.js";
 
+/// Handles the navigation bar and make it responsive. Make an animation of slide and
+/// listen for user interaction, and decide if should open or close the menu
+
+/// # TODO: Optimize this module and move control to CSS
+
 // eslint-disable-next-line react/prop-types
 const Nav = ({ setIsOpen, isOpen, setIsVisible }) => {
     const [menuOpen, setMenuOpen] = useState(false);

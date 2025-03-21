@@ -22,6 +22,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    # Custom hashed URL for admin is expected in environment
     path(getattr(settings, "ADMIN_URI", "admin/"), admin.site.urls),
     path("", include("contact.urls")),
     path("blog/", include("blog.urls")),

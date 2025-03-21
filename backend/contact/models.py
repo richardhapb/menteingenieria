@@ -1,5 +1,10 @@
 from django.db import models
 
+# This models are the core of the site.
+# - Contact: An user that request contact
+# - Service: Service that menteingenieria offer
+# - Request: A request from an user of a service
+
 class Contact(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()

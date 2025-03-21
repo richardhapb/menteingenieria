@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getServices } from "../api/service.js";
 import ServicesItem from "../components/ServicesItem.jsx";
 
+/// Home page
+
 function Home() {
   const [services, setServices] = useState([]);
 

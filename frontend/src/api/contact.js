@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const API_URL = import.meta.env.API_URL;  
 
+// Get list of contacts
 export const getContacts = async () => {
   try {
     const response = await axios.get(`${API_URL}/contact/`);

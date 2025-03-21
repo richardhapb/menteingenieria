@@ -2,6 +2,10 @@ import { createContext, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 export const GeneralContext = createContext();
 
+/// General context for handling the global states like dark mode
+
+/// TODO: Separate Context and Provider
+
 const GeneralContextProvider = ({ children }) => {
     const [contactRequest, setContactRequest] = useState(false);
     const [home, setHome] = useState(false);

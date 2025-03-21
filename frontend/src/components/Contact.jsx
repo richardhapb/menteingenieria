@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { newRequest } from "../api/request.js";
 
+/// Form where the user can send requests
+/// This handle the rendering and animation
+
 const Contact = () => {
     const [loading, setLoading] = useState(false);
     const [timer, setTimer] = useState(0);
