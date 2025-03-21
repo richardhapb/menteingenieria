@@ -14,6 +14,7 @@ Link: [https://menteingenieria.com](https://menteingenieria.com)
 
 ### Frontend (React)
 - Built with React 18 + Vite
+- TailwindCSS 3.4
 - Modern UI components
 - Dynamic article rendering
 - KaTeX for mathematical equations
